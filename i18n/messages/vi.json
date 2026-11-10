@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "Ăn gì? — Vòng quay món Việt",
+    "description": "Quay vòng may mắn để chọn món Việt và tìm quán ngon, được đánh giá cao gần bạn."
+  },
+  "intro": {
+    "serving": "Đang dọn món"
+  },
+  "header": {
+    "brand": "Ăn gì?",
+    "soundOn": "Bật âm thanh",
+    "soundOff": "Tắt âm thanh",
+    "sound": "Âm",
+    "language": "Ngôn ngữ"
+  },
+  "nav": {
+    "wheel": "Vòng quay",
+    "manage": "Thực đơn"
+  },
+  "hero": {
+    "index": "(01)",
+    "label": "Vòng quay ẩm thực Việt",
+    "line1": "Hôm nay",
+    "accent": "ăn",
+    "line2": "gì đây?",
+    "lede": "Phân vân trước bữa? Để vòng quay quyết định — rồi mình dẫn bạn tới quán ngon nhất gần đây."
+  },
+  "wheel": {
+    "spin": "QUAY",
+    "ring": "QUAY ĐI • CHỌN MÓN • ĂN GÌ • HÔM NAY • ",
+    "spinning": "Đang quay…",
+    "swipeHint": "Chạm hoặc vuốt ngang để quay",
+    "notEnough": "Cần ít nhất 2 món đang bật để quay.",
+    "goManage": "Thêm món",
+    "loading": "Đang tải món…",
+    "dishCount": "{count} món",
+    "current": "Kim đang chỉ",
+    "tapToSpin": "Chạm QUAY hoặc kéo vòng quay rồi thả"
+  },
+  "steps": {
+    "index": "(02)",
+    "title": "Cách chơi",
+    "items": [
+      {
+        "title": "Quay",
+        "text": "Chạm nút hoặc vuốt vòng quay. Mỗi lượt quay là ngẫu nhiên thật sự."
+      },
+      {
+        "title": "Tìm quán",
+        "text": "Mình tìm những quán được đánh giá cao, nhiều review trên Google Maps quanh bạn."
+      },
+      {
+        "title": "Lên đường",
+        "text": "Một chạm để mở chỉ đường từ vị trí của bạn tới quán."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Bớt phân vân, thêm ngon miệng.",
+    "credit": "Dữ liệu quán © Google Maps",
+    "made": "Làm tại Việt Nam.",
+    "guide": "Hướng dẫn",
+    "privacy": "Quyền riêng tư",
+    "terms": "Điều khoản"
+  },
+  "result": {
+    "label": "Kết quả",
+    "youGot": "Hôm nay mình ăn",
+    "nearby": "Quán ngon gần bạn",
+    "nearbyHint": "Điểm cao · nhiều đánh giá · gần bạn",
+    "locating": "Đang xác định vị trí của bạn…",
+    "loading": "Đang tìm quán ngon…",
+    "locationDenied": "Không lấy được vị trí. Hãy cho phép truy cập vị trí để xem quán gần bạn.",
+    "retryLocation": "Thử lại",
+    "noPlaces": "Chưa tìm thấy quán phù hợp gần đây.",
+    "error": "Không tải được danh sách quán. Vui lòng thử lại.",
+    "noApiKey": "Chưa cấu hình Google Maps API key — mở tìm kiếm trực tiếp trên Google Maps nhé.",
+    "searchOnMaps": "Tìm trên Google Maps",
+    "spinAgain": "Quay lại",
+    "close": "Đóng",
+    "directions": "Chỉ đường",
+    "viewOnMap": "Xem quán",
+    "reviews": "đánh giá",
+    "openNow": "Đang mở",
+    "closed": "Đã đóng",
+    "away": "cách bạn",
+    "findPlaces": "Quán ngon gần bạn",
+    "photoCredit": "Ảnh: Wikipedia",
+    "findPlacesShort": "Tìm quán",
+    "consentTitle": "Cho phép dùng vị trí?",
+    "consentBody": "Để tìm quán gần bạn, chúng tôi cần vị trí chính xác của thiết bị — đây là dữ liệu cá nhân nhạy cảm. Vị trí chỉ dùng cho lần tìm kiếm này, được gửi tới Google Maps Platform để lấy danh sách quán và không được lưu trữ. Bạn có thể rút lại sự đồng ý bất cứ lúc nào.",
+    "consentAgree": "Đồng ý & tìm quán",
+    "consentDecline": "Không, tôi tự tìm trên Google Maps",
+    "consentPolicy": "Chính sách quyền riêng tư"
+  },
+  "manage": {
+    "index": "(02)",
+    "label": "Quản lý",
+    "title": "Thực đơn",
+    "subtitle": "Thêm món mới hoặc tắt món để ẩn khỏi vòng quay.",
+    "addTitle": "Thêm món",
+    "nameVi": "Tên tiếng Việt",
+    "nameViPlaceholder": "VD: Phở bò",
+    "nameEn": "Tên tiếng Anh",
+    "nameEnPlaceholder": "VD: Beef pho",
+    "emoji": "Biểu tượng",
+    "add": "Thêm món",
+    "adding": "Đang thêm…",
+    "search": "Tìm món…",
+    "all": "Tất cả",
+    "active": "Đang bật",
+    "inactive": "Đã tắt",
+    "activeCount": "{count} món đang trên vòng quay",
+    "empty": "Không có món nào.",
+    "activate": "Bật lại",
+    "deactivate": "Tắt món",
+    "on": "Bật",
+    "off": "Tắt",
+    "statusOn": "Trên vòng quay",
+    "statusOff": "Đã ẩn",
+    "pinTitle": "Nhập mã quản lý",
+    "pinPlaceholder": "Mã PIN",
+    "pinSubmit": "Xác nhận",
+    "pinWrong": "Mã PIN không đúng.",
+    "errorGeneric": "Có lỗi xảy ra, vui lòng thử lại.",
+    "errorName": "Vui lòng nhập tên món (tối đa 40 ký tự).",
+    "errorDuplicate": "Món này đã có trong danh sách.",
+    "added": "Đã thêm {name}",
+    "loading": "Đang tải…",
+    "imageUrl": "Ảnh (tuỳ chọn)",
+    "imageUrlPlaceholder": "Để trống: tự tìm ảnh trên Wikipedia"
+  }
+}

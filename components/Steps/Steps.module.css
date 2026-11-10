@@ -1,0 +1,82 @@
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.index {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--chili);
+  order: 2;
+}
+
+.title {
+  font-stretch: 75%;
+  font-size: clamp(48px, 15vw, 88px);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+}
+
+.item {
+  position: relative;
+  padding: 18px 0 22px;
+}
+
+.item:last-child {
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.rule {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 76px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.num {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 64px;
+  line-height: 0.8;
+  letter-spacing: -0.05em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ink);
+}
+
+.item:nth-child(2) .num {
+  color: var(--chili);
+  -webkit-text-stroke: 0;
+}
+
+.itemTitle {
+  font-size: 30px;
+  font-stretch: 85%;
+  line-height: 1;
+}
+
+.text {
+  margin-top: 6px;
+  font-size: 15px;
+  color: var(--ink-2);
+}

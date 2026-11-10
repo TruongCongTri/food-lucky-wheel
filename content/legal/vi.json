@@ -1,0 +1,272 @@
+{
+  "common": {
+    "updated": "Cập nhật lần cuối",
+    "contents": "Mục lục",
+    "related": "Xem thêm",
+    "withdraw": "Rút lại sự đồng ý",
+    "withdrawn": "Đã rút lại sự đồng ý. Lần sau chúng tôi sẽ hỏi lại trước khi dùng vị trí.",
+    "consentGiven": "Bạn đã đồng ý dùng vị trí lúc {date}.",
+    "consentNone": "Hiện bạn chưa đồng ý cho chúng tôi dùng vị trí."
+  },
+  "guide": {
+    "label": "Hướng dẫn",
+    "title": "Hướng dẫn sử dụng",
+    "intro": "Mọi thứ bạn cần để quay vòng, chọn món và tìm quán ngon — chỉ trong một phút đọc.",
+    "sections": [
+      {
+        "id": "quay",
+        "heading": "Quay vòng",
+        "paragraphs": [
+          "Có ba cách để quay:"
+        ],
+        "list": [
+          "Chạm nút QUAY ở giữa vòng quay.",
+          "Kéo vòng quay theo vành rồi thả: kéo ngược lại (như kéo dây cung) rồi buông, hoặc vuốt mạnh theo chiều quay — vòng sẽ lao đi theo lực kéo của bạn.",
+          "Kéo nhẹ rồi thả chậm chỉ xoay vòng tới vị trí mới, không quay."
+        ]
+      },
+      {
+        "id": "ket-qua",
+        "heading": "Xem kết quả",
+        "paragraphs": [
+          "Kim chỉ nằm bên trái vòng quay. Món dừng ở kim là món của bạn.",
+          "Trên máy tính, kết quả hiện ngay bên trái vòng quay. Trên điện thoại, kết quả hiện trong cửa sổ bật lên, kèm ảnh món ăn."
+        ]
+      },
+      {
+        "id": "tim-quan",
+        "heading": "Tìm quán ngon gần bạn",
+        "paragraphs": [
+          "Chạm “Quán ngon gần bạn”. Lần đầu, chúng tôi sẽ giải thích và xin bạn đồng ý dùng vị trí — sau đó trình duyệt sẽ hỏi quyền truy cập vị trí.",
+          "Danh sách lấy từ Google Maps, chỉ gồm quán có điểm từ 4.0 trở lên và ít nhất 20 đánh giá, xếp hạng theo điểm, số lượng đánh giá và khoảng cách.",
+          "Không muốn chia sẻ vị trí? Chọn “Tìm trên Google Maps” để tự tìm."
+        ]
+      },
+      {
+        "id": "chi-duong",
+        "heading": "Chỉ đường",
+        "paragraphs": [
+          "Chạm “Chỉ đường” để mở Google Maps với điểm đi là vị trí hiện tại của bạn và điểm đến là quán đã chọn. Trên điện thoại, ứng dụng Google Maps sẽ được mở nếu đã cài đặt.",
+          "Vui lòng tuân thủ luật giao thông và không thao tác điện thoại khi đang lái xe."
+        ]
+      },
+      {
+        "id": "cai-dat",
+        "heading": "Âm thanh, ngôn ngữ, cài lên màn hình chính",
+        "list": [
+          "Bật/tắt âm thanh bằng nút “ON/OFF” ở góc trên.",
+          "Đổi ngôn ngữ bằng “VI / EN”. Lựa chọn được ghi nhớ.",
+          "iPhone (Safari): Chia sẻ → Thêm vào MH chính. Android (Chrome): Menu ⋮ → Cài đặt ứng dụng."
+        ]
+      },
+      {
+        "id": "thuc-don",
+        "heading": "Quản lý thực đơn",
+        "paragraphs": [
+          "Vào “Thực đơn” để thêm món mới (ảnh được tự tìm trên Wikipedia nếu bạn không nhập) hoặc tắt món để ẩn khỏi vòng quay. Món đã tắt có thể bật lại bất cứ lúc nào.",
+          "Nếu được cấu hình, thao tác quản lý cần mã PIN của quản trị viên."
+        ]
+      },
+      {
+        "id": "su-co",
+        "heading": "Sự cố thường gặp",
+        "list": [
+          "Không lấy được vị trí: kiểm tra quyền vị trí của trình duyệt trong phần Cài đặt, rồi chạm “Thử lại”.",
+          "Không thấy quán nào: thử “Tìm trên Google Maps”, hoặc quay món khác.",
+          "Vòng quay không hiện: trình duyệt cần hỗ trợ WebGL; nếu không, vòng quay đơn giản sẽ được dùng thay thế."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "label": "Quyền riêng tư",
+    "title": "Chính sách quyền riêng tư",
+    "intro": "Chính sách này giải thích dữ liệu cá nhân nào được xử lý khi bạn dùng “Ăn gì?”, vì sao, và quyền của bạn — theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP.",
+    "sections": [
+      {
+        "id": "don-vi",
+        "heading": "Bên kiểm soát và xử lý dữ liệu",
+        "paragraphs": [
+          "Bên kiểm soát và xử lý dữ liệu cá nhân: {operator}. Địa chỉ: {address}. Email liên hệ về dữ liệu cá nhân: {email}."
+        ]
+      },
+      {
+        "id": "du-lieu",
+        "heading": "Dữ liệu chúng tôi xử lý",
+        "list": [
+          "Vị trí chính xác của thiết bị — chỉ khi bạn đồng ý. Đây là dữ liệu cá nhân nhạy cảm, nên chúng tôi chỉ xử lý sau khi bạn đồng ý rõ ràng trong ứng dụng và cấp quyền trên trình duyệt.",
+          "Dữ liệu kỹ thuật: địa chỉ IP, loại trình duyệt và thời điểm truy cập, được ghi trong nhật ký máy chủ của nhà cung cấp dịch vụ lưu trữ để vận hành và bảo đảm an ninh.",
+          "Dữ liệu lưu trên thiết bị của bạn: cookie ngôn ngữ (NEXT_LOCALE, 1 năm); trong bộ nhớ trình duyệt: lựa chọn âm thanh, bản ghi sự đồng ý dùng vị trí, trạng thái màn hình mở đầu và (với quản trị viên) mã PIN trong phiên làm việc.",
+          "Chúng tôi không yêu cầu tài khoản, không thu thập họ tên, số điện thoại, không dùng cookie quảng cáo hay công cụ phân tích hành vi."
+        ]
+      },
+      {
+        "id": "muc-dich",
+        "heading": "Mục đích xử lý",
+        "list": [
+          "Vị trí: tìm quán ăn gần bạn, tính khoảng cách và tạo liên kết chỉ đường từ vị trí của bạn.",
+          "Dữ liệu kỹ thuật: cung cấp dịch vụ, phòng chống tấn công và lạm dụng.",
+          "Dữ liệu trên thiết bị: ghi nhớ lựa chọn của bạn."
+        ],
+        "paragraphs": [
+          "Chúng tôi không dùng dữ liệu của bạn cho quảng cáo, không bán và không chia sẻ cho mục đích khác."
+        ]
+      },
+      {
+        "id": "vi-tri",
+        "heading": "Cách vị trí của bạn được xử lý",
+        "list": [
+          "Vị trí được lấy từ trình duyệt khi bạn yêu cầu tìm quán (và đã đồng ý trước đó).",
+          "Tọa độ được gửi tới máy chủ của chúng tôi chỉ để chuyển tiếp truy vấn tới Google Maps Platform (Places API), rồi trả kết quả về cho bạn.",
+          "Chúng tôi không lưu tọa độ của bạn vào cơ sở dữ liệu và không lập hồ sơ di chuyển.",
+          "Khi bạn mở “Chỉ đường”, tọa độ được đưa vào liên kết Google Maps trên thiết bị của bạn."
+        ]
+      },
+      {
+        "id": "ben-thu-ba",
+        "heading": "Bên thứ ba và chuyển dữ liệu ra nước ngoài",
+        "list": [
+          "Google LLC (Google Maps Platform): nhận tọa độ và từ khóa tìm kiếm để trả danh sách quán; nhận địa chỉ IP khi bạn mở Google Maps.",
+          "Wikimedia Foundation: ảnh món ăn được tải trực tiếp từ máy chủ Wikimedia nên họ nhận địa chỉ IP và thông tin trình duyệt của bạn.",
+          "Nhà cung cấp dịch vụ lưu trữ website: xử lý nhật ký kỹ thuật."
+        ],
+        "paragraphs": [
+          "Máy chủ của các bên trên có thể đặt ngoài Việt Nam, nên việc sử dụng dịch vụ có thể dẫn tới chuyển dữ liệu cá nhân xuyên biên giới. Chúng tôi thực hiện các nghĩa vụ về chuyển dữ liệu cá nhân xuyên biên giới theo quy định của pháp luật Việt Nam, và việc xử lý dữ liệu tại các bên này còn tuân theo chính sách quyền riêng tư của họ."
+        ]
+      },
+      {
+        "id": "luu-tru",
+        "heading": "Thời gian lưu trữ",
+        "list": [
+          "Vị trí: không lưu trữ sau khi trả kết quả tìm quán.",
+          "Nhật ký kỹ thuật: theo thời hạn lưu của nhà cung cấp dịch vụ lưu trữ, chỉ để vận hành và an ninh.",
+          "Dữ liệu trên thiết bị: tới khi bạn xóa dữ liệu trang trong trình duyệt hoặc rút lại sự đồng ý bên dưới."
+        ]
+      },
+      {
+        "id": "quyen",
+        "heading": "Quyền của bạn",
+        "paragraphs": [
+          "Theo pháp luật về bảo vệ dữ liệu cá nhân, bạn có quyền:"
+        ],
+        "list": [
+          "Được biết về việc xử lý dữ liệu cá nhân của mình.",
+          "Đồng ý hoặc không đồng ý, và rút lại sự đồng ý bất cứ lúc nào.",
+          "Xem, chỉnh sửa, yêu cầu xóa dữ liệu cá nhân của mình.",
+          "Yêu cầu hạn chế xử lý, phản đối việc xử lý dữ liệu.",
+          "Khiếu nại, tố cáo, khởi kiện và yêu cầu bồi thường thiệt hại theo quy định của pháp luật."
+        ],
+        "after": "Để thực hiện các quyền này, hãy liên hệ {email}. Chúng tôi phản hồi trong thời hạn pháp luật quy định. Việc rút lại sự đồng ý không ảnh hưởng tới tính hợp pháp của việc xử lý đã thực hiện trước đó."
+      },
+      {
+        "id": "rut-dong-y",
+        "heading": "Rút lại sự đồng ý dùng vị trí",
+        "paragraphs": [
+          "Bạn có thể rút lại sự đồng ý ngay tại đây. Ngoài ra, hãy tắt quyền vị trí cho trang này trong cài đặt trình duyệt để trình duyệt không cấp vị trí nữa."
+        ]
+      },
+      {
+        "id": "tre-em",
+        "heading": "Trẻ em",
+        "paragraphs": [
+          "Dịch vụ không hướng tới trẻ em. Việc xử lý dữ liệu cá nhân của trẻ em cần có sự đồng ý của cha, mẹ hoặc người giám hộ theo quy định của pháp luật."
+        ]
+      },
+      {
+        "id": "bao-mat",
+        "heading": "Bảo mật",
+        "paragraphs": [
+          "Kết nối được mã hóa bằng HTTPS. Khóa truy cập Google Maps chỉ nằm trên máy chủ, không gửi tới trình duyệt. Nếu xảy ra vi phạm dữ liệu cá nhân, chúng tôi sẽ thông báo cho cơ quan có thẩm quyền và người dùng bị ảnh hưởng theo quy định của pháp luật."
+        ]
+      },
+      {
+        "id": "thay-doi",
+        "heading": "Thay đổi chính sách và liên hệ",
+        "paragraphs": [
+          "Khi chính sách thay đổi đáng kể về việc dùng vị trí, chúng tôi sẽ xin lại sự đồng ý của bạn. Mọi câu hỏi xin gửi tới {email}."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "label": "Điều khoản",
+    "title": "Điều khoản sử dụng",
+    "intro": "Bằng việc sử dụng “Ăn gì?”, bạn đồng ý với các điều khoản dưới đây. Vui lòng đọc kỹ.",
+    "sections": [
+      {
+        "id": "dich-vu",
+        "heading": "Dịch vụ",
+        "paragraphs": [
+          "“Ăn gì?” là công cụ miễn phí do {operator} vận hành, giúp chọn ngẫu nhiên một món ăn Việt và gợi ý quán ăn gần bạn. Kết quả vòng quay là ngẫu nhiên và chỉ mang tính gợi ý."
+        ]
+      },
+      {
+        "id": "thong-tin-quan",
+        "heading": "Thông tin quán ăn",
+        "paragraphs": [
+          "Thông tin quán, điểm đánh giá, giờ mở cửa và ảnh quán được cung cấp bởi Google Maps Platform. Chúng tôi không sở hữu, không kiểm duyệt và không bảo đảm tính chính xác, đầy đủ hay cập nhật của các thông tin này, và không có quan hệ đối tác hay quảng cáo với các quán được gợi ý.",
+          "Việc sử dụng Google Maps tuân theo Điều khoản dịch vụ và Chính sách quyền riêng tư của Google."
+        ]
+      },
+      {
+        "id": "an-toan",
+        "heading": "An toàn thực phẩm và đi lại",
+        "list": [
+          "Vui lòng tự kiểm tra thành phần, chất gây dị ứng và điều kiện vệ sinh an toàn thực phẩm của quán.",
+          "Khi đi theo chỉ dẫn đường, hãy tuân thủ luật giao thông đường bộ và không thao tác điện thoại khi đang điều khiển phương tiện."
+        ]
+      },
+      {
+        "id": "anh",
+        "heading": "Hình ảnh món ăn",
+        "paragraphs": [
+          "Ảnh món ăn lấy từ Wikipedia / Wikimedia Commons theo giấy phép tự do của từng tác giả; liên kết nguồn được hiển thị cùng ảnh. Nếu bạn là chủ sở hữu và cho rằng ảnh bị sử dụng không đúng, hãy liên hệ {email} để chúng tôi gỡ bỏ."
+        ]
+      },
+      {
+        "id": "hanh-vi",
+        "heading": "Hành vi không được phép",
+        "list": [
+          "Tấn công, dò quét, gây quá tải hoặc can thiệp trái phép vào hệ thống; vi phạm Luật An ninh mạng số 24/2018/QH14.",
+          "Thu thập dữ liệu tự động (scraping) hoặc lạm dụng các API của dịch vụ.",
+          "Đăng tải nội dung vi phạm pháp luật, thuần phong mỹ tục hoặc quyền của người khác khi quản lý thực đơn."
+        ]
+      },
+      {
+        "id": "quan-tri",
+        "heading": "Chức năng quản lý thực đơn",
+        "paragraphs": [
+          "Chức năng quản lý dành cho người được giao quyền. Người quản lý chịu trách nhiệm về tên món và đường dẫn ảnh mình nhập."
+        ]
+      },
+      {
+        "id": "trach-nhiem",
+        "heading": "Giới hạn trách nhiệm",
+        "paragraphs": [
+          "Dịch vụ được cung cấp “nguyên trạng”. Trong phạm vi pháp luật cho phép, chúng tôi không chịu trách nhiệm về thiệt hại phát sinh từ việc dựa vào thông tin của bên thứ ba hoặc từ việc dịch vụ tạm gián đoạn. Điều khoản này không hạn chế các quyền của người tiêu dùng theo Luật Bảo vệ quyền lợi người tiêu dùng số 19/2023/QH15."
+        ]
+      },
+      {
+        "id": "du-lieu",
+        "heading": "Dữ liệu cá nhân",
+        "paragraphs": [
+          "Việc xử lý dữ liệu cá nhân được mô tả trong Chính sách quyền riêng tư."
+        ]
+      },
+      {
+        "id": "luat",
+        "heading": "Luật áp dụng và giải quyết tranh chấp",
+        "paragraphs": [
+          "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Tranh chấp được ưu tiên giải quyết bằng thương lượng; nếu không thành, sẽ được giải quyết tại Tòa án có thẩm quyền của Việt Nam."
+        ]
+      },
+      {
+        "id": "thay-doi",
+        "heading": "Thay đổi và liên hệ",
+        "paragraphs": [
+          "Chúng tôi có thể cập nhật điều khoản; ngày cập nhật được ghi ở đầu trang. Liên hệ: {email} — {address}."
+        ]
+      }
+    ]
+  }
+}

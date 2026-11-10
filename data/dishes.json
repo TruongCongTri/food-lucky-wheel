@@ -1,0 +1,301 @@
+[
+  {
+    "id": "pho-bo",
+    "name": {
+      "vi": "Phở bò",
+      "en": "Beef pho"
+    },
+    "emoji": "🍜",
+    "searchKeyword": "Phở bò",
+    "active": true,
+    "createdAt": "2026-11-09T00:00:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/99/Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg/960px-Ph%E1%BB%9F_b%C3%B2%2C_C%E1%BA%A7u_Gi%E1%BA%A5y%2C_H%C3%A0_N%E1%BB%99i.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/Ph%E1%BB%9F"
+  },
+  {
+    "id": "bun-cha",
+    "name": {
+      "vi": "Bún chả",
+      "en": "Grilled pork & noodles"
+    },
+    "emoji": "🥢",
+    "searchKeyword": "Bún chả",
+    "active": true,
+    "createdAt": "2026-11-09T00:01:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8b/B%C3%BAn_ch%E1%BA%A3_Th%E1%BB%A5y_Khu%C3%AA.jpg/960px-B%C3%BAn_ch%E1%BA%A3_Th%E1%BB%A5y_Khu%C3%AA.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%BAn_ch%E1%BA%A3"
+  },
+  {
+    "id": "banh-mi",
+    "name": {
+      "vi": "Bánh mì",
+      "en": "Banh mi"
+    },
+    "emoji": "🥖",
+    "searchKeyword": "Bánh mì",
+    "active": false,
+    "createdAt": "2026-11-09T00:02:00.000Z",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/0c/B%C3%A1nh_m%C3%AC_th%E1%BB%8Bt_n%C6%B0%E1%BB%9Bng.png",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%A1nh_m%C3%AC_Vi%E1%BB%87t_Nam"
+  },
+  {
+    "id": "com-tam",
+    "name": {
+      "vi": "Cơm tấm",
+      "en": "Broken rice"
+    },
+    "emoji": "🍚",
+    "searchKeyword": "Cơm tấm",
+    "active": true,
+    "createdAt": "2026-11-09T00:03:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b0/C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg/960px-C%C6%A1m_T%E1%BA%A5m%2C_Da_Nang%2C_Vietnam.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/C%C6%A1m_t%E1%BA%A5m"
+  },
+  {
+    "id": "bun-bo-hue",
+    "name": {
+      "vi": "Bún bò Huế",
+      "en": "Hue spicy beef noodles"
+    },
+    "emoji": "🌶️",
+    "searchKeyword": "Bún bò Huế",
+    "active": true,
+    "createdAt": "2026-11-09T00:04:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/Bun-Bo-Hue-from-Huong-Giang-2011.jpg/960px-Bun-Bo-Hue-from-Huong-Giang-2011.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%BAn_b%C3%B2_Hu%E1%BA%BF"
+  },
+  {
+    "id": "goi-cuon",
+    "name": {
+      "vi": "Gỏi cuốn",
+      "en": "Fresh spring rolls"
+    },
+    "emoji": "🥬",
+    "searchKeyword": "Gỏi cuốn",
+    "active": false,
+    "createdAt": "2026-11-09T00:05:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/03/Summer_roll.jpg/960px-Summer_roll.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/G%E1%BB%8Fi_cu%E1%BB%91n"
+  },
+  {
+    "id": "banh-xeo",
+    "name": {
+      "vi": "Bánh xèo",
+      "en": "Sizzling pancake"
+    },
+    "emoji": "🥞",
+    "searchKeyword": "Bánh xèo",
+    "active": true,
+    "createdAt": "2026-11-09T00:06:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a5/B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg/960px-B%C3%A1nh_x%C3%A8o_with_n%C6%B0%E1%BB%9Bc_m%E1%BA%AFm.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%A1nh_x%C3%A8o"
+  },
+  {
+    "id": "hu-tieu",
+    "name": {
+      "vi": "Hủ tiếu",
+      "en": "Hu tieu noodle soup"
+    },
+    "emoji": "🍲",
+    "searchKeyword": "Hủ tiếu",
+    "active": true,
+    "createdAt": "2026-11-09T00:07:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f4/H%E1%BB%A7_t%C3%ADu_Nam_Vang_%28h%E1%BB%A7_t%C3%ADu_t%C3%B4m%29%2C_qu%C3%A1n_C%E1%BA%A7u_Tr%E1%BA%AFng%2C_K%C3%AAnh_n%C6%B0%E1%BB%9Bc_%C4%91en_%281%29.jpg/960px-H%E1%BB%A7_t%C3%ADu_Nam_Vang_%28h%E1%BB%A7_t%C3%ADu_t%C3%B4m%29%2C_qu%C3%A1n_C%E1%BA%A7u_Tr%E1%BA%AFng%2C_K%C3%AAnh_n%C6%B0%E1%BB%9Bc_%C4%91en_%281%29.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/H%E1%BB%A7_ti%E1%BA%BFu"
+  },
+  {
+    "id": "bun-rieu",
+    "name": {
+      "vi": "Bún riêu",
+      "en": "Crab noodle soup"
+    },
+    "emoji": "🦀",
+    "searchKeyword": "Bún riêu",
+    "active": true,
+    "createdAt": "2026-11-09T00:08:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2a/B%C3%BAn_ri%C3%AAu_cua_n%C6%B0%E1%BB%9Bc.jpg/960px-B%C3%BAn_ri%C3%AAu_cua_n%C6%B0%E1%BB%9Bc.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%BAn_ri%C3%AAu_cua"
+  },
+  {
+    "id": "mi-quang",
+    "name": {
+      "vi": "Mì Quảng",
+      "en": "Quang noodles"
+    },
+    "emoji": "🍤",
+    "searchKeyword": "Mì Quảng",
+    "active": false,
+    "createdAt": "2026-11-09T00:09:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/df/Mi_Quang_1A_Danang.jpg/960px-Mi_Quang_1A_Danang.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/M%C3%AC_Qu%E1%BA%A3ng"
+  },
+  {
+    "id": "bun-dau-mam-tom",
+    "name": {
+      "vi": "Bún đậu mắm tôm",
+      "en": "Tofu & vermicelli"
+    },
+    "emoji": "🧆",
+    "searchKeyword": "Bún đậu mắm tôm",
+    "active": true,
+    "createdAt": "2026-11-09T00:10:00.000Z",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/1/11/B%C3%BAn_%C4%91%E1%BA%ADu_m%E1%BA%AFm_t%C3%B4m_%282019%29.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%BAn_%C4%91%E1%BA%ADu_m%E1%BA%AFm_t%C3%B4m"
+  },
+  {
+    "id": "lau",
+    "name": {
+      "vi": "Lẩu",
+      "en": "Hotpot"
+    },
+    "emoji": "🫕",
+    "searchKeyword": "Lẩu",
+    "active": false,
+    "createdAt": "2026-11-09T00:11:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Day177lilybday.JPG/960px-Day177lilybday.JPG",
+    "imagePage": "https://vi.wikipedia.org/wiki/L%E1%BA%A9u"
+  },
+  {
+    "id": "bo-kho",
+    "name": {
+      "vi": "Bò kho",
+      "en": "Beef stew"
+    },
+    "emoji": "🥘",
+    "searchKeyword": "Bò kho",
+    "active": false,
+    "createdAt": "2026-11-09T00:12:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/16/Bo_kho_mien_Bac.jpg/960px-Bo_kho_mien_Bac.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%B2_kho"
+  },
+  {
+    "id": "banh-cuon",
+    "name": {
+      "vi": "Bánh cuốn",
+      "en": "Steamed rice rolls"
+    },
+    "emoji": "🫓",
+    "searchKeyword": "Bánh cuốn",
+    "active": false,
+    "createdAt": "2026-11-09T00:13:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a7/Banh_cuon.jpg/960px-Banh_cuon.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%A1nh_cu%E1%BB%91n"
+  },
+  {
+    "id": "cha-ca",
+    "name": {
+      "vi": "Chả cá Lã Vọng",
+      "en": "Turmeric fish"
+    },
+    "emoji": "🐟",
+    "searchKeyword": "Chả cá Lã Vọng",
+    "active": false,
+    "createdAt": "2026-11-09T00:14:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b7/Ch%E1%BA%A3_c%C3%A1_L%C3%A3_V%E1%BB%8Dng_H%C3%A0_N%E1%BB%99i_th%C3%A1ng_2_n%C4%83m_2018_%281%29.jpg/960px-Ch%E1%BA%A3_c%C3%A1_L%C3%A3_V%E1%BB%8Dng_H%C3%A0_N%E1%BB%99i_th%C3%A1ng_2_n%C4%83m_2018_%281%29.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/Ch%E1%BA%A3_c%C3%A1_L%C3%A3_V%E1%BB%8Dng"
+  },
+  {
+    "id": "oc",
+    "name": {
+      "vi": "Ốc",
+      "en": "Snails"
+    },
+    "emoji": "🐚",
+    "searchKeyword": "Ốc",
+    "active": false,
+    "createdAt": "2026-11-09T00:15:00.000Z",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/d/d7/Caracoles-del-restaurante-granero.jpg",
+    "imagePage": "https://en.wikipedia.org/wiki/Snails_as_food"
+  },
+  {
+    "id": "xoi",
+    "name": {
+      "vi": "Xôi",
+      "en": "Sticky rice"
+    },
+    "emoji": "🍙",
+    "searchKeyword": "Xôi",
+    "active": false,
+    "createdAt": "2026-11-09T00:16:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f5/X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg/960px-X%C3%B4i_%C4%91%E1%BB%97_xanh.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/X%C3%B4i"
+  },
+  {
+    "id": "com-ga",
+    "name": {
+      "vi": "Cơm gà",
+      "en": "Chicken rice"
+    },
+    "emoji": "🍗",
+    "searchKeyword": "Cơm gà",
+    "active": false,
+    "createdAt": "2026-11-09T00:17:00.000Z",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/e/e7/Lunch_plate_with_salads.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/C%C6%A1m_g%C3%A0"
+  },
+  {
+    "id": "nem-nuong",
+    "name": {
+      "vi": "Nem nướng",
+      "en": "Grilled pork skewers"
+    },
+    "emoji": "🍢",
+    "searchKeyword": "Nem nướng",
+    "active": false,
+    "createdAt": "2026-11-09T00:18:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Nem_n%C6%B0%E1%BB%9Bng_by_Baoothersks.jpg/960px-Nem_n%C6%B0%E1%BB%9Bng_by_Baoothersks.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/Nem_n%C6%B0%E1%BB%9Bng"
+  },
+  {
+    "id": "banh-canh",
+    "name": {
+      "vi": "Bánh canh",
+      "en": "Thick noodle soup"
+    },
+    "emoji": "🍜",
+    "searchKeyword": "Bánh canh",
+    "active": false,
+    "createdAt": "2026-11-09T00:19:00.000Z",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/B%C3%A1nh_canh"
+  },
+  {
+    "id": "cao-lau",
+    "name": {
+      "vi": "Cao lầu",
+      "en": "Cao lau noodles"
+    },
+    "emoji": "🍝",
+    "searchKeyword": "Cao lầu",
+    "active": false,
+    "createdAt": "2026-11-09T00:20:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/Cao_l%E1%BA%A7u_%28144854_994%29.jpg/960px-Cao_l%E1%BA%A7u_%28144854_994%29.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/Cao_l%E1%BA%A7u"
+  },
+  {
+    "id": "chao-long",
+    "name": {
+      "vi": "Cháo lòng",
+      "en": "Pork congee"
+    },
+    "emoji": "🥣",
+    "searchKeyword": "Cháo lòng",
+    "active": false,
+    "createdAt": "2026-11-09T00:21:00.000Z",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/82/Ch%C3%A1o_l%C3%B2ng.jpg/960px-Ch%C3%A1o_l%C3%B2ng.jpg",
+    "imagePage": "https://vi.wikipedia.org/wiki/Ch%C3%A1o_l%C3%B2ng"
+  },
+  {
+    "id": "banh-canh-ca-loc-b12585",
+    "name": {
+      "vi": "Bánh canh cá lóc",
+      "en": "Snakehead fish thick noodle soup"
+    },
+    "emoji": "🐟",
+    "searchKeyword": "Bánh canh cá lóc",
+    "image": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/B%C3%A1nh_canh_c%C3%A1_l%C3%B3c_S%C3%A0i_G%C3%B2n_%E1%BB%9F_T%C3%A2n_Ph%C3%BA_v%E1%BB%9Bi_eHy_n%C4%83m_2016_%282%29.jpg/960px-B%C3%A1nh_canh_c%C3%A1_l%C3%B3c_S%C3%A0i_G%C3%B2n_%E1%BB%9F_T%C3%A2n_Ph%C3%BA_v%E1%BB%9Bi_eHy_n%C4%83m_2016_%282%29.jpg",
+    "imagePage": "https://commons.wikimedia.org/wiki/File:B%C3%A1nh_canh_c%C3%A1_l%C3%B3c_S%C3%A0i_G%C3%B2n_%E1%BB%9F_T%C3%A2n_Ph%C3%BA_v%E1%BB%9Bi_eHy_n%C4%83m_2016_%282%29.jpg",
+    "active": true,
+    "createdAt": "2026-11-09T17:16:38.974Z"
+  }
+]

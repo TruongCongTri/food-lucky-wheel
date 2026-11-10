@@ -1,0 +1,41 @@
+/* Mirrors the stage geometry so nothing jumps when the wheel streams in. */
+.wrap {
+  --stage-h: max(520px, calc(100svh - var(--header-h) - var(--safe-top)));
+  --D: 150vw;
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: var(--stage-h);
+  overflow: clip;
+}
+
+.disc {
+  position: absolute;
+  top: 180px;
+  left: 0;
+  width: var(--D);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: repeating-conic-gradient(var(--paper-2) 0 30deg, var(--paper) 30deg 60deg);
+  border: 14px solid var(--ink);
+  animation: rotate 3s linear infinite;
+  opacity: 0.45;
+}
+
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) {
+  .wrap {
+    --D: min(calc(var(--stage-h) * 1.45), calc((66.667vw - 32px) / 0.635));
+  }
+
+  .disc {
+    top: 50%;
+    left: 33.333vw;
+    translate: 0 -50%;
+  }
+}
+
+@keyframes rotate {
+  to {
+    transform: rotate(360deg);
+  }
+}

@@ -1,0 +1,53 @@
+.headline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label,
+.hint {
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.index {
+  color: var(--chili);
+}
+
+.title {
+  font-stretch: 75%;
+  font-size: clamp(48px, 15.5vw, 96px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  padding-top: 0.06em;
+}
+
+.title em {
+  color: var(--chili);
+  font-size: 1.05em;
+}
+
+.hint {
+  color: var(--ink-3);
+}
+
+.arrow {
+  display: inline-block;
+  color: var(--chili);
+  animation: bob 1.4s ease-in-out infinite;
+}
+
+@keyframes bob {
+  50% {
+    transform: translateY(3px);
+  }
+}
+
+.link {
+  color: var(--chili);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}

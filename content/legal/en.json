@@ -1,0 +1,272 @@
+{
+  "common": {
+    "updated": "Last updated",
+    "contents": "Contents",
+    "related": "See also",
+    "withdraw": "Withdraw consent",
+    "withdrawn": "Consent withdrawn. We'll ask again before using your location.",
+    "consentGiven": "You consented to location use on {date}.",
+    "consentNone": "You haven't consented to location use."
+  },
+  "guide": {
+    "label": "Guide",
+    "title": "How to use",
+    "intro": "Everything you need to spin, pick a dish and find a great place to eat it — in a one-minute read.",
+    "sections": [
+      {
+        "id": "spin",
+        "heading": "Spinning",
+        "paragraphs": [
+          "There are three ways to spin:"
+        ],
+        "list": [
+          "Tap the SPIN button in the middle of the wheel.",
+          "Drag the wheel along its rim and let go: pull it backwards (like drawing a bow) and release, or flick it hard in the spin direction — it takes off with the force you gave it.",
+          "A small, slow drag just turns the wheel to a new position without spinning."
+        ]
+      },
+      {
+        "id": "result",
+        "heading": "Seeing the result",
+        "paragraphs": [
+          "The pointer sits on the left of the wheel. Whatever stops at the pointer is your dish.",
+          "On a computer, the result appears right next to the wheel. On a phone, it opens in a popup with a photo of the dish."
+        ]
+      },
+      {
+        "id": "places",
+        "heading": "Finding great places nearby",
+        "paragraphs": [
+          "Tap “Top spots near you”. The first time, we explain how your location is used and ask for your consent — then your browser asks for location permission.",
+          "Places come from Google Maps and only include spots rated 4.0 or higher with at least 20 reviews, ranked by rating, number of reviews and distance.",
+          "Prefer not to share your location? Choose “Search on Google Maps” instead."
+        ]
+      },
+      {
+        "id": "directions",
+        "heading": "Directions",
+        "paragraphs": [
+          "Tap “Directions” to open Google Maps with your current location as the start and the place as the destination. On phones this opens the Google Maps app if installed.",
+          "Please follow traffic laws and never use your phone while driving."
+        ]
+      },
+      {
+        "id": "settings",
+        "heading": "Sound, language, install to home screen",
+        "list": [
+          "Toggle sound with the “ON/OFF” control at the top.",
+          "Switch language with “VI / EN”. Your choice is remembered.",
+          "iPhone (Safari): Share → Add to Home Screen. Android (Chrome): ⋮ menu → Install app."
+        ]
+      },
+      {
+        "id": "menu",
+        "heading": "Managing the menu",
+        "paragraphs": [
+          "Open “Menu” to add a dish (a photo is found on Wikipedia automatically if you don't provide one) or switch a dish off to hide it from the wheel. Switched-off dishes can be turned back on any time.",
+          "If configured, management actions require an admin PIN."
+        ]
+      },
+      {
+        "id": "troubleshooting",
+        "heading": "Troubleshooting",
+        "list": [
+          "Location unavailable: check your browser's location permission in Settings, then tap “Try again”.",
+          "No places found: try “Search on Google Maps”, or spin for another dish.",
+          "Wheel not showing: your browser needs WebGL; otherwise a simpler wheel is used."
+        ]
+      }
+    ]
+  },
+  "privacy": {
+    "label": "Privacy",
+    "title": "Privacy policy",
+    "intro": "This policy explains what personal data is processed when you use “Ăn gì?”, why, and your rights — under Vietnam's Law on Personal Data Protection No. 91/2025/QH15 and Decree 356/2025/NĐ-CP.",
+    "sections": [
+      {
+        "id": "controller",
+        "heading": "Data controller and processor",
+        "paragraphs": [
+          "Personal data controller and processor: {operator}. Address: {address}. Contact for personal data matters: {email}."
+        ]
+      },
+      {
+        "id": "data",
+        "heading": "Data we process",
+        "list": [
+          "Your device's precise location — only with your consent. This is sensitive personal data, so we only process it after you explicitly agree in the app and grant permission in your browser.",
+          "Technical data: IP address, browser type and access time, recorded in our hosting provider's server logs to run and secure the service.",
+          "Data stored on your device: a language cookie (NEXT_LOCALE, 1 year); in browser storage: your sound preference, your location-consent record, the intro screen state and (for admins) the PIN for the session.",
+          "We require no account, collect no name or phone number, and use no advertising cookies or behavioural analytics."
+        ]
+      },
+      {
+        "id": "purposes",
+        "heading": "Purposes",
+        "list": [
+          "Location: finding places near you, calculating distance and building directions links from where you are.",
+          "Technical data: delivering the service and preventing attacks and abuse.",
+          "On-device data: remembering your choices."
+        ],
+        "paragraphs": [
+          "We do not use your data for advertising, and we do not sell or share it for other purposes."
+        ]
+      },
+      {
+        "id": "location",
+        "heading": "How your location is handled",
+        "list": [
+          "Your location is read from the browser when you ask for places (and have consented).",
+          "The coordinates go to our server only to relay the search to Google Maps Platform (Places API), and the results come straight back to you.",
+          "We do not store your coordinates in a database or build any movement history.",
+          "When you open “Directions”, the coordinates are put into a Google Maps link on your device."
+        ]
+      },
+      {
+        "id": "third-parties",
+        "heading": "Third parties and transfers abroad",
+        "list": [
+          "Google LLC (Google Maps Platform): receives coordinates and the search keyword to return places; receives your IP address when you open Google Maps.",
+          "Wikimedia Foundation: dish photos load directly from Wikimedia's servers, so they receive your IP address and browser details.",
+          "Our website hosting provider: processes technical logs."
+        ],
+        "paragraphs": [
+          "These parties' servers may be outside Vietnam, so using the service may involve cross-border transfers of personal data. We carry out our obligations for cross-border personal data transfers under Vietnamese law, and processing by these parties is also governed by their own privacy policies."
+        ]
+      },
+      {
+        "id": "retention",
+        "heading": "Retention",
+        "list": [
+          "Location: not kept after the place search returns.",
+          "Technical logs: for the hosting provider's retention period, for operations and security only.",
+          "On-device data: until you clear the site's data in your browser or withdraw consent below."
+        ]
+      },
+      {
+        "id": "rights",
+        "heading": "Your rights",
+        "paragraphs": [
+          "Under personal data protection law, you have the right to:"
+        ],
+        "list": [
+          "Be informed about the processing of your personal data.",
+          "Give or refuse consent, and withdraw consent at any time.",
+          "Access, correct and request deletion of your personal data.",
+          "Request restriction of, and object to, processing.",
+          "Complain, denounce, sue and claim compensation as provided by law."
+        ],
+        "after": "To exercise these rights, contact {email}. We respond within the time limits set by law. Withdrawing consent does not affect the lawfulness of processing carried out before the withdrawal."
+      },
+      {
+        "id": "withdraw",
+        "heading": "Withdraw consent to location use",
+        "paragraphs": [
+          "You can withdraw your consent right here. Also turn off location permission for this site in your browser settings so the browser stops providing it."
+        ]
+      },
+      {
+        "id": "children",
+        "heading": "Children",
+        "paragraphs": [
+          "The service is not directed at children. Processing a child's personal data requires the consent of a parent or guardian as provided by law."
+        ]
+      },
+      {
+        "id": "security",
+        "heading": "Security",
+        "paragraphs": [
+          "Connections are encrypted with HTTPS. The Google Maps key stays on the server and is never sent to the browser. If a personal data breach occurs, we will notify the competent authority and affected users as required by law."
+        ]
+      },
+      {
+        "id": "changes",
+        "heading": "Changes and contact",
+        "paragraphs": [
+          "If this policy changes materially regarding location use, we will ask for your consent again. Questions: {email}."
+        ]
+      }
+    ]
+  },
+  "terms": {
+    "label": "Terms",
+    "title": "Terms of use",
+    "intro": "By using “Ăn gì?” you agree to the terms below. Please read them carefully.",
+    "sections": [
+      {
+        "id": "service",
+        "heading": "The service",
+        "paragraphs": [
+          "“Ăn gì?” is a free tool operated by {operator} that randomly picks a Vietnamese dish and suggests places near you. Wheel results are random and for suggestion only."
+        ]
+      },
+      {
+        "id": "place-info",
+        "heading": "Place information",
+        "paragraphs": [
+          "Place details, ratings, opening hours and place photos are provided by Google Maps Platform. We do not own, moderate or guarantee the accuracy, completeness or currency of that information, and we have no partnership or advertising relationship with the suggested places.",
+          "Use of Google Maps is subject to Google's Terms of Service and Privacy Policy."
+        ]
+      },
+      {
+        "id": "safety",
+        "heading": "Food and travel safety",
+        "list": [
+          "Please check ingredients, allergens and food-safety conditions at the place yourself.",
+          "When following directions, obey road traffic law and never operate your phone while driving."
+        ]
+      },
+      {
+        "id": "images",
+        "heading": "Dish photos",
+        "paragraphs": [
+          "Dish photos come from Wikipedia / Wikimedia Commons under each author's free licence; a source link is shown with the photo. If you own a photo and believe it is used improperly, contact {email} and we will remove it."
+        ]
+      },
+      {
+        "id": "conduct",
+        "heading": "Prohibited conduct",
+        "list": [
+          "Attacking, probing, overloading or interfering with the system without authorisation, or otherwise breaching the Law on Cybersecurity No. 24/2018/QH14.",
+          "Automated scraping or abuse of the service's APIs.",
+          "Entering content that is unlawful, offensive or infringes others' rights when managing the menu."
+        ]
+      },
+      {
+        "id": "admin",
+        "heading": "Menu management",
+        "paragraphs": [
+          "Menu management is for authorised people only. Managers are responsible for the dish names and photo links they enter."
+        ]
+      },
+      {
+        "id": "liability",
+        "heading": "Limitation of liability",
+        "paragraphs": [
+          "The service is provided “as is”. To the extent permitted by law, we are not liable for losses arising from reliance on third-party information or from temporary interruptions. Nothing here limits consumer rights under the Law on Protection of Consumers' Rights No. 19/2023/QH15."
+        ]
+      },
+      {
+        "id": "personal-data",
+        "heading": "Personal data",
+        "paragraphs": [
+          "How personal data is processed is described in the Privacy policy."
+        ]
+      },
+      {
+        "id": "law",
+        "heading": "Governing law and disputes",
+        "paragraphs": [
+          "These terms are governed by the law of Vietnam. Disputes are first resolved by negotiation; failing that, by a competent court of Vietnam."
+        ]
+      },
+      {
+        "id": "changes",
+        "heading": "Changes and contact",
+        "paragraphs": [
+          "We may update these terms; the update date is shown at the top of the page. Contact: {email} — {address}."
+        ]
+      }
+    ]
+  }
+}

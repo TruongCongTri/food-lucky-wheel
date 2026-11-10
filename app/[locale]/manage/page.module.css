@@ -1,0 +1,43 @@
+.main {
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 18px var(--gutter) calc(var(--dock-h) + 40px + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.meta {
+  display: flex;
+  gap: 10px;
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.index {
+  color: var(--chili);
+}
+
+.title {
+  font-stretch: 75%;
+  font-size: clamp(64px, 21vw, 132px);
+  line-height: 0.86;
+  letter-spacing: -0.045em;
+  padding-top: 0.08em;
+}
+
+.subtitle {
+  max-width: 32ch;
+  font-size: 16px;
+  color: var(--ink-2);
+}

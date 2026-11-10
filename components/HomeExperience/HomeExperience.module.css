@@ -1,0 +1,80 @@
+.experience {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 100%;
+}
+
+/*
+ * Full-bleed stage, one screen tall, clipping the oversized wheel.
+ *
+ * Phone (default): headline on top, then a wheel 1.5× the screen width. Its
+ *   left edge sits at the screen edge, so the 160° pointer and the hub stay in
+ *   view while a third of the wheel runs off the right (and the bottom, on short
+ *   screens). The result opens in a popup.
+ */
+.stage {
+  --stage-h: max(520px, calc(100svh - var(--header-h) - var(--safe-top)));
+  --D: 150vw;
+
+  position: relative;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  height: var(--stage-h);
+  overflow: clip;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-top: 14px;
+}
+
+.headline {
+  padding: 0 var(--gutter);
+}
+
+.wheel {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--D);
+  margin-left: 0;
+}
+
+.readout {
+  display: none;
+}
+
+/*
+ * Desktop (wide + landscape): the wheel's diameter is ~1.45× the stage height,
+ *   so it runs off the top, bottom and right. Its left edge is at 1/3 of the
+ *   screen; the diameter is capped so the hub never leaves the screen.
+ *   The readout lives in the left third.
+ */
+@media (min-width: 900px) and (min-aspect-ratio: 1/1) {
+  .stage {
+    --D: min(calc(var(--stage-h) * 1.45), calc((66.667vw - 32px) / 0.635));
+    --wheel-x: 33.333vw;
+    display: block;
+    padding-top: 0;
+  }
+
+  .headline {
+    display: none;
+  }
+
+  .wheel {
+    position: absolute;
+    top: 50%;
+    left: var(--wheel-x);
+    translate: 0 -50%;
+  }
+
+  .readout {
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: max(var(--gutter), calc(50vw - 640px));
+    width: calc(var(--wheel-x) - max(var(--gutter), calc(50vw - 640px)) - 40px);
+    max-width: 720px;
+    translate: 0 -50%;
+  }
+}

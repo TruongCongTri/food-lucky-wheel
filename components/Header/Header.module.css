@@ -1,0 +1,52 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding-top: var(--safe-top);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.inner {
+  max-width: var(--page-max);
+  margin: 0 auto;
+  height: var(--header-h);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  display: inline-flex;
+  align-items: flex-start;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-stretch: 80%;
+  font-size: 26px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  padding-top: 4px;
+}
+
+.q {
+  color: var(--chili);
+}
+
+.sup {
+  margin-left: 3px;
+  font-family: var(--font-code);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink-3);
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}

@@ -1,0 +1,75 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 24px;
+  overflow: hidden;
+}
+
+.tagline {
+  font-size: clamp(28px, 8.5vw, 44px);
+  line-height: 1.05;
+  color: var(--maroon);
+}
+
+.rule {
+  display: block;
+  height: 1px;
+  background: var(--line-strong);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 22px;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: underline;
+  text-decoration-color: var(--line-strong);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 5px;
+  transition: text-decoration-color 0.2s;
+}
+
+.link:hover {
+  text-decoration-color: var(--chili);
+}
+
+.meta {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.giant {
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 41vw;
+  line-height: 0.8;
+  letter-spacing: -0.06em;
+  margin: 8px 0 0 -0.04em;
+  white-space: nowrap;
+}
+
+@media (min-width: 640px) {
+  .giant {
+    font-size: 262px;
+  }
+}
+
+.giant span {
+  color: var(--chili);
+}

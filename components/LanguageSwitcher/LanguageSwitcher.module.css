@@ -1,0 +1,33 @@
+.switcher {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+}
+
+.item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.slash {
+  color: var(--ink-3);
+}
+
+.option {
+  display: grid;
+  place-items: center;
+  min-width: 36px;
+  height: 44px;
+  color: var(--ink-3);
+  transition: color 0.2s;
+}
+
+.option[data-active="true"] {
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--chili);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}

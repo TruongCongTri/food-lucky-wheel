@@ -1,0 +1,130 @@
+/* The stage is sized/positioned by its parent; it is always square. */
+.stage {
+  position: relative;
+  aspect-ratio: 1;
+  container-type: size; /* lets the pointer scale with the wheel (cqw) */
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.shadow {
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -3%;
+  height: 12%;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(26, 20, 20, 0.26), transparent);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.canvasHost {
+  position: absolute;
+  inset: 0;
+}
+
+/* Circular drag surface over the face + rim (border-radius clips hit-testing). */
+.grab {
+  position: absolute;
+  inset: 4%;
+  border-radius: 50%;
+  z-index: 1;
+  touch-action: pan-y; /* JS cancels scrolling once a drag becomes a rotation */
+}
+
+.grab[data-can-drag="true"] {
+  cursor: grab;
+}
+
+.grab[data-dragging="true"] {
+  cursor: grabbing;
+}
+
+/* Zero-size anchor at the pointer tip, rotated so the pointer aims at the hub. */
+.pointerAnchor {
+  position: absolute;
+  width: 0;
+  height: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.pointer {
+  position: absolute;
+  left: -4cqw;
+  bottom: 0;
+  width: 8cqw;
+  height: 10.7cqw;
+  transform-origin: 50% 22%; /* hinged at its base, the tip flicks on each peg */
+  filter: drop-shadow(0 3px 2px rgba(26, 20, 20, 0.35));
+}
+
+.pointer svg {
+  display: block;
+}
+
+/* Center hub: ink disc with rotating circular type */
+.spinBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20%; /* = HUB_FRACTION in wheelScene.ts (labels stop before it) */
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--ink);
+  color: var(--paper);
+  box-shadow:
+    0 0 0 4px var(--paper),
+    0 12px 24px -8px rgba(26, 20, 20, 0.6);
+  z-index: 3;
+  transition:
+    transform 0.25s var(--ease-out),
+    background 0.3s;
+}
+
+.spinBtn:active:not(:disabled) {
+  transform: scale(0.92);
+}
+
+.spinBtn:disabled {
+  cursor: default;
+}
+
+.spinBtn[data-spinning="true"] {
+  background: var(--chili);
+}
+
+.spinBtn:disabled:not([data-spinning="true"]) {
+  opacity: 0.55;
+}
+
+.ring {
+  position: absolute;
+  inset: 4%;
+  width: 92%;
+  height: 92%;
+  pointer-events: none;
+}
+
+.ring text {
+  fill: currentColor;
+  font-family: var(--font-code);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+}
+
+.spinLabel {
+  position: relative;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: 4.6cqw;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}

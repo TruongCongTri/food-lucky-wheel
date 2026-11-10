@@ -1,0 +1,155 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.meta,
+.updated,
+.tocLabel {
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+}
+
+.index {
+  color: var(--chili);
+}
+
+.title {
+  font-stretch: 75%;
+  font-size: clamp(52px, 16vw, 104px);
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+  padding-top: 0.08em;
+}
+
+.intro {
+  font-size: 18px;
+  line-height: 1.5;
+  color: var(--ink-2);
+  max-width: 40ch;
+}
+
+.updated {
+  color: var(--ink-3);
+}
+
+/* Table of contents */
+.toc ol {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.toc li {
+  border-bottom: 1px solid var(--line);
+}
+
+.toc a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  min-height: 44px;
+  padding: 10px 0;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.tocNum {
+  font-family: var(--font-code);
+  font-size: 11px;
+  color: var(--chili);
+}
+
+/* Sections */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  scroll-margin-top: calc(var(--header-h) + var(--safe-top) + 16px);
+}
+
+.heading {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  font-stretch: 85%;
+  font-size: clamp(28px, 8vw, 40px);
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  padding-top: 18px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.num {
+  flex-shrink: 0;
+  font-family: var(--font-code);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--chili);
+}
+
+.p,
+.list {
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--ink);
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.list li {
+  position: relative;
+  padding-left: 22px;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 2px;
+  top: 0.72em;
+  width: 8px;
+  height: 2px;
+  background: var(--chili);
+}
+
+/* Related pages */
+.related {
+  padding-top: 18px;
+  border-top: 1px solid var(--line-strong);
+}
+
+.relatedLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.relatedLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: var(--pill);
+  border: 1px solid var(--line-strong);
+  font-weight: 600;
+}

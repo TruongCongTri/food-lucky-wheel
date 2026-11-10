@@ -1,0 +1,133 @@
+{
+  "meta": {
+    "title": "What to eat? — Vietnamese food wheel",
+    "description": "Spin the lucky wheel to pick a Vietnamese dish and find top-rated places to eat it near you."
+  },
+  "intro": {
+    "serving": "Setting the table"
+  },
+  "header": {
+    "brand": "Ăn gì?",
+    "soundOn": "Turn sound on",
+    "soundOff": "Turn sound off",
+    "sound": "Sound",
+    "language": "Language"
+  },
+  "nav": {
+    "wheel": "Wheel",
+    "manage": "Menu"
+  },
+  "hero": {
+    "index": "(01)",
+    "label": "Vietnamese food wheel",
+    "line1": "What do we",
+    "accent": "eat",
+    "line2": "today?",
+    "lede": "Can't decide? Let the wheel choose — then we'll take you to the best-rated spot nearby."
+  },
+  "wheel": {
+    "spin": "SPIN",
+    "ring": "SPIN IT • PICK A DISH • WHAT TO EAT • ",
+    "spinning": "Spinning…",
+    "swipeHint": "Tap or swipe sideways to spin",
+    "notEnough": "You need at least 2 active dishes to spin.",
+    "goManage": "Add dishes",
+    "loading": "Loading dishes…",
+    "dishCount": "{count} dishes",
+    "current": "Pointing at",
+    "tapToSpin": "Tap SPIN or drag the wheel and let go"
+  },
+  "steps": {
+    "index": "(02)",
+    "title": "How it works",
+    "items": [
+      {
+        "title": "Spin",
+        "text": "Tap the button or swipe the wheel. Every spin is truly random."
+      },
+      {
+        "title": "Find",
+        "text": "We look up highly rated, much-reviewed places on Google Maps around you."
+      },
+      {
+        "title": "Go",
+        "text": "One tap opens directions from where you are to the place."
+      }
+    ]
+  },
+  "footer": {
+    "tagline": "Less deciding, more eating.",
+    "credit": "Place data © Google Maps",
+    "made": "Made in Vietnam.",
+    "guide": "Guide",
+    "privacy": "Privacy",
+    "terms": "Terms"
+  },
+  "result": {
+    "label": "Result",
+    "youGot": "Today you're eating",
+    "nearby": "Top spots near you",
+    "nearbyHint": "High rating · many reviews · close by",
+    "locating": "Finding your location…",
+    "loading": "Finding great places…",
+    "locationDenied": "We couldn't get your location. Allow location access to see places near you.",
+    "retryLocation": "Try again",
+    "noPlaces": "No matching places found nearby yet.",
+    "error": "Couldn't load places. Please try again.",
+    "noApiKey": "Google Maps API key isn't configured — search directly on Google Maps instead.",
+    "searchOnMaps": "Search on Google Maps",
+    "spinAgain": "Spin again",
+    "close": "Close",
+    "directions": "Directions",
+    "viewOnMap": "View place",
+    "reviews": "reviews",
+    "openNow": "Open now",
+    "closed": "Closed",
+    "away": "away",
+    "findPlaces": "Top spots near you",
+    "photoCredit": "Photo: Wikipedia",
+    "findPlacesShort": "Find spots",
+    "consentTitle": "Allow location use?",
+    "consentBody": "To find places near you we need your device's precise location — this is sensitive personal data. It's used only for this search, sent to Google Maps Platform to get the list of places, and not stored. You can withdraw consent at any time.",
+    "consentAgree": "Agree & find places",
+    "consentDecline": "No, I'll search Google Maps myself",
+    "consentPolicy": "Privacy policy"
+  },
+  "manage": {
+    "index": "(02)",
+    "label": "Manage",
+    "title": "The menu",
+    "subtitle": "Add new dishes or switch one off to hide it from the wheel.",
+    "addTitle": "Add a dish",
+    "nameVi": "Vietnamese name",
+    "nameViPlaceholder": "e.g. Phở bò",
+    "nameEn": "English name",
+    "nameEnPlaceholder": "e.g. Beef pho",
+    "emoji": "Icon",
+    "add": "Add dish",
+    "adding": "Adding…",
+    "search": "Search dishes…",
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "activeCount": "{count} dishes on the wheel",
+    "empty": "No dishes here.",
+    "activate": "Activate",
+    "deactivate": "Deactivate",
+    "on": "On",
+    "off": "Off",
+    "statusOn": "On the wheel",
+    "statusOff": "Hidden",
+    "pinTitle": "Enter admin PIN",
+    "pinPlaceholder": "PIN",
+    "pinSubmit": "Confirm",
+    "pinWrong": "Wrong PIN.",
+    "errorGeneric": "Something went wrong, please try again.",
+    "errorName": "Please enter a dish name (max 40 characters).",
+    "errorDuplicate": "This dish is already on the list.",
+    "added": "Added {name}",
+    "loading": "Loading…",
+    "imageUrl": "Photo URL (optional)",
+    "imageUrlPlaceholder": "Leave empty: auto-find on Wikipedia"
+  }
+}

@@ -1,0 +1,91 @@
+.intro {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 18px;
+  padding: calc(var(--gutter) + var(--safe-top)) var(--gutter) calc(32px + var(--safe-bottom));
+  background: var(--chili);
+  color: var(--paper);
+  pointer-events: none;
+  animation: wipe 0.85s var(--ease-io) 1.15s forwards;
+}
+
+:global(html[data-intro="play"]) .intro {
+  display: flex;
+}
+
+.word {
+  display: flex;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-stretch: 75%;
+  font-size: clamp(88px, 31vw, 260px);
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+}
+
+.mask {
+  display: inline-block;
+  overflow: hidden;
+  padding-top: 0.12em; /* room for Vietnamese diacritics */
+}
+
+.char {
+  display: inline-block;
+  transform: translateY(105%);
+  animation: rise 0.7s var(--ease-out) forwards;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bar {
+  flex: 1;
+  height: 1px;
+  background: rgba(243, 237, 227, 0.35);
+  overflow: hidden;
+}
+
+.bar > span {
+  display: block;
+  height: 100%;
+  background: var(--paper);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: load 1s var(--ease-io) 0.1s forwards;
+}
+
+@keyframes rise {
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes load {
+  to {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes wipe {
+  to {
+    clip-path: inset(0 0 100% 0);
+    visibility: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    display: none;
+  }
+}

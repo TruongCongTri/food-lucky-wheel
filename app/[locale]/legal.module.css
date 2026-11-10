@@ -1,0 +1,9 @@
+.main {
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 18px var(--gutter) calc(var(--dock-h) + 40px + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+}

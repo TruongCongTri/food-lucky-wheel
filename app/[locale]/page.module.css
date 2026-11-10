@@ -1,0 +1,10 @@
+.main {
+  width: 100%;
+  max-width: var(--page-max);
+  margin: 0 auto;
+  padding: 0 var(--gutter) calc(var(--dock-h) + 40px + var(--safe-bottom));
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  /* no overflow clipping here: the stage and marquee bleed to the screen edges */
+}
