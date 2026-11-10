@@ -165,7 +165,7 @@
   flex-direction: column;
   gap: 12px;
   position: sticky;
-  top: calc(var(--header-h) + var(--safe-top));
+  top: calc(var(--header-total) + var(--safe-top));
   z-index: 5;
   padding: 12px 0 14px;
   background: var(--paper);

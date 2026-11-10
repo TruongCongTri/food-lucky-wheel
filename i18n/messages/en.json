@@ -11,7 +11,8 @@
     "soundOn": "Turn sound on",
     "soundOff": "Turn sound off",
     "sound": "Sound",
-    "language": "Language"
+    "language": "Language",
+    "tagline": "Let's stay together for a long, long time and enjoy so many dishes together"
   },
   "nav": {
     "wheel": "Wheel",
@@ -20,10 +21,10 @@
   "hero": {
     "index": "(01)",
     "label": "Vietnamese food wheel",
-    "line1": "What do we",
+    "line1": "What shall we",
     "accent": "eat",
     "line2": "today?",
-    "lede": "Can't decide? Let the wheel choose — then we'll take you to the best-rated spot nearby."
+    "lede": "So you don't have to wonder, just give the wheel a spin — and I'll take you anywhere you'd like to go."
   },
   "wheel": {
     "spin": "SPIN",

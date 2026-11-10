@@ -41,12 +41,15 @@ export function StageHeadline({ className, canSpin }: { className?: string; canS
       <h1 className={styles.title} data-split>
         {dict.hero.line1} <em>{dict.hero.accent}</em> {dict.hero.line2}
       </h1>
+      <p className={styles.lede} data-fade>
+        {dict.hero.lede}
+      </p>
       {canSpin ? (
         <p className={styles.hint} data-fade>
           <span className={styles.arrow}>↓</span> {dict.wheel.tapToSpin}
         </p>
       ) : (
-        <p className={styles.hint} data-fade>
+        <p className={`${styles.hint} ${styles.keep}`} data-fade>
           {dict.wheel.notEnough}{" "}
           <Link href={`/${locale}/manage`} className={styles.link}>
             {dict.wheel.goManage} →

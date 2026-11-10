@@ -8,6 +8,86 @@
   -webkit-backdrop-filter: blur(12px);
 }
 
+/* Message row above the bar */
+.tagline {
+  height: var(--tagline-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: var(--paper-2);
+  border-bottom: 1px solid var(--line);
+}
+
+.track {
+  display: flex;
+  width: max-content;
+}
+
+.message {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 24px;
+  white-space: nowrap;
+  font-family: var(--font-accent);
+  font-style: italic;
+  font-size: 14px;
+  line-height: 1;
+  letter-spacing: -0.005em;
+  color: var(--maroon);
+}
+
+.heart {
+  font-style: normal;
+  font-size: 11px;
+  color: var(--chili);
+  animation: beat 1.6s ease-in-out infinite;
+}
+
+@keyframes beat {
+  0%,
+  60%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.3);
+  }
+}
+
+/* Wide screens: one centered line, no duplicate */
+.copy {
+  display: none;
+}
+
+/* Narrow screens: the line is longer than the screen, so it scrolls */
+@media (max-width: 720px) {
+  .tagline {
+    justify-content: flex-start;
+  }
+
+  .copy {
+    display: inline-flex;
+  }
+
+  .track {
+    animation: ticker 22s linear infinite;
+  }
+}
+
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .track {
+    animation: none;
+  }
+}
+
 .inner {
   max-width: var(--page-max);
   margin: 0 auto;

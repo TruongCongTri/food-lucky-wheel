@@ -14,7 +14,7 @@
  *   screens). The result opens in a popup.
  */
 .stage {
-  --stage-h: max(520px, calc(100svh - var(--header-h) - var(--safe-top)));
+  --stage-h: max(520px, calc(100svh - var(--header-total) - var(--safe-top)));
   --D: 150vw;
 
   position: relative;
@@ -30,6 +30,13 @@
 
 .headline {
   padding: 0 var(--gutter);
+}
+
+/* Short phones: a slightly smaller wheel keeps the hub above the dock. */
+@media (max-height: 740px) and (max-aspect-ratio: 1/1) {
+  .stage {
+    --D: 128vw;
+  }
 }
 
 .wheel {

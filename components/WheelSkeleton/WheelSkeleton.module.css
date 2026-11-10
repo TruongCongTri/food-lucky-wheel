@@ -1,6 +1,6 @@
 /* Mirrors the stage geometry so nothing jumps when the wheel streams in. */
 .wrap {
-  --stage-h: max(520px, calc(100svh - var(--header-h) - var(--safe-top)));
+  --stage-h: max(520px, calc(100svh - var(--header-total) - var(--safe-top)));
   --D: 150vw;
   position: relative;
   width: 100vw;
@@ -20,6 +20,12 @@
   border: 14px solid var(--ink);
   animation: rotate 3s linear infinite;
   opacity: 0.45;
+}
+
+@media (max-height: 740px) and (max-aspect-ratio: 1/1) {
+  .wrap {
+    --D: 128vw;
+  }
 }
 
 @media (min-width: 900px) and (min-aspect-ratio: 1/1) {

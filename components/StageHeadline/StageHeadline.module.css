@@ -30,6 +30,13 @@
   font-size: 1.05em;
 }
 
+.lede {
+  max-width: 36ch;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--ink-2);
+}
+
 .hint {
   color: var(--ink-3);
 }
@@ -43,6 +50,27 @@
 @keyframes bob {
   50% {
     transform: translateY(3px);
+  }
+}
+
+@media (max-height: 740px) and (max-aspect-ratio: 1/1) {
+  /* Short phones: keep the headline + message, drop the extras so the spin
+     button stays above the bottom navigation. */
+  .headline {
+    gap: 6px;
+  }
+
+  .label,
+  .hint:not(.keep) {
+    display: none;
+  }
+
+  .title {
+    font-size: clamp(40px, 12.5vw, 72px);
+  }
+
+  .lede {
+    font-size: 14px;
   }
 }
 

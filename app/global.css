@@ -44,6 +44,8 @@
   --page-max: 640px;
   --gutter: 18px;
   --header-h: 56px;
+  --tagline-h: 30px; /* message row at the top of the header */
+  --header-total: calc(var(--header-h) + var(--tagline-h));
   --dock-h: 64px;
   --safe-top: env(safe-area-inset-top, 0px);
   --safe-bottom: env(safe-area-inset-bottom, 0px);
