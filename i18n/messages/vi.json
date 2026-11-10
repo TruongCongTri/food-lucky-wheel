@@ -45,15 +45,15 @@
     "items": [
       {
         "title": "Quay",
-        "text": "Chạm nút hoặc vuốt vòng quay. Mỗi lượt quay là ngẫu nhiên thật sự."
+        "text": "Chạm nút hoặc vuốt vòng quay. Mỗi lượt quay đều ngẫu nhiên."
       },
       {
         "title": "Tìm quán",
-        "text": "Mình tìm những quán được đánh giá cao, nhiều review trên Google Maps quanh bạn."
+        "text": "Tìm những quán được đánh giá cao, nhiều review trên Google Maps quanh nơi chúng ta đang đứng."
       },
       {
         "title": "Lên đường",
-        "text": "Một chạm để mở chỉ đường từ vị trí của bạn tới quán."
+        "text": "Một chạm để mở chỉ đường từ vị trí của chúng ta tới quán."
       }
     ]
   },
