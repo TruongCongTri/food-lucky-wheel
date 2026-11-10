@@ -21,15 +21,18 @@ type Phase = "consent" | "locating" | "loading" | "done" | "denied" | "error" | 
 
 type Props = {
   dish: Dish;
-  /** Screen point the circular reveal grows from (the wheel's center). */
-  origin: { x: number; y: number };
   getLocation: () => Promise<LatLng>;
   onClose: () => void;
   onSpinAgain: () => void;
 };
 
 /** Full-screen result takeover with a circular clip-path reveal. */
-export function ResultSheet({ dish, origin, getLocation, onClose, onSpinAgain }: Props) {
+/**
+ * Full-screen places list. Opening and closing are wrapped by the parent in
+ * the page-transition curtain (withCurtain), so it feels like a page change;
+ * this component only animates its own content as the curtain lifts.
+ */
+export function ResultSheet({ dish, getLocation, onClose, onSpinAgain }: Props) {
   const { locale, dict } = useI18n();
   const { sound } = useSound();
   const lenis = useLenis();
@@ -85,27 +88,20 @@ export function ResultSheet({ dish, origin, getLocation, onClose, onSpinAgain }:
     return () => ac.abort();
   }, [dish, locale, getLocation, attempt, consented]);
 
-  // --- Entrance -------------------------------------------------------------
-  const circle = (r: string) => `circle(${r} at ${origin.x}px ${origin.y}px)`;
-
+  // --- Entrance (plays as the curtain lifts) ---------------------------------
   useGSAP(
     () => {
-      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-      const tl = gsap.timeline();
-      tl.fromTo(
-        rootRef.current,
-        { clipPath: circle("0px") },
-        { clipPath: circle("150vmax"), duration: reduced ? 0.01 : 0.9, ease: "expo.inOut" },
-      );
-      if (reduced) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const split = SplitText.create("[data-title]", {
         type: "words,chars",
         mask: "words",
         wordsClass: "split-word",
       });
-      tl.from(split.chars, { yPercent: 120, duration: 0.8, stagger: 0.03, ease: "expo.out" }, 0.45)
-        .from("[data-sticker]", { scale: 0, rotate: -120, duration: 0.9, ease: "back.out(1.8)" }, 0.5)
-        .from("[data-fade]", { y: 18, opacity: 0, duration: 0.6, stagger: 0.06, ease: "power3.out" }, 0.6);
+      gsap
+        .timeline({ delay: 0.35 })
+        .from(split.chars, { yPercent: 120, duration: 0.8, stagger: 0.03, ease: "expo.out" }, 0)
+        .from("[data-sticker]", { scale: 0, rotate: -120, duration: 0.9, ease: "back.out(1.8)" }, 0.05)
+        .from("[data-fade]", { y: 18, opacity: 0, duration: 0.6, stagger: 0.06, ease: "power3.out" }, 0.15);
       return () => split.revert();
     },
     { scope: rootRef },
@@ -125,29 +121,18 @@ export function ResultSheet({ dish, origin, getLocation, onClose, onSpinAgain }:
     { scope: rootRef, dependencies: [phase, places] },
   );
 
-  const animateOut = useCallback(
-    (after: () => void) => {
-      if (closingRef.current) return;
-      closingRef.current = true;
-      gsap.to(rootRef.current, {
-        clipPath: circle("0px"),
-        duration: 0.7,
-        ease: "expo.inOut",
-        onComplete: after,
-      });
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps -- origin is fixed per mount
-    [],
-  );
-
   const close = useCallback(() => {
+    if (closingRef.current) return;
+    closingRef.current = true;
     sound.click();
-    animateOut(onClose);
-  }, [animateOut, onClose, sound]);
+    onClose();
+  }, [onClose, sound]);
 
   const spinAgain = () => {
+    if (closingRef.current) return;
+    closingRef.current = true;
     sound.click();
-    animateOut(onSpinAgain);
+    onSpinAgain();
   };
 
   // --- Scroll lock & Escape -------------------------------------------------
@@ -188,7 +173,6 @@ export function ResultSheet({ dish, origin, getLocation, onClose, onSpinAgain }:
       role="dialog"
       aria-modal="true"
       aria-labelledby="result-title"
-      style={{ clipPath: circle("0px") }}
     >
       <div className={styles.bar}>
         <span className={styles.barLabel}>

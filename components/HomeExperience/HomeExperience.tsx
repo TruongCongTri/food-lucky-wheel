@@ -13,6 +13,7 @@ import { Marquee } from "@/components/Marquee/Marquee";
 import { StageHeadline } from "@/components/StageHeadline/StageHeadline";
 import { ResultPopup } from "@/components/ResultPopup/ResultPopup";
 import { DESKTOP_MQ, useMediaQuery } from "@/lib/useMediaQuery";
+import { withCurtain } from "@/components/PageTransition/PageTransition";
 import styles from "./HomeExperience.module.css";
 
 const sameDishes = (a: Dish[], b: Dish[]) =>
@@ -33,11 +34,11 @@ const sameDishes = (a: Dish[], b: Dish[]) =>
  * Phone:   headline above a big wheel (running off the right); the pick pops up.
  */
 export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
-  const { locale } = useI18n();
+  const { locale, dict } = useI18n();
   const [dishes, setDishes] = useState(initialDishes);
   const [phase, setPhase] = useState<Phase>("idle");
   const [result, setResult] = useState<Dish | null>(null);
-  const [places, setPlaces] = useState<{ key: number; origin: { x: number; y: number } } | null>(null);
+  const [places, setPlaces] = useState<number | null>(null);
   const [popup, setPopup] = useState<number | null>(null);
   const desktop = useMediaQuery(DESKTOP_MQ);
   const desktopRef = useRef(desktop);
@@ -107,6 +108,17 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
     }, isDesktop ? 60 : 320);
   }, []);
 
+  // The places list opens and closes behind the page-transition curtain,
+  // so it feels like moving to (and back from) its own page.
+  const openPlaces = () => withCurtain(() => setPlaces(Date.now()), dict.result.loading);
+  const closePlaces = () => withCurtain(() => setPlaces(null));
+  // "Spin again" from the list: also drop the old result popup (phones) under the curtain.
+  const closePlacesAndSpin = () =>
+    withCurtain(() => {
+      setPlaces(null);
+      setPopup(null);
+    }).then(() => wheelRef.current?.spin());
+
   const marqueeItems = useMemo(
     () => dishes.map((d) => ({ label: d.name[locale], emoji: d.emoji })),
     [dishes, locale],
@@ -122,7 +134,7 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
           phase={phase}
           dish={result}
           canSpin={dishes.length >= 2}
-          onFindPlaces={(origin) => setPlaces({ key: Date.now(), origin })}
+          onFindPlaces={openPlaces}
           onSpinAgain={() => wheelRef.current?.spin()}
         />
         <LuckyWheel
@@ -149,7 +161,7 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
           readoutRef={popupReadoutRef}
           dish={result}
           onClose={() => setPopup(null)}
-          onFindPlaces={(origin) => setPlaces({ key: Date.now(), origin })}
+          onFindPlaces={openPlaces}
           onSpinAgain={() => {
             setPopup(null);
             window.setTimeout(() => wheelRef.current?.spin(), 120);
@@ -159,15 +171,11 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
 
       {places && result && (
         <ResultSheet
-          key={places.key}
+          key={places}
           dish={result}
-          origin={places.origin}
           getLocation={getLocation}
-          onClose={() => setPlaces(null)}
-          onSpinAgain={() => {
-            setPlaces(null);
-            window.setTimeout(() => wheelRef.current?.spin(), 150);
-          }}
+          onClose={closePlaces}
+          onSpinAgain={closePlacesAndSpin}
         />
       )}
     </div>

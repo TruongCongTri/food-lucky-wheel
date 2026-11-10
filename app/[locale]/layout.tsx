@@ -7,6 +7,7 @@ import { AppProviders } from "@/components/Providers/AppProviders";
 import { Header } from "@/components/Header/Header";
 import { Dock } from "@/components/Dock/Dock";
 import { Intro, INTRO_SCRIPT } from "@/components/Intro/Intro";
+import { PageTransition } from "@/components/PageTransition/PageTransition";
 import "../global.css";
 
 /** Display + body: variable grotesk with width & optical-size axes. */
@@ -75,7 +76,7 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <head>
-        {/* Skip the intro for repeat visits in this session (runs before paint). */}
+        {/* Marks the intro as playing before first paint (see Intro.tsx). */}
         <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
       </head>
       <body>
@@ -84,6 +85,7 @@ export default async function LocaleLayout({
           <Header />
           {children}
           <Dock />
+          <PageTransition />
         </AppProviders>
       </body>
     </html>

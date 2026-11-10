@@ -134,7 +134,7 @@ export function LuckyWheel({ ref, className, dishes, onSpinStart, onTick, onResu
       });
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const delay = introPlaying() ? 1.5 : 0.2;
+        const delay = introPlaying() ? 1.85 : 0.2;
         gsap.from(stageRef.current, {
           xPercent: 40,
           rotate: 120,

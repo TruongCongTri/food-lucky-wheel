@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   background: var(--paper);
-  will-change: clip-path;
 }
 
 /* Grain on the takeover too */

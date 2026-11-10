@@ -1,0 +1,66 @@
+/*
+ * Hidden until a navigation starts; GSAP drives visibility and the layers'
+ * clip-paths. Same two-layer look as the first-load intro: chili over maroon.
+ */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 95; /* above the page, grain and dock; below the first-load intro */
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Both layers start fully clipped below the screen (an inset() shape, so
+   clip-path always interpolates — never animate from `none`). */
+.back,
+.front {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(100% 0% 0% 0%);
+  will-change: clip-path;
+}
+
+.back {
+  background: var(--maroon);
+}
+
+.front {
+  display: grid;
+  place-items: center;
+  background: var(--chili);
+  color: var(--paper);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.wheel {
+  width: 56px;
+  height: 56px;
+  animation: spin 0.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  filter: drop-shadow(0 6px 10px rgba(26, 20, 20, 0.25));
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg; /* `rotate` property, so GSAP's transform (y) doesn't fight it */
+  }
+}
+
+.mask {
+  display: block;
+  overflow: hidden;
+  padding-top: 0.2em; /* room for Vietnamese marks (Đ, Ó…) */
+}
+
+.label {
+  display: block;
+  font-family: var(--font-code);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}

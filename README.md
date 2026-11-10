@@ -18,6 +18,7 @@ The look is an editorial street-menu poster, drawing on current Awwwards winners
 
 - **Palette** (tokens in `app/global.css`): paper `#f3ede3`, ink `#1a1414` and chili `#e4411f`, with maroon `#6e1f2a` and turmeric `#f2c14e` as supporting colours. A static SVG grain layer sits on top.
 - **Type:** Bricolage Grotesque in heavy condensed widths for headings and body text, Fraunces italic for accent words, and JetBrains Mono for small index labels. All three include the Vietnamese subset.
+- **Intro and page transitions:** the chili curtain intro (`components/Intro`) plays on every full page load: opening the site, refreshing, or following an outside link. In-app navigation shows a page-transition curtain instead (`components/PageTransition`): it covers the page with a spinning mini wheel and "Đang dọn món…", waits for the new route, then reveals it. Language switches keep your scroll position, and if a navigation never completes, the curtain clears itself after 8 seconds.
 - **Motion:**
   - A CSS intro curtain, shown once per session.
   - GSAP SplitText reveals for the hero and result titles.

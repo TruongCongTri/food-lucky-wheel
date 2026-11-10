@@ -20,7 +20,7 @@ export function StageHeadline({ className, canSpin }: { className?: string; canS
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const delay = introPlaying() ? 1.35 : 0.1;
+        const delay = introPlaying() ? 1.75 : 0.1;
         let split: SplitText | undefined;
         document.fonts.ready.then(() => {
           split = SplitText.create("[data-split]", { type: "words,chars", mask: "words", wordsClass: "split-word" });
