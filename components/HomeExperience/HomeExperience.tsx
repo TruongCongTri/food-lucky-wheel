@@ -4,6 +4,8 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Dish } from "@/lib/dishes/types";
 import { getCurrentPosition, type LatLng } from "@/lib/geo";
 import { hasGeoConsent } from "@/lib/geoConsent";
+import { dishImageSrc } from "@/lib/dishes/imageSrc";
+import { LARGE_W, preloadImage } from "@/lib/dishes/imagePreload";
 import { useI18n } from "@/components/Providers/I18nProvider";
 import { LuckyWheel, type LuckyWheelHandle } from "@/components/LuckyWheel/LuckyWheel";
 import { Readout, type Phase, type ReadoutHandle } from "@/components/Readout/Readout";
@@ -101,11 +103,15 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
     go("result");
     const isDesktop = desktopRef.current;
     if (!isDesktop) setPopup(Date.now());
-    // Burst from the result photo once it has rendered (side panel or popup).
+    // Burst from where the result photo sits — computed from the viewport, not
+    // measured: reading layout right after the result renders forced a costly
+    // synchronous layout at the worst moment. Slight delay so the popup/panel
+    // entrance gets its first frames first.
     window.setTimeout(() => {
-      const from = (isDesktop ? readoutRef : popupReadoutRef).current?.photoCenter();
-      confettiRef.current?.burst(from ?? undefined);
-    }, isDesktop ? 60 : 320);
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      confettiRef.current?.burst(isDesktop ? { x: w * 0.2, y: h * 0.42 } : { x: w / 2, y: h * 0.45 });
+    }, isDesktop ? 120 : 360);
   }, []);
 
   // The places list opens and closes behind the page-transition curtain,
@@ -141,8 +147,11 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
           ref={wheelRef}
           className={styles.wheel}
           dishes={dishes}
-          onSpinStart={() => {
+          onSpinStart={(winner) => {
             go("spinning");
+            // Preload + decode the winner's large photo during the ~5s spin, so
+            // the result shows a sharp photo instantly.
+            if (winner.image) void preloadImage(dishImageSrc(winner.image, LARGE_W));
             // Warm up location during the spin — only if the user already consented.
             if (hasGeoConsent()) void getLocation().catch(() => undefined);
           }}

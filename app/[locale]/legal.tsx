@@ -9,7 +9,7 @@ import { LegalPage } from "@/components/LegalPage/LegalPage";
 import { Footer } from "@/components/Footer/Footer";
 import styles from "./legal.module.css";
 
-/** Shared metadata + rendering for /[locale]/guide, /privacy and /terms. */
+/** Shared metadata + rendering for /[locale]/guide, /privacy, /terms and /cookies. */
 export async function legalMetadata(locale: string, kind: LegalKind): Promise<Metadata> {
   if (!hasLocale(locale)) return {};
   const [legal, dict] = await Promise.all([getLegal(locale), getDictionary(locale)]);
@@ -42,7 +42,12 @@ export async function renderLegal(
         updated={LEGAL_UPDATED}
         contentsLabel={legal.common.contents}
         relatedLabel={legal.common.related}
-        links={{ guide: dict.footer.guide, privacy: dict.footer.privacy, terms: dict.footer.terms }}
+        links={{
+          guide: dict.footer.guide,
+          privacy: dict.footer.privacy,
+          terms: dict.footer.terms,
+          cookies: dict.footer.cookies,
+        }}
         vars={{ operator: operator.name, email: operator.email, address: operator.address }}
         slots={slots?.(legal, locale)}
       />

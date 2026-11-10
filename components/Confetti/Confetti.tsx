@@ -1,58 +1,108 @@
 "use client";
 
-import { useImperativeHandle, useRef, type Ref } from "react";
-import gsap from "gsap";
+import { useEffect, useImperativeHandle, useRef, type Ref } from "react";
+import { isLowEndDevice, prefersReducedMotion } from "@/lib/device";
 import styles from "./Confetti.module.css";
 
 export type ConfettiHandle = { burst: (origin?: { x: number; y: number }) => void };
 
 const COLORS = ["#e4411f", "#f2c14e", "#6e1f2a", "#1a1414", "#f3ede3"];
-const SHAPES = ["50%", "2px", "0"];
+const GRAVITY = 1400; // px/s²
+const DURATION = 1.9; // s
 
-/** Lightweight DOM confetti animated with GSAP (no canvas, no extra deps). */
+type Particle = {
+  x: number; y: number; vx: number; vy: number;
+  w: number; h: number; rot: number; vr: number;
+  flip: number; vf: number; color: string; round: boolean;
+};
+
+/**
+ * Canvas confetti: one 2D canvas and a single rAF loop that only runs during a
+ * burst. Replaces ~100 GSAP-animated DOM pieces (350+ tweens writing styles
+ * and 3D transforms every frame), which made the result moment stutter on
+ * weak phones. Fewer particles on low-end devices; none with reduced motion.
+ */
 export function Confetti({ ref }: { ref?: Ref<ConfettiHandle> }) {
-  const layerRef = useRef<HTMLDivElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const raf = useRef<number | undefined>(undefined);
+
+  useEffect(() => () => cancelAnimationFrame(raf.current ?? 0), []);
 
   useImperativeHandle(ref, () => ({
     burst(origin) {
-      const layer = layerRef.current;
-      if (!layer || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-      const x0 = origin?.x ?? window.innerWidth / 2;
-      const y0 = origin?.y ?? window.innerHeight * 0.4;
-      const count = window.innerWidth < 500 ? 70 : 110;
+      const canvas = canvasRef.current;
+      if (!canvas || prefersReducedMotion()) return;
+      const lowEnd = isLowEndDevice();
+      const W = window.innerWidth;
+      const H = window.innerHeight;
+      const dpr = lowEnd ? 1 : Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.round(W * dpr);
+      canvas.height = Math.round(H * dpr);
+      const ctx = canvas.getContext("2d");
+      if (!ctx) return;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-      for (let i = 0; i < count; i++) {
-        const el = document.createElement("i");
-        const size = gsap.utils.random(6, 12);
-        el.className = styles.piece;
-        el.style.cssText = `width:${size}px;height:${size * gsap.utils.random(0.4, 1)}px;background:${gsap.utils.random(COLORS)};border-radius:${gsap.utils.random(SHAPES)};left:${x0}px;top:${y0}px;`;
-        layer.appendChild(el);
+      const x0 = origin?.x ?? W / 2;
+      const y0 = origin?.y ?? H * 0.4;
+      const count = lowEnd ? 36 : W < 500 ? 70 : 110;
+      const rnd = (a: number, b: number) => a + Math.random() * (b - a);
+      const parts: Particle[] = Array.from({ length: count }, () => {
+        const angle = rnd(-Math.PI * 0.95, -Math.PI * 0.05); // upward fan
+        const speed = rnd(380, 900);
+        const size = rnd(6, 12);
+        return {
+          x: x0, y: y0,
+          vx: Math.cos(angle) * speed * 0.8, vy: Math.sin(angle) * speed,
+          w: size, h: size * rnd(0.4, 1),
+          rot: rnd(0, Math.PI * 2), vr: rnd(-12, 12),
+          flip: rnd(0, Math.PI * 2), vf: rnd(6, 14),
+          color: COLORS[(Math.random() * COLORS.length) | 0],
+          round: Math.random() < 0.3,
+        };
+      });
 
-        const angle = gsap.utils.random(-Math.PI, 0); // upward hemisphere
-        const speed = gsap.utils.random(160, 420);
-        const dx = Math.cos(angle) * speed;
-        const dy = Math.sin(angle) * speed;
-        const dur = gsap.utils.random(1.4, 2.2);
-
-        gsap
-          .timeline({ onComplete: () => el.remove() })
-          .to(el, { x: dx * 1.4, duration: dur, ease: "power2.out" }, 0)
-          .to(el, { y: dy, duration: dur * 0.35, ease: "power2.out" }, 0)
-          .to(el, { y: window.innerHeight - y0 + 40, duration: dur * 0.65, ease: "power1.in" }, dur * 0.35)
-          .to(
-            el,
-            {
-              rotation: gsap.utils.random(-720, 720),
-              rotationX: gsap.utils.random(-360, 360),
-              duration: dur,
-              ease: "none",
-            },
-            0,
-          )
-          .to(el, { opacity: 0, duration: 0.3 }, dur - 0.3);
-      }
+      cancelAnimationFrame(raf.current ?? 0);
+      canvas.dataset.active = "true";
+      let last = performance.now();
+      const start = last;
+      const frame = (now: number) => {
+        const dt = Math.min((now - last) / 1000, 0.05); // clamp after a hitch
+        last = now;
+        const t = (now - start) / 1000;
+        ctx.clearRect(0, 0, W, H);
+        const fade = t > DURATION - 0.4 ? Math.max(0, (DURATION - t) / 0.4) : 1;
+        ctx.globalAlpha = fade;
+        for (const p of parts) {
+          p.vy += GRAVITY * dt;
+          p.vx *= 0.99;
+          p.x += p.vx * dt;
+          p.y += p.vy * dt;
+          p.rot += p.vr * dt;
+          p.flip += p.vf * dt;
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rot);
+          ctx.scale(1, Math.cos(p.flip)); // cheap "tumbling" without 3D
+          ctx.fillStyle = p.color;
+          if (p.round) {
+            ctx.beginPath();
+            ctx.arc(0, 0, p.w / 2, 0, Math.PI * 2);
+            ctx.fill();
+          } else {
+            ctx.fillRect(-p.w / 2, -p.h / 2, p.w, p.h);
+          }
+          ctx.restore();
+        }
+        if (t < DURATION) {
+          raf.current = requestAnimationFrame(frame);
+        } else {
+          ctx.clearRect(0, 0, W, H);
+          canvas.dataset.active = "false";
+        }
+      };
+      raf.current = requestAnimationFrame(frame);
     },
   }));
 
-  return <div ref={layerRef} className={styles.layer} aria-hidden />;
+  return <canvas ref={canvasRef} className={styles.layer} aria-hidden />;
 }

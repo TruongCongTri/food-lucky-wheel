@@ -254,7 +254,7 @@
     },
     "emoji": "🍜",
     "searchKeyword": "Bánh canh",
-    "active": false,
+    "active": true,
     "createdAt": "2026-11-09T00:19:00.000Z",
     "image": "https://upload.wikimedia.org/wikipedia/commons/c/c4/Banh-Canh-Noodle-Soup.jpg",
     "imagePage": "https://vi.wikipedia.org/wiki/B%C3%A1nh_canh"

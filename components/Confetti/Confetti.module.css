@@ -1,13 +1,14 @@
+/* Full-screen confetti canvas; hidden (and costs nothing) between bursts. */
 .layer {
   position: fixed;
   inset: 0;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
-  overflow: hidden;
   z-index: 60;
+  visibility: hidden;
 }
 
-.piece {
-  position: absolute;
-  display: block;
-  will-change: transform, opacity;
+.layer[data-active="true"] {
+  visibility: visible;
 }

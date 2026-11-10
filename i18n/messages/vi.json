@@ -4,7 +4,8 @@
     "description": "Quay vòng may mắn để chọn món Việt và tìm quán ngon, được đánh giá cao gần bạn."
   },
   "intro": {
-    "serving": "Đang dọn món"
+    "serving": "Đang dọn món",
+    "message": "Anh đang dọn sẵn những món em thích ăn, chờ em tha hồ lựa chọn nè…"
   },
   "header": {
     "brand": "Ăn gì?",
@@ -62,7 +63,9 @@
     "made": "Làm tại Việt Nam.",
     "guide": "Hướng dẫn",
     "privacy": "Quyền riêng tư",
-    "terms": "Điều khoản"
+    "terms": "Điều khoản",
+    "cookies": "Cookie & dữ liệu",
+    "cookieSettings": "Cài đặt cookie"
   },
   "result": {
     "label": "Kết quả",
@@ -130,5 +133,31 @@
     "loading": "Đang tải…",
     "imageUrl": "Ảnh (tuỳ chọn)",
     "imageUrlPlaceholder": "Để trống: tự tìm ảnh trên Wikipedia"
+  },
+  "consent": {
+    "title": "Quyền riêng tư của bạn",
+    "body": "Trang dùng cookie và bộ nhớ trình duyệt cần thiết (ngôn ngữ, ghi nhớ lựa chọn này, bộ nhớ đệm ảnh) để hoạt động. Ghi nhớ âm thanh và dùng vị trí để tìm quán chỉ bật khi bạn đồng ý — bạn có thể đổi ý bất cứ lúc nào.",
+    "learnMore": "Cách trang dùng cookie & dữ liệu",
+    "terms": "Tôi đồng ý với {terms} và đã đọc {privacy}.",
+    "termsLink": "Điều khoản sử dụng",
+    "privacyLink": "Chính sách quyền riêng tư",
+    "needTerms": "Vui lòng đánh dấu đồng ý Điều khoản để tiếp tục.",
+    "acceptAll": "Đồng ý tất cả",
+    "necessaryOnly": "Chỉ cần thiết",
+    "customize": "Tuỳ chỉnh",
+    "save": "Lưu lựa chọn",
+    "alwaysOn": "Luôn bật",
+    "necessary": {
+      "title": "Cần thiết",
+      "desc": "Ngôn ngữ, lựa chọn đồng ý, bộ nhớ đệm và bảo mật. Không dùng để theo dõi hay quảng cáo."
+    },
+    "preferences": {
+      "title": "Ghi nhớ tuỳ chọn",
+      "desc": "Lưu lựa chọn bật/tắt âm thanh trên thiết bị này."
+    },
+    "location": {
+      "title": "Vị trí",
+      "desc": "Dùng vị trí hiện tại (một lần, không lưu) để tìm quán gần bạn. Trình duyệt vẫn sẽ hỏi quyền."
+    }
   }
 }

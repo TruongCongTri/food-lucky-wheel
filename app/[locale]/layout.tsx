@@ -8,29 +8,40 @@ import { Header } from "@/components/Header/Header";
 import { Dock } from "@/components/Dock/Dock";
 import { Intro, INTRO_SCRIPT } from "@/components/Intro/Intro";
 import { PageTransition } from "@/components/PageTransition/PageTransition";
+import { ConsentBanner } from "@/components/ConsentBanner/ConsentBanner";
 import "../global.css";
 
-/** Display + body: variable grotesk with width & optical-size axes. */
+/**
+ * Display + body: variable grotesk. Only the width axis (for the condensed
+ * headings) — the optical-size axis nearly doubled the file (128 KB latin).
+ * The only preloaded font: it sets the headline and the wheel labels.
+ */
 const display = Bricolage_Grotesque({
   variable: "--font-display",
   subsets: ["latin", "vietnamese"],
-  axes: ["wdth", "opsz"],
+  axes: ["wdth"],
   display: "swap",
 });
 
-/** Editorial italic accent. */
+/**
+ * Editorial italic accent and mono labels: not preloaded, so on slow
+ * connections they don't compete with the JavaScript that renders the wheel;
+ * they swap in when ready. (`display: optional` was tried and rejected: first
+ * visits almost never got the font in time, losing the editorial mono look.)
+ */
 const serif = Fraunces({
   variable: "--font-serif",
   subsets: ["latin", "vietnamese"],
   style: "italic",
   display: "swap",
+  preload: false,
 });
 
-/** Index numbers & small labels. */
 const mono = JetBrains_Mono({
   variable: "--font-mono",
   subsets: ["latin", "vietnamese"],
   display: "swap",
+  preload: false,
 });
 
 export function generateStaticParams() {
@@ -68,6 +79,8 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(locale)) notFound();
   const dict = await getDictionary(locale);
+  // (No preconnect to Wikimedia: dish photos are proxied through /api/img, so
+  // the browser never contacts a third-party image host.)
 
   return (
     <html
@@ -80,11 +93,12 @@ export default async function LocaleLayout({
         <script dangerouslySetInnerHTML={{ __html: INTRO_SCRIPT }} />
       </head>
       <body>
-        <Intro label={dict.intro.serving} />
+        <Intro label={dict.intro.serving} message={dict.intro.message} />
         <AppProviders locale={locale} dict={dict}>
           <Header />
           {children}
           <Dock />
+          <ConsentBanner />
           <PageTransition />
         </AppProviders>
       </body>

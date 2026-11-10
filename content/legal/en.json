@@ -6,7 +6,8 @@
     "withdraw": "Withdraw consent",
     "withdrawn": "Consent withdrawn. We'll ask again before using your location.",
     "consentGiven": "You consented to location use on {date}.",
-    "consentNone": "You haven't consented to location use."
+    "consentNone": "You haven't consented to location use.",
+    "cookieSettings": "Open cookie settings"
   },
   "guide": {
     "label": "Guide",
@@ -81,7 +82,7 @@
   "privacy": {
     "label": "Privacy",
     "title": "Privacy policy",
-    "intro": "This policy explains what personal data is processed when you use “Ăn gì?”, why, and your rights — under Vietnam's Law on Personal Data Protection No. 91/2025/QH15 and Decree 356/2025/NĐ-CP.",
+    "intro": "This policy explains what personal data is processed when you use “Ăn gì?”, why, and your rights — under Vietnam's Law on Personal Data Protection No. 91/2025/QH15, Decree 356/2025/NĐ-CP and the Law on Cybersecurity No. 116/2025/QH15; it also meets Taiwan's Personal Data Protection Act (PDPA) and the EU GDPR/ePrivacy rules for visitors from those regions.",
     "sections": [
       {
         "id": "controller",
@@ -96,7 +97,7 @@
         "list": [
           "Your device's precise location — only with your consent. This is sensitive personal data, so we only process it after you explicitly agree in the app and grant permission in your browser.",
           "Technical data: IP address, browser type and access time, recorded in our hosting provider's server logs to run and secure the service.",
-          "Data stored on your device: a language cookie (NEXT_LOCALE, 1 year); in browser storage: your sound preference, your location-consent record, the intro screen state and (for admins) the PIN for the session.",
+          "Data stored on your device: a language cookie (NEXT_LOCALE, 1 year); in browser storage: your cookie/privacy choices, your location-consent record, your sound preference (only if you turn on “Preferences”) and (for admins) the PIN for the session. See the Cookies & data page for each item.",
           "We require no account, collect no name or phone number, and use no advertising cookies or behavioural analytics."
         ]
       },
@@ -110,6 +111,15 @@
         ],
         "paragraphs": [
           "We do not use your data for advertising, and we do not sell or share it for other purposes."
+        ]
+      },
+      {
+        "id": "legal-bases",
+        "heading": "Legal bases",
+        "list": [
+          "Location and preferences: your consent — explicit, freely given, specific to each purpose, never pre-ticked; silence is not consent (Law 91/2025/QH15; Taiwan PDPA; GDPR Art. 6(1)(a) and ePrivacy).",
+          "Strictly necessary cookies/storage and security logs: needed to provide the service you request and to keep it secure under the Law on Cybersecurity 116/2025/QH15 (GDPR Art. 6(1)(b), (f)).",
+          "Acknowledging that you have read this policy when accepting the Terms does not replace the separate consent for each optional purpose."
         ]
       },
       {
@@ -127,7 +137,7 @@
         "heading": "Third parties and transfers abroad",
         "list": [
           "Google LLC (Google Maps Platform): receives coordinates and the search keyword to return places; receives your IP address when you open Google Maps.",
-          "Wikimedia Foundation: dish photos load directly from Wikimedia's servers, so they receive your IP address and browser details.",
+          "Wikimedia Foundation: dish photos are fetched and cached by our server and served to you via /api/img, so your browser never connects to Wikimedia. Only photos an admin enters from other sites load directly from those sites.",
           "Our website hosting provider: processes technical logs."
         ],
         "paragraphs": [
@@ -160,9 +170,18 @@
       },
       {
         "id": "withdraw",
-        "heading": "Withdraw consent to location use",
+        "heading": "Withdraw consent",
         "paragraphs": [
-          "You can withdraw your consent right here. Also turn off location permission for this site in your browser settings so the browser stops providing it."
+          "You can change or withdraw any choice at any time via “Cookie settings” in the footer — as easily as you gave it. Location consent can also be withdrawn right here. Also turn off location permission for this site in your browser settings so the browser stops providing it."
+        ]
+      },
+      {
+        "id": "international",
+        "heading": "Visitors from Taiwan and Europe",
+        "list": [
+          "Taiwan (PDPA): at collection we tell you who collects the data, the purpose, the data categories, the period, area, recipients and manner of use, your rights, and what happens if you don't provide it (the app still works; it just can't find places near you). You may inquire, review, obtain copies, supplement or correct, request that collection/processing/use stop, and request deletion.",
+          "EU/EEA (GDPR): you additionally have the right to data portability and to lodge a complaint with the data protection authority where you live.",
+          "Send any request to {email}; we respond within the statutory time limits (Vietnam and Taiwan: typically 15–30 days; GDPR: one month)."
         ]
       },
       {
@@ -176,14 +195,15 @@
         "id": "security",
         "heading": "Security",
         "paragraphs": [
-          "Connections are encrypted with HTTPS. The Google Maps key stays on the server and is never sent to the browser. If a personal data breach occurs, we will notify the competent authority and affected users as required by law."
+          "Connections are encrypted with HTTPS (HSTS). The site sends security headers (no framing, no content-type sniffing, limited referrers, location permission only for this site itself). The Google Maps key stays on the server and is never sent to the browser.",
+          "If a personal data breach or cybersecurity incident occurs, we will notify the competent authority (in Vietnam: within 72 hours under Law 91/2025/QH15) and affected users as required by Vietnamese and Taiwanese law and, where applicable, the GDPR."
         ]
       },
       {
         "id": "changes",
         "heading": "Changes and contact",
         "paragraphs": [
-          "If this policy changes materially regarding location use, we will ask for your consent again. Questions: {email}."
+          "If this policy changes materially, we will ask for your consent again (the cookie settings panel will reappear). Questions: {email}."
         ]
       }
     ]
@@ -191,7 +211,7 @@
   "terms": {
     "label": "Terms",
     "title": "Terms of use",
-    "intro": "By using “Ăn gì?” you agree to the terms below. Please read them carefully.",
+    "intro": "By ticking acceptance in the privacy panel or continuing to use “Ăn gì?”, you agree to the terms below. Please read them carefully.",
     "sections": [
       {
         "id": "service",
@@ -220,14 +240,14 @@
         "id": "images",
         "heading": "Dish photos",
         "paragraphs": [
-          "Dish photos come from Wikipedia / Wikimedia Commons under each author's free licence; a source link is shown with the photo. If you own a photo and believe it is used improperly, contact {email} and we will remove it."
+          "Dish photos come from Wikipedia / Wikimedia Commons under each author's free licence, are cached by our server, and are shown with a source link. If you own a photo and believe it is used improperly, contact {email} and we will remove it."
         ]
       },
       {
         "id": "conduct",
         "heading": "Prohibited conduct",
         "list": [
-          "Attacking, probing, overloading or interfering with the system without authorisation, or otherwise breaching the Law on Cybersecurity No. 24/2018/QH14.",
+          "Attacking, probing, overloading or interfering with the system without authorisation, or otherwise breaching the Law on Cybersecurity No. 116/2025/QH15 (in force from 1 July 2026, replacing the 2018 Cybersecurity Law and the 2015 Law on Network Information Security).",
           "Automated scraping or abuse of the service's APIs.",
           "Entering content that is unlawful, offensive or infringes others' rights when managing the menu."
         ]
@@ -250,14 +270,15 @@
         "id": "personal-data",
         "heading": "Personal data",
         "paragraphs": [
-          "How personal data is processed is described in the Privacy policy."
+          "How personal data is processed is described in the Privacy policy; how the site uses cookies, browser storage and caching is described on the Cookies & data page."
         ]
       },
       {
         "id": "law",
         "heading": "Governing law and disputes",
         "paragraphs": [
-          "These terms are governed by the law of Vietnam. Disputes are first resolved by negotiation; failing that, by a competent court of Vietnam."
+          "These terms are governed by the law of Vietnam. Disputes are first resolved by negotiation; failing that, by a competent court of Vietnam.",
+          "This does not take away any mandatory rights the law of the place where you live gives you (for example consumer and personal data rights in Taiwan or the European Union)."
         ]
       },
       {
@@ -265,6 +286,90 @@
         "heading": "Changes and contact",
         "paragraphs": [
           "We may update these terms; the update date is shown at the top of the page. Contact: {email} — {address}."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "label": "Cookies & data",
+    "title": "Cookies, storage & caching",
+    "intro": "This page lists everything “Ăn gì?” stores on your device, what is cached, when your location is used, and how to change your choices. We use no advertising cookies, no cross-site tracking and no analytics.",
+    "sections": [
+      {
+        "id": "summary",
+        "heading": "Summary",
+        "list": [
+          "Strictly necessary (always on): makes the site work and keeps it secure — no consent needed, but you must be told.",
+          "Preferences (optional): stored only if you turn it on.",
+          "Location (optional, sensitive data): used only with your consent and your browser's permission; never stored."
+        ]
+      },
+      {
+        "id": "cookies",
+        "heading": "Cookies",
+        "list": [
+          "NEXT_LOCALE — strictly necessary — remembers your language (vi/en) — first party — 1 year."
+        ],
+        "after": "That is the only cookie. The site sets no third-party cookies."
+      },
+      {
+        "id": "storage",
+        "heading": "Browser storage (localStorage / sessionStorage)",
+        "list": [
+          "lw:consent — strictly necessary — your privacy panel choices (version, time, each category) so we don't ask again — until you clear site data or the policy changes.",
+          "lw:geo-consent — location — record that you consented to location use, and when — until you withdraw.",
+          "lw:sound — preferences — sound on/off — stored only if “Preferences” is on; deleted when you turn it off.",
+          "lw:pin (sessionStorage) — strictly necessary, admins only — the menu-management PIN — cleared when the tab closes."
+        ]
+      },
+      {
+        "id": "caching",
+        "heading": "Caching",
+        "list": [
+          "Your browser caches the site's code, fonts and images (standard HTTP cache) so it loads faster; dish photos are cached for up to 7 days.",
+          "Our server caches dish photos fetched from Wikimedia; this cache contains no personal data.",
+          "Place search results (which use your location) are kept only in your own browser's private cache for up to 5 minutes to avoid repeat calls; never cached on the server."
+        ],
+        "after": "You can clear the cache any time in your browser settings (Clear browsing data)."
+      },
+      {
+        "id": "location",
+        "heading": "Location",
+        "paragraphs": [
+          "Only when you tap “Places nearby” and have consented does the browser read your location (and it still asks permission). The coordinates pass through our server to Google Maps Platform to find places, then are discarded — never written to a database, no history. When you tap “Directions”, the coordinates are put into a Google Maps link on your device."
+        ]
+      },
+      {
+        "id": "third-parties",
+        "heading": "Third parties",
+        "list": [
+          "Google Maps Platform: receives coordinates and the keyword for place searches (via our server); place photos load from Google's servers; when you open Google Maps, Google's own policies apply.",
+          "Wikimedia Commons: no direct connection — photos go through our server.",
+          "Fonts are hosted on this site itself (no calls to Google Fonts)."
+        ]
+      },
+      {
+        "id": "logs",
+        "heading": "Server logs",
+        "paragraphs": [
+          "Like any website, our hosting provider records IP address, time and the page requested to operate the service and keep it secure (Law on Cybersecurity 116/2025/QH15). Never used for advertising or profiling."
+        ]
+      },
+      {
+        "id": "manage",
+        "heading": "Changing your choices",
+        "paragraphs": [
+          "Reopen the settings any time with the button below or “Cookie settings” in the footer. Turning a category off deletes what was stored for it. You can also clear this site's data in your browser settings."
+        ]
+      },
+      {
+        "id": "legal",
+        "heading": "Legal basis",
+        "list": [
+          "Vietnam: Law on Personal Data Protection 91/2025/QH15, Decree 356/2025/NĐ-CP, Law on Cybersecurity 116/2025/QH15, Law on Protection of Consumers' Rights 19/2023/QH15.",
+          "Taiwan: Personal Data Protection Act (PDPA, as amended in 2025).",
+          "European Union: GDPR and the ePrivacy Directive (Art. 5(3) — non-essential cookies need prior consent).",
+          "Security practice: OWASP Secure Headers recommendations."
         ]
       }
     ]

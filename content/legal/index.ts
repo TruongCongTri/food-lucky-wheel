@@ -7,7 +7,7 @@ const docs = {
 };
 
 export type LegalContent = Awaited<ReturnType<(typeof docs)["vi"]>>;
-export type LegalKind = "guide" | "privacy" | "terms";
+export type LegalKind = "guide" | "privacy" | "terms" | "cookies";
 export type LegalSection = {
   id: string;
   heading: string;

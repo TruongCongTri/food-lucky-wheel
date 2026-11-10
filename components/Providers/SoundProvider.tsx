@@ -9,6 +9,7 @@ import {
   type ReactNode,
 } from "react";
 import { sound } from "@/lib/sound";
+import { hasPreferenceConsent, onConsentChange } from "@/lib/consent";
 
 const STORAGE_KEY = "lw:sound";
 
@@ -20,7 +21,8 @@ export function SoundProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     try {
-      const saved = localStorage.getItem(STORAGE_KEY);
+      // The choice is only remembered with "preferences" consent (lib/consent.ts).
+      const saved = hasPreferenceConsent() ? localStorage.getItem(STORAGE_KEY) : null;
       if (saved === "off") {
         sound.enabled = false;
         // eslint-disable-next-line react-hooks/set-state-in-effect -- hydrate from storage
@@ -32,7 +34,20 @@ export function SoundProvider({ children }: { children: ReactNode }) {
     // Unlock the AudioContext on the very first touch (iOS).
     const unlock = () => sound.unlock();
     window.addEventListener("pointerdown", unlock, { once: true, passive: true });
-    return () => window.removeEventListener("pointerdown", unlock);
+    // Opting in later: start remembering the current choice right away.
+    const off = onConsentChange((rec) => {
+      if (rec.preferences) {
+        try {
+          localStorage.setItem(STORAGE_KEY, sound.enabled ? "on" : "off");
+        } catch {
+          /* ignore */
+        }
+      }
+    });
+    return () => {
+      window.removeEventListener("pointerdown", unlock);
+      off();
+    };
   }, []);
 
   const toggle = useCallback(() => {
@@ -41,10 +56,13 @@ export function SoundProvider({ children }: { children: ReactNode }) {
       sound.enabled = true; // let the toggle sound itself play when turning on
       sound.toggle(next);
       sound.enabled = next;
-      try {
-        localStorage.setItem(STORAGE_KEY, next ? "on" : "off");
-      } catch {
-        /* ignore */
+      // Remember it across visits only with "preferences" consent.
+      if (hasPreferenceConsent()) {
+        try {
+          localStorage.setItem(STORAGE_KEY, next ? "on" : "off");
+        } catch {
+          /* ignore */
+        }
       }
       return next;
     });

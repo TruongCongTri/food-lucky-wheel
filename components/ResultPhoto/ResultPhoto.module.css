@@ -1,0 +1,34 @@
+.photo {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The sharp layer sits on top and fades in once decoded. */
+.img[data-sharp] {
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+
+.img[data-sharp="true"] {
+  opacity: 1;
+}
+
+.emoji {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(36px, 40cqi, 120px);
+}

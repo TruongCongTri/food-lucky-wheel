@@ -6,7 +6,8 @@
     "withdraw": "Rút lại sự đồng ý",
     "withdrawn": "Đã rút lại sự đồng ý. Lần sau chúng tôi sẽ hỏi lại trước khi dùng vị trí.",
     "consentGiven": "Bạn đã đồng ý dùng vị trí lúc {date}.",
-    "consentNone": "Hiện bạn chưa đồng ý cho chúng tôi dùng vị trí."
+    "consentNone": "Hiện bạn chưa đồng ý cho chúng tôi dùng vị trí.",
+    "cookieSettings": "Mở cài đặt cookie"
   },
   "guide": {
     "label": "Hướng dẫn",
@@ -81,7 +82,7 @@
   "privacy": {
     "label": "Quyền riêng tư",
     "title": "Chính sách quyền riêng tư",
-    "intro": "Chính sách này giải thích dữ liệu cá nhân nào được xử lý khi bạn dùng “Ăn gì?”, vì sao, và quyền của bạn — theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 và Nghị định 356/2025/NĐ-CP.",
+    "intro": "Chính sách này giải thích dữ liệu cá nhân nào được xử lý khi bạn dùng “Ăn gì?”, vì sao, và quyền của bạn — theo Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15, Nghị định 356/2025/NĐ-CP và Luật An ninh mạng số 116/2025/QH15; đồng thời đáp ứng Luật Bảo vệ dữ liệu cá nhân của Đài Loan (PDPA) và GDPR/ePrivacy của Liên minh châu Âu đối với người dùng từ các khu vực đó.",
     "sections": [
       {
         "id": "don-vi",
@@ -96,7 +97,7 @@
         "list": [
           "Vị trí chính xác của thiết bị — chỉ khi bạn đồng ý. Đây là dữ liệu cá nhân nhạy cảm, nên chúng tôi chỉ xử lý sau khi bạn đồng ý rõ ràng trong ứng dụng và cấp quyền trên trình duyệt.",
           "Dữ liệu kỹ thuật: địa chỉ IP, loại trình duyệt và thời điểm truy cập, được ghi trong nhật ký máy chủ của nhà cung cấp dịch vụ lưu trữ để vận hành và bảo đảm an ninh.",
-          "Dữ liệu lưu trên thiết bị của bạn: cookie ngôn ngữ (NEXT_LOCALE, 1 năm); trong bộ nhớ trình duyệt: lựa chọn âm thanh, bản ghi sự đồng ý dùng vị trí, trạng thái màn hình mở đầu và (với quản trị viên) mã PIN trong phiên làm việc.",
+          "Dữ liệu lưu trên thiết bị của bạn: cookie ngôn ngữ (NEXT_LOCALE, 1 năm); trong bộ nhớ trình duyệt: lựa chọn đồng ý cookie/quyền riêng tư, bản ghi sự đồng ý dùng vị trí, lựa chọn âm thanh (chỉ khi bạn bật “Ghi nhớ tuỳ chọn”) và (với quản trị viên) mã PIN trong phiên làm việc. Chi tiết từng mục xem trang Cookie & dữ liệu.",
           "Chúng tôi không yêu cầu tài khoản, không thu thập họ tên, số điện thoại, không dùng cookie quảng cáo hay công cụ phân tích hành vi."
         ]
       },
@@ -110,6 +111,15 @@
         ],
         "paragraphs": [
           "Chúng tôi không dùng dữ liệu của bạn cho quảng cáo, không bán và không chia sẻ cho mục đích khác."
+        ]
+      },
+      {
+        "id": "co-so-phap-ly",
+        "heading": "Cơ sở pháp lý",
+        "list": [
+          "Vị trí và ghi nhớ tuỳ chọn: sự đồng ý của bạn — rõ ràng, tự nguyện, riêng cho từng mục đích, không đánh dấu sẵn; im lặng không được coi là đồng ý (Luật 91/2025/QH15; PDPA Đài Loan; GDPR Điều 6(1)(a) và ePrivacy).",
+          "Cookie và bộ nhớ cần thiết, nhật ký bảo mật: cần thiết để cung cấp dịch vụ bạn yêu cầu và để bảo đảm an ninh mạng theo Luật An ninh mạng 116/2025/QH15 (GDPR Điều 6(1)(b), (f)).",
+          "Bạn ghi nhận đã đọc Chính sách này khi chấp nhận Điều khoản; việc đó không thay thế sự đồng ý riêng cho từng mục đích tuỳ chọn."
         ]
       },
       {
@@ -127,7 +137,7 @@
         "heading": "Bên thứ ba và chuyển dữ liệu ra nước ngoài",
         "list": [
           "Google LLC (Google Maps Platform): nhận tọa độ và từ khóa tìm kiếm để trả danh sách quán; nhận địa chỉ IP khi bạn mở Google Maps.",
-          "Wikimedia Foundation: ảnh món ăn được tải trực tiếp từ máy chủ Wikimedia nên họ nhận địa chỉ IP và thông tin trình duyệt của bạn.",
+          "Wikimedia Foundation: ảnh món ăn được máy chủ của chúng tôi tải về và lưu đệm rồi trả cho bạn (qua /api/img), nên trình duyệt của bạn không kết nối trực tiếp tới Wikimedia. Chỉ ảnh do quản trị viên nhập từ trang khác mới tải trực tiếp từ trang đó.",
           "Nhà cung cấp dịch vụ lưu trữ website: xử lý nhật ký kỹ thuật."
         ],
         "paragraphs": [
@@ -160,9 +170,18 @@
       },
       {
         "id": "rut-dong-y",
-        "heading": "Rút lại sự đồng ý dùng vị trí",
+        "heading": "Rút lại sự đồng ý",
         "paragraphs": [
-          "Bạn có thể rút lại sự đồng ý ngay tại đây. Ngoài ra, hãy tắt quyền vị trí cho trang này trong cài đặt trình duyệt để trình duyệt không cấp vị trí nữa."
+          "Bạn có thể đổi hoặc rút lại mọi lựa chọn bất cứ lúc nào qua “Cài đặt cookie” ở chân trang, dễ như khi đồng ý. Riêng sự đồng ý dùng vị trí có thể rút ngay tại đây. Ngoài ra, hãy tắt quyền vị trí cho trang này trong cài đặt trình duyệt để trình duyệt không cấp vị trí nữa."
+        ]
+      },
+      {
+        "id": "nguoi-dung-quoc-te",
+        "heading": "Người dùng tại Đài Loan và châu Âu",
+        "list": [
+          "Đài Loan (PDPA): khi thu thập, chúng tôi thông báo bên thu thập, mục đích, loại dữ liệu, thời gian/khu vực/đối tượng sử dụng, quyền của bạn và hậu quả nếu bạn không cung cấp (ứng dụng vẫn chạy, chỉ không tìm được quán gần bạn). Bạn có quyền tra cứu, xem, nhận bản sao, bổ sung/sửa, yêu cầu ngừng thu thập/xử lý/sử dụng và yêu cầu xoá.",
+          "Liên minh châu Âu/EEA (GDPR): bạn có thêm quyền về tính di động dữ liệu và quyền khiếu nại tới cơ quan bảo vệ dữ liệu nơi bạn cư trú.",
+          "Mọi yêu cầu gửi tới {email}; chúng tôi phản hồi trong thời hạn luật định (Việt Nam, Đài Loan: thường 15–30 ngày; GDPR: 1 tháng)."
         ]
       },
       {
@@ -176,14 +195,15 @@
         "id": "bao-mat",
         "heading": "Bảo mật",
         "paragraphs": [
-          "Kết nối được mã hóa bằng HTTPS. Khóa truy cập Google Maps chỉ nằm trên máy chủ, không gửi tới trình duyệt. Nếu xảy ra vi phạm dữ liệu cá nhân, chúng tôi sẽ thông báo cho cơ quan có thẩm quyền và người dùng bị ảnh hưởng theo quy định của pháp luật."
+          "Kết nối được mã hoá HTTPS (HSTS). Trang gửi các tiêu đề bảo mật (chống nhúng khung, chống đoán kiểu nội dung, giới hạn Referrer, chỉ cho phép quyền vị trí trên chính trang này). Khoá Google Maps chỉ nằm trên máy chủ, không gửi xuống trình duyệt.",
+          "Nếu xảy ra vi phạm dữ liệu cá nhân hoặc sự cố an ninh mạng, chúng tôi sẽ thông báo cho cơ quan có thẩm quyền (tại Việt Nam: trong 72 giờ theo Luật 91/2025/QH15) và người dùng bị ảnh hưởng theo quy định của pháp luật Việt Nam, Đài Loan và GDPR khi áp dụng."
         ]
       },
       {
         "id": "thay-doi",
         "heading": "Thay đổi chính sách và liên hệ",
         "paragraphs": [
-          "Khi chính sách thay đổi đáng kể về việc dùng vị trí, chúng tôi sẽ xin lại sự đồng ý của bạn. Mọi câu hỏi xin gửi tới {email}."
+          "Khi chính sách thay đổi đáng kể, chúng tôi sẽ hỏi lại sự đồng ý của bạn (bảng cài đặt cookie sẽ hiện lại). Mọi câu hỏi xin gửi tới {email}."
         ]
       }
     ]
@@ -191,7 +211,7 @@
   "terms": {
     "label": "Điều khoản",
     "title": "Điều khoản sử dụng",
-    "intro": "Bằng việc sử dụng “Ăn gì?”, bạn đồng ý với các điều khoản dưới đây. Vui lòng đọc kỹ.",
+    "intro": "Bằng việc đánh dấu chấp nhận trong bảng quyền riêng tư hoặc tiếp tục sử dụng “Ăn gì?”, bạn đồng ý với các điều khoản dưới đây. Vui lòng đọc kỹ.",
     "sections": [
       {
         "id": "dich-vu",
@@ -220,14 +240,14 @@
         "id": "anh",
         "heading": "Hình ảnh món ăn",
         "paragraphs": [
-          "Ảnh món ăn lấy từ Wikipedia / Wikimedia Commons theo giấy phép tự do của từng tác giả; liên kết nguồn được hiển thị cùng ảnh. Nếu bạn là chủ sở hữu và cho rằng ảnh bị sử dụng không đúng, hãy liên hệ {email} để chúng tôi gỡ bỏ."
+          "Ảnh món ăn lấy từ Wikipedia / Wikimedia Commons theo giấy phép tự do của từng tác giả, được máy chủ của chúng tôi lưu đệm và có liên kết nguồn kèm ảnh. Nếu bạn là chủ sở hữu ảnh và cho rằng ảnh bị dùng không đúng, hãy liên hệ {email} để chúng tôi gỡ bỏ."
         ]
       },
       {
         "id": "hanh-vi",
         "heading": "Hành vi không được phép",
         "list": [
-          "Tấn công, dò quét, gây quá tải hoặc can thiệp trái phép vào hệ thống; vi phạm Luật An ninh mạng số 24/2018/QH14.",
+          "Tấn công, dò quét, gây quá tải hoặc can thiệp trái phép vào hệ thống, hoặc vi phạm khác theo Luật An ninh mạng số 116/2025/QH15 (có hiệu lực từ 01/7/2026, thay thế Luật An ninh mạng 2018 và Luật An toàn thông tin mạng 2015).",
           "Thu thập dữ liệu tự động (scraping) hoặc lạm dụng các API của dịch vụ.",
           "Đăng tải nội dung vi phạm pháp luật, thuần phong mỹ tục hoặc quyền của người khác khi quản lý thực đơn."
         ]
@@ -250,14 +270,15 @@
         "id": "du-lieu",
         "heading": "Dữ liệu cá nhân",
         "paragraphs": [
-          "Việc xử lý dữ liệu cá nhân được mô tả trong Chính sách quyền riêng tư."
+          "Cách dữ liệu cá nhân được xử lý được mô tả trong Chính sách quyền riêng tư; cách trang dùng cookie, bộ nhớ trình duyệt và bộ nhớ đệm được mô tả trong trang Cookie & dữ liệu."
         ]
       },
       {
         "id": "luat",
         "heading": "Luật áp dụng và giải quyết tranh chấp",
         "paragraphs": [
-          "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Tranh chấp được ưu tiên giải quyết bằng thương lượng; nếu không thành, sẽ được giải quyết tại Tòa án có thẩm quyền của Việt Nam."
+          "Điều khoản này được điều chỉnh bởi pháp luật Việt Nam. Tranh chấp được ưu tiên giải quyết bằng thương lượng; nếu không thành, sẽ được giải quyết tại Tòa án có thẩm quyền của Việt Nam.",
+          "Điều này không làm mất các quyền bắt buộc mà pháp luật nơi bạn cư trú dành cho bạn (ví dụ quyền của người tiêu dùng và quyền về dữ liệu cá nhân tại Đài Loan hoặc Liên minh châu Âu)."
         ]
       },
       {
@@ -265,6 +286,90 @@
         "heading": "Thay đổi và liên hệ",
         "paragraphs": [
           "Chúng tôi có thể cập nhật điều khoản; ngày cập nhật được ghi ở đầu trang. Liên hệ: {email} — {address}."
+        ]
+      }
+    ]
+  },
+  "cookies": {
+    "label": "Cookie & dữ liệu",
+    "title": "Cookie, bộ nhớ & bộ nhớ đệm",
+    "intro": "Trang này liệt kê đầy đủ những gì “Ăn gì?” lưu trên thiết bị của bạn, những gì được lưu đệm, khi nào vị trí được dùng, và cách bạn thay đổi lựa chọn. Chúng tôi không dùng cookie quảng cáo, không theo dõi chéo trang và không dùng công cụ phân tích.",
+    "sections": [
+      {
+        "id": "tom-tat",
+        "heading": "Tóm tắt",
+        "list": [
+          "Cần thiết (luôn bật): để trang hoạt động và an toàn — không cần đồng ý nhưng phải được thông báo.",
+          "Ghi nhớ tuỳ chọn (tuỳ chọn): chỉ lưu khi bạn bật.",
+          "Vị trí (tuỳ chọn, dữ liệu nhạy cảm): chỉ dùng khi bạn đồng ý và trình duyệt cho phép; không lưu."
+        ]
+      },
+      {
+        "id": "cookie",
+        "heading": "Cookie",
+        "list": [
+          "NEXT_LOCALE — cần thiết — ghi nhớ ngôn ngữ (vi/en) — bên thứ nhất — 1 năm."
+        ],
+        "after": "Đó là cookie duy nhất. Trang không đặt cookie của bên thứ ba."
+      },
+      {
+        "id": "bo-nho",
+        "heading": "Bộ nhớ trình duyệt (localStorage / sessionStorage)",
+        "list": [
+          "lw:consent — cần thiết — lưu lựa chọn trong bảng quyền riêng tư (phiên bản, thời điểm, từng mục) để không hỏi lại — đến khi bạn xoá dữ liệu trang hoặc chính sách đổi.",
+          "lw:geo-consent — vị trí — bản ghi bạn đã đồng ý dùng vị trí và thời điểm — đến khi bạn rút lại.",
+          "lw:sound — ghi nhớ tuỳ chọn — bật/tắt âm thanh — chỉ lưu khi bạn bật “Ghi nhớ tuỳ chọn”, bị xoá khi bạn tắt.",
+          "lw:pin (sessionStorage) — cần thiết, chỉ quản trị viên — mã PIN quản lý thực đơn — tự xoá khi đóng tab."
+        ]
+      },
+      {
+        "id": "bo-nho-dem",
+        "heading": "Bộ nhớ đệm (caching)",
+        "list": [
+          "Trình duyệt lưu đệm mã, phông chữ và ảnh của trang (bộ nhớ đệm HTTP tiêu chuẩn) để tải nhanh hơn; ảnh món ăn được lưu tối đa 7 ngày.",
+          "Máy chủ lưu đệm ảnh món ăn tải từ Wikimedia; bộ nhớ đệm này không chứa dữ liệu cá nhân.",
+          "Kết quả tìm quán (theo vị trí) chỉ được lưu đệm riêng trong trình duyệt của bạn tối đa 5 phút để tránh gọi lại; không bao giờ lưu đệm trên máy chủ."
+        ],
+        "after": "Bạn có thể xoá bộ nhớ đệm bất cứ lúc nào trong cài đặt trình duyệt (Xoá dữ liệu duyệt web)."
+      },
+      {
+        "id": "vi-tri",
+        "heading": "Vị trí",
+        "paragraphs": [
+          "Chỉ khi bạn bấm “Quán ngon gần đây” và đã đồng ý, trình duyệt mới đọc vị trí (và vẫn sẽ hỏi quyền). Tọa độ được gửi qua máy chủ của chúng tôi tới Google Maps Platform để tìm quán rồi bị bỏ đi — không ghi vào cơ sở dữ liệu, không lưu lịch sử. Khi bạn bấm “Chỉ đường”, tọa độ được đưa vào liên kết Google Maps trên thiết bị của bạn."
+        ]
+      },
+      {
+        "id": "ben-thu-ba",
+        "heading": "Bên thứ ba",
+        "list": [
+          "Google Maps Platform: nhận tọa độ và từ khoá khi tìm quán (qua máy chủ của chúng tôi); ảnh quán được tải từ máy chủ của Google; khi bạn mở Google Maps, Google áp dụng chính sách riêng của họ.",
+          "Wikimedia Commons: không kết nối trực tiếp — ảnh đi qua máy chủ của chúng tôi.",
+          "Phông chữ được lưu trên chính trang này (không gọi Google Fonts)."
+        ]
+      },
+      {
+        "id": "nhat-ky",
+        "heading": "Nhật ký máy chủ",
+        "paragraphs": [
+          "Như mọi website, nhà cung cấp hạ tầng ghi địa chỉ IP, thời điểm và trang được yêu cầu để vận hành và bảo đảm an ninh mạng (Luật An ninh mạng 116/2025/QH15). Không dùng cho quảng cáo hay lập hồ sơ."
+        ]
+      },
+      {
+        "id": "quan-ly",
+        "heading": "Thay đổi lựa chọn",
+        "paragraphs": [
+          "Bạn có thể mở lại bảng cài đặt bất cứ lúc nào bằng nút dưới đây hoặc “Cài đặt cookie” ở chân trang. Tắt một mục sẽ xoá dữ liệu đã lưu cho mục đó. Bạn cũng có thể xoá dữ liệu của trang trong cài đặt trình duyệt."
+        ]
+      },
+      {
+        "id": "phap-ly",
+        "heading": "Cơ sở pháp lý",
+        "list": [
+          "Việt Nam: Luật Bảo vệ dữ liệu cá nhân 91/2025/QH15, Nghị định 356/2025/NĐ-CP, Luật An ninh mạng 116/2025/QH15, Luật Bảo vệ quyền lợi người tiêu dùng 19/2023/QH15.",
+          "Đài Loan: Luật Bảo vệ dữ liệu cá nhân (PDPA, sửa đổi 2025).",
+          "Liên minh châu Âu: GDPR và Chỉ thị ePrivacy (Điều 5(3) — cookie không cần thiết cần đồng ý trước).",
+          "Tiêu chuẩn bảo mật: khuyến nghị OWASP Secure Headers."
         ]
       }
     ]

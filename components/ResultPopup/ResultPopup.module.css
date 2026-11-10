@@ -11,9 +11,9 @@
 .backdrop {
   position: absolute;
   inset: 0;
-  background: rgba(26, 20, 20, 0.45);
-  backdrop-filter: blur(3px);
-  -webkit-backdrop-filter: blur(3px);
+  background: rgba(26, 20, 20, 0.55);
+  /* No backdrop-filter blur: re-blurring the whole screen every frame is very
+     slow on older iPhones/Android GPUs. A slightly deeper tint reads the same. */
   touch-action: none;
 }
 

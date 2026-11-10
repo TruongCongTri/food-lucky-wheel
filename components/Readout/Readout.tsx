@@ -7,8 +7,11 @@ import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import type { Dish } from "@/lib/dishes/types";
 import { dishImageSrc } from "@/lib/dishes/imageSrc";
+import { THUMB_W } from "@/lib/dishes/imagePreload";
+import { isLowEndDevice } from "@/lib/device";
+import { ResultPhoto } from "@/components/ResultPhoto/ResultPhoto";
 import { useI18n } from "@/components/Providers/I18nProvider";
-import { introPlaying } from "@/components/Intro/Intro";
+import { introActive, onIntroExit } from "@/components/Intro/Intro";
 import styles from "./Readout.module.css";
 
 gsap.registerPlugin(useGSAP, SplitText);
@@ -49,7 +52,7 @@ export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, on
       if (liveImg.current && liveEmoji.current) {
         const show = Boolean(d.image);
         // Same 330px variant the wheel already loaded → served from cache.
-        if (d.image) liveImg.current.src = dishImageSrc(d.image, 330);
+        if (d.image) liveImg.current.src = dishImageSrc(d.image, THUMB_W);
         liveImg.current.style.opacity = show ? "1" : "0";
         liveEmoji.current.textContent = show ? "" : d.emoji;
       }
@@ -66,29 +69,49 @@ export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, on
       const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reduced) return;
       if (phase === "idle") {
-        const delay = introPlaying() ? 1.75 : 0.1;
+        // Only behind the preload curtain — otherwise the text is already showing.
+        if (!introActive()) return;
+        // Prepare (hidden) under the curtain, play as it lifts.
         let split: SplitText | undefined;
-        document.fonts.ready.then(() => {
+        let chars: gsap.core.Tween | undefined;
+        let exited = false;
+        let cancelled = false;
+        const fade = gsap.from("[data-fade]", { y: 14, opacity: 0, duration: 0.7, stagger: 0.08, paused: true });
+        // Fonts first so the split measures real glyphs (capped: document.fonts can stall on iOS).
+        Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]).then(() => {
+          if (cancelled) return;
           split = SplitText.create("[data-split]", { type: "words,chars", mask: "words", wordsClass: "split-word" });
-          gsap.from(split.chars, { yPercent: 120, duration: 0.9, stagger: 0.03, ease: "expo.out", delay });
+          chars = gsap.from(split.chars, { yPercent: 120, duration: 0.9, stagger: 0.03, ease: "expo.out", paused: true });
+          if (exited) chars.play(); // curtain already lifting
         });
-        gsap.from("[data-fade]", { y: 14, opacity: 0, duration: 0.7, stagger: 0.08, delay: delay + 0.5 });
-        return () => split?.revert();
+        const cancelExit = onIntroExit((delay) => {
+          gsap.delayedCall(delay, () => {
+            exited = true;
+            chars?.play();
+          });
+          gsap.delayedCall(delay + 0.5, () => void fade.play());
+        });
+        return () => {
+          cancelled = true;
+          cancelExit();
+          split?.revert();
+        };
       }
       if (phase === "spinning") {
         gsap.from("[data-fade]", { x: -16, opacity: 0, duration: 0.4, stagger: 0.05, ease: "power3.out" });
       }
       if (phase === "result") {
-        const split = SplitText.create("[data-split]", {
-          type: "words,chars",
-          mask: "words",
-          wordsClass: "split-word",
-        });
-        const tl = gsap.timeline();
-        tl.from("[data-photo]", { scale: 0.4, rotate: -30, duration: 0.9, ease: "back.out(1.8)" })
-          .from(split.chars, { yPercent: 120, duration: 0.7, stagger: 0.03, ease: "expo.out" }, 0.1)
-          .from("[data-fade]", { y: 14, opacity: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.35);
-        return () => split.revert();
+        // Deliberately cheap: no per-letter SplitText here — splitting the name
+        // forces a synchronous layout exactly at the result moment, which made
+        // the reveal stutter on phones. Transforms + opacity only.
+        const lowEnd = isLowEndDevice();
+        gsap
+          .timeline()
+          .from("[data-photo]", lowEnd
+            ? { opacity: 0, y: 12, duration: 0.4, ease: "power2.out" }
+            : { scale: 0.4, rotate: -30, duration: 0.9, ease: "back.out(1.8)" })
+          .from("[data-split]", { y: 26, opacity: 0, duration: 0.6, ease: "expo.out" }, 0.1)
+          .from("[data-fade]", { y: 14, opacity: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.3);
       }
     },
     { scope: rootRef, dependencies: [phase, dish?.id], revertOnUpdate: true },
@@ -154,14 +177,7 @@ export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, on
             <span className={styles.dot} /> {dict.result.youGot}
           </p>
           <div ref={photoRef} className={`${styles.photo} ${styles.photoResult}`} data-photo>
-            {dish.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img src={dishImageSrc(dish.image, 500)} alt={dish.name[locale]} decoding="async" />
-            ) : (
-              <span className={styles.photoEmoji} aria-hidden>
-                {dish.emoji}
-              </span>
-            )}
+            <ResultPhoto image={dish.image} emoji={dish.emoji} alt={dish.name[locale]} />
           </div>
           <h2 className={styles.name} aria-live="polite">
             <span data-split>{dish.name[locale]}</span>

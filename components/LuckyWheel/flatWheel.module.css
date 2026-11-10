@@ -1,0 +1,86 @@
+/* 2D wheel — proportions mirror the 3D scene (see wheelMath.ts). */
+.flat {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.45s ease;
+}
+
+.flat[data-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.45s ease,
+    visibility 0s linear 0.45s;
+}
+
+.plate,
+.rim,
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  border-radius: 50%;
+}
+
+/* Ink back plate */
+.plate {
+  /* width/height set from the shared geometry (wheelMath.ts) */
+  background: radial-gradient(circle at 36% 30%, #3b302d, #1a1414 62%);
+  box-shadow: 0 22px 40px -18px rgba(26, 20, 20, 0.6);
+}
+
+/* Glossy rim highlight */
+.rim {
+  box-shadow:
+    inset 0 1.5px 0 rgba(255, 255, 255, 0.22),
+    inset 0 -1.5px 0 rgba(0, 0, 0, 0.35);
+}
+
+.spinner {
+  overflow: hidden;
+  will-change: transform; /* its own GPU layer: rotation is compositor-only */
+  background: #f3ede3;
+}
+
+.face {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.pegs {
+  position: absolute;
+  inset: 0;
+}
+
+.peg {
+  position: absolute;
+  width: 1.9%;
+  height: 1.9%;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #6b605c, #1a1414 70%);
+}
+
+.bulbs {
+  position: absolute;
+  inset: 0;
+}
+
+.bulb {
+  position: absolute;
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: #f3ede3;
+  box-shadow: 0 0 0 1px rgba(26, 20, 20, 0.4);
+}
+
+/* Marquee blink while spinning: alternate halves light up */
+.bulbs[data-phase="a"] .bulb:nth-child(odd),
+.bulbs[data-phase="b"] .bulb:nth-child(even) {
+  background: #ffe08a;
+  box-shadow:
+    0 0 0 1px rgba(26, 20, 20, 0.4),
+    0 0 10px 3px rgba(242, 193, 78, 0.85);
+}

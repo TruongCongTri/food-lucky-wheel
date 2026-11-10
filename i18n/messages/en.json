@@ -4,7 +4,8 @@
     "description": "Spin the lucky wheel to pick a Vietnamese dish and find top-rated places to eat it near you."
   },
   "intro": {
-    "serving": "Setting the table"
+    "serving": "Setting the table",
+    "message": "Setting out all your favourite dishes, ready for you to take your pick…"
   },
   "header": {
     "brand": "Ăn gì?",
@@ -62,7 +63,9 @@
     "made": "Made in Vietnam.",
     "guide": "Guide",
     "privacy": "Privacy",
-    "terms": "Terms"
+    "terms": "Terms",
+    "cookies": "Cookies & data",
+    "cookieSettings": "Cookie settings"
   },
   "result": {
     "label": "Result",
@@ -130,5 +133,31 @@
     "loading": "Loading…",
     "imageUrl": "Photo URL (optional)",
     "imageUrlPlaceholder": "Leave empty: auto-find on Wikipedia"
+  },
+  "consent": {
+    "title": "Your privacy",
+    "body": "This site uses strictly necessary cookies and browser storage (language, remembering this choice, image caching) to work. Remembering sound and using your location to find places are only on if you agree — you can change your mind any time.",
+    "learnMore": "How this site uses cookies & data",
+    "terms": "I accept the {terms} and have read the {privacy}.",
+    "termsLink": "Terms of use",
+    "privacyLink": "Privacy policy",
+    "needTerms": "Please tick to accept the Terms to continue.",
+    "acceptAll": "Accept all",
+    "necessaryOnly": "Necessary only",
+    "customize": "Customise",
+    "save": "Save choices",
+    "alwaysOn": "Always on",
+    "necessary": {
+      "title": "Strictly necessary",
+      "desc": "Language, your consent choice, caching and security. Never used for tracking or ads."
+    },
+    "preferences": {
+      "title": "Preferences",
+      "desc": "Remember your sound on/off choice on this device."
+    },
+    "location": {
+      "title": "Location",
+      "desc": "Use your current location (once, not stored) to find places near you. Your browser will still ask for permission."
+    }
   }
 }

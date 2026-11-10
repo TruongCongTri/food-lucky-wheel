@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
 import { useI18n } from "@/components/Providers/I18nProvider";
-import { introPlaying } from "@/components/Intro/Intro";
+import { introActive, onIntroExit } from "@/components/Intro/Intro";
 import styles from "./StageHeadline.module.css";
 
 gsap.registerPlugin(useGSAP, SplitText);
@@ -20,14 +20,33 @@ export function StageHeadline({ className, canSpin }: { className?: string; canS
     () => {
       const mm = gsap.matchMedia();
       mm.add("(prefers-reduced-motion: no-preference)", () => {
-        const delay = introPlaying() ? 1.75 : 0.1;
+        // Only behind the preload curtain — otherwise the text is already showing.
+        if (!introActive()) return;
+        // Prepare (hidden) under the curtain, play as it lifts.
         let split: SplitText | undefined;
-        document.fonts.ready.then(() => {
+        let chars: gsap.core.Tween | undefined;
+        let exited = false;
+        let cancelled = false;
+        const fade = gsap.from("[data-fade]", { y: 12, opacity: 0, duration: 0.7, stagger: 0.08, paused: true });
+        // Fonts first so the split measures real glyphs (capped: document.fonts can stall on iOS).
+        Promise.race([document.fonts.ready, new Promise((r) => setTimeout(r, 1500))]).then(() => {
+          if (cancelled) return;
           split = SplitText.create("[data-split]", { type: "words,chars", mask: "words", wordsClass: "split-word" });
-          gsap.from(split.chars, { yPercent: 120, duration: 0.9, stagger: 0.025, ease: "expo.out", delay });
+          chars = gsap.from(split.chars, { yPercent: 120, duration: 0.9, stagger: 0.025, ease: "expo.out", paused: true });
+          if (exited) chars.play(); // curtain already lifting
         });
-        gsap.from("[data-fade]", { y: 12, opacity: 0, duration: 0.7, stagger: 0.08, delay: delay + 0.4 });
-        return () => split?.revert();
+        const cancelExit = onIntroExit((delay) => {
+          gsap.delayedCall(delay, () => {
+            exited = true;
+            chars?.play();
+          });
+          gsap.delayedCall(delay + 0.4, () => void fade.play());
+        });
+        return () => {
+          cancelled = true;
+          cancelExit();
+          split?.revert();
+        };
       });
     },
     { scope: ref },

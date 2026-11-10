@@ -1,0 +1,242 @@
+/* Bottom sheet above the dock; non-modal (the page stays usable behind it). */
+.banner {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: calc(var(--dock-h) + 26px + var(--safe-bottom));
+  z-index: 85; /* above the dock and popups, below page transitions and the intro */
+  display: flex;
+  justify-content: center;
+  padding: 0 var(--gutter);
+  pointer-events: none;
+  animation: up 0.5s var(--ease-out) both;
+}
+
+.card {
+  pointer-events: auto;
+  width: min(100%, 560px);
+  max-height: calc(100dvh - var(--dock-h) - var(--header-total) - 60px - var(--safe-top) - var(--safe-bottom));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 18px 18px 16px;
+  border-radius: var(--radius-lg);
+  background: var(--card);
+  border: 1px solid var(--line-strong);
+  box-shadow: 0 24px 50px -18px rgba(26, 20, 20, 0.55);
+}
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-weight: 800;
+  font-stretch: 85%;
+  font-size: 22px;
+  line-height: 1.1;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--chili);
+  flex-shrink: 0;
+}
+
+.body {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.learn {
+  align-self: flex-start;
+  font-family: var(--font-code);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+}
+
+/* Categories */
+.cats {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+
+.cat {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.catTitle {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.catDesc {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.always {
+  flex-shrink: 0;
+  font-family: var(--font-code);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--success);
+}
+
+.switch {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 30px;
+  border-radius: var(--pill);
+  border: 1px solid var(--line-strong);
+  background: transparent;
+  transition: background 0.25s var(--ease-out);
+}
+
+.switch::before {
+  content: "";
+  position: absolute;
+  inset: -8px; /* 46px touch target */
+}
+
+.switch[data-on="true"] {
+  background: var(--ink);
+}
+
+.knob {
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--ink-3);
+  transition:
+    transform 0.25s var(--ease-out),
+    background 0.25s;
+}
+
+.switch[data-on="true"] .knob {
+  transform: translateX(22px);
+  background: var(--chili);
+}
+
+/* Terms checkbox */
+.terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  font-size: 14px;
+  line-height: 1.45;
+  cursor: pointer;
+  transition: box-shadow 0.2s;
+}
+
+.terms[data-nudge="true"] {
+  box-shadow: 0 0 0 2px var(--chili);
+}
+
+.terms input {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  margin-top: 1px;
+  accent-color: var(--chili);
+}
+
+.inline {
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.hint {
+  font-size: 13px;
+  color: var(--danger);
+}
+
+/* Pinned to the card's bottom so the buttons stay reachable when the
+   customise view scrolls on short phones. */
+.actions {
+  position: sticky;
+  bottom: -16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 2px -18px -16px;
+  padding: 10px 18px 16px;
+  background: var(--card);
+  border-top: 1px solid var(--line);
+}
+
+.primary,
+.secondary,
+.ghost {
+  flex: 1 1 auto;
+  min-height: 46px;
+  padding: 0 16px;
+  border-radius: var(--pill);
+  font-weight: 600;
+  font-size: 14px;
+  transition:
+    transform 0.2s var(--ease-out),
+    opacity 0.2s;
+}
+
+.primary {
+  background: var(--chili);
+  color: var(--paper);
+}
+
+/* "Accept all" and "Necessary only" are equally prominent (no dark patterns). */
+.secondary {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.ghost {
+  border: 1px solid var(--line-strong);
+}
+
+.primary[aria-disabled="true"],
+.secondary[aria-disabled="true"] {
+  opacity: 0.45;
+}
+
+.primary:active,
+.secondary:active,
+.ghost:active {
+  transform: scale(0.97);
+}
+
+@keyframes up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}

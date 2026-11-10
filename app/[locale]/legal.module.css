@@ -7,3 +7,15 @@
   flex-direction: column;
   gap: 64px;
 }
+
+/* "Open cookie settings" button on the Cookies & data page. */
+.settings {
+  align-self: flex-start;
+  margin-top: 14px;
+  min-height: 48px;
+  padding: 0 22px;
+  border-radius: var(--pill);
+  background: var(--ink);
+  color: var(--paper);
+  font-weight: 600;
+}

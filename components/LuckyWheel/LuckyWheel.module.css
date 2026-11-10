@@ -20,6 +20,36 @@
   pointer-events: none;
 }
 
+/* Server-rendered stand-in with the same geometry as the 2D wheel (sizes come
+   from GEO in wheelMath.ts via --plate / --face-inset). Fades out once the
+   wheel is drawn. */
+.silhouette {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--plate, 91%);
+  height: var(--plate, 91%);
+  translate: -50% -50%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 30%, #3b302d, #1a1414 62%);
+  transition:
+    opacity 0.4s ease,
+    visibility 0s linear 0.4s;
+}
+
+.silhouette::after {
+  content: "";
+  position: absolute;
+  inset: var(--face-inset, 2%); /* face edge, from the shared geometry */
+  border-radius: 50%;
+  background: var(--slices);
+}
+
+.silhouette[data-hidden="true"] {
+  opacity: 0;
+  visibility: hidden;
+}
+
 .canvasHost {
   position: absolute;
   inset: 0;

@@ -9,7 +9,7 @@ import type { Dish } from "@/lib/dishes/types";
 import type { Place, PlacesResponse } from "@/lib/places/types";
 import { mapsSearchUrl, type LatLng } from "@/lib/geo";
 import { giveGeoConsent, hasGeoConsent } from "@/lib/geoConsent";
-import { dishImageSrc } from "@/lib/dishes/imageSrc";
+import { ResultPhoto } from "@/components/ResultPhoto/ResultPhoto";
 import { useI18n } from "@/components/Providers/I18nProvider";
 import { useSound } from "@/components/Providers/SoundProvider";
 import { PlaceCard } from "@/components/PlaceCard/PlaceCard";
@@ -196,12 +196,7 @@ export function ResultSheet({ dish, getLocation, onClose, onSpinAgain }: Props) 
           </h2>
           <div className={styles.heroRow}>
             <span className={styles.sticker} data-sticker aria-hidden>
-              {dish.image ? (
-                // eslint-disable-next-line @next/next/no-img-element
-                <img src={dishImageSrc(dish.image, 330)} alt="" decoding="async" />
-              ) : (
-                dish.emoji
-              )}
+              <ResultPhoto image={dish.image} emoji={dish.emoji} alt="" />
             </span>
             <div className={styles.heroSide} data-fade>
               {altName !== name && <p className={styles.alt}>{altName}</p>}
