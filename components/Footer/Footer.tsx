@@ -5,7 +5,13 @@ import { Reveal } from "@/components/Reveal/Reveal";
 import { ConsentSettingsButton } from "@/components/ConsentBanner/ConsentSettingsButton";
 import styles from "./Footer.module.css";
 
-export function Footer({ t, locale }: { t: Dictionary["footer"]; locale: Locale }) {
+export function Footer({
+  t,
+  locale,
+}: {
+  t: Dictionary["footer"];
+  locale: Locale;
+}) {
   const links = [
     { href: `/${locale}/guide`, label: t.guide },
     { href: `/${locale}/privacy`, label: t.privacy },
@@ -19,22 +25,39 @@ export function Footer({ t, locale }: { t: Dictionary["footer"]; locale: Locale 
         <em>{t.tagline}</em>
       </p>
       <span className={styles.rule} data-line />
-      <nav className={styles.links} aria-label={links.map((l) => l.label).join(" · ")}>
+      <nav
+        className={styles.links}
+        aria-label={links.map((l) => l.label).join(" · ")}
+      >
         {links.map((l) => (
           <Link key={l.href} href={l.href} className={styles.link}>
             {l.label}
           </Link>
         ))}
         {/* Withdrawing consent is as easy as giving it: one tap from every page. */}
-        <ConsentSettingsButton label={t.cookieSettings} className={styles.link} />
+        <ConsentSettingsButton
+          label={t.cookieSettings}
+          className={styles.link}
+        />
       </nav>
       <div className={styles.meta}>
         <span>{t.credit}</span>
         <span>{t.made}</span>
       </div>
+      <div className={styles.meta}></div>
       <p className={styles.giant} aria-hidden data-reveal>
         Ăn gì<span>?</span>
       </p>
+      <div className={styles.meta}>
+        <span>Made by</span>
+        <Link
+          key="portfolio"
+          href="https://truong-cong-tri-portfolio.vercel.app/en"
+          className={styles.link}
+        >
+          Cong Tri
+        </Link>
+      </div>
     </Reveal>
   );
 }
