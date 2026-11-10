@@ -54,6 +54,8 @@ export function Footer({
           key="portfolio"
           href="https://truong-cong-tri-portfolio.vercel.app/en"
           className={styles.link}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           Cong Tri
         </Link>
