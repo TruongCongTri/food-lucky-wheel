@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Em thích ăn gì? - Vòng quay những món em thích",
-    "description": "Quay vòng may mắn để chọn món em thích và tìm quán ngon, được đánh giá cao gần nơi chúng ta đang đứng."
+    "title": "Hôm nay em muốn ăn gì? – Vòng quay món ngon yêu thích",
+    "description": "Cùng quay vòng may mắn để chọn món em yêu thích, rồi tìm những quán ăn ngon được đánh giá cao gần chúng ta. Mong rằng chúng ta sẽ còn cùng nhau khám phá thật nhiều món ngon và tạo nên thật nhiều kỷ niệm đẹp nhé!"
   },
   "intro": {
     "serving": "Đang dọn món",
@@ -13,7 +13,7 @@
     "soundOff": "Tắt âm thanh",
     "sound": "Âm thanh",
     "language": "Ngôn ngữ",
-    "tagline": "Đi với nhau thật lâu để cùng nhau thưởng thức thật nhiều món ăn ngon em nhé"
+    "tagline": "Mong chúng ta sẽ bên nhau thật lâu, cùng nhau thưởng thức thật nhiều món ngon và tạo nên thật nhiều kỷ niệm đẹp em nhé!"
   },
   "nav": {
     "wheel": "Vòng quay",

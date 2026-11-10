@@ -1,7 +1,7 @@
 {
   "meta": {
-  "title": "What Would You Like to Eat, My Dear? – A Wheel of Your Favorite Foods",
-  "description": "Spin the wheel of fortune to discover what you're craving, then find highly rated restaurants nearby where we can enjoy a lovely meal together."
+    "title": "What Would You Like to Eat, My Dear? – A Wheel of Your Favorite Foods",
+    "description": "Spin the wheel of fortune to discover what you're craving, then find highly rated restaurants nearby where we can enjoy a lovely meal together."
   },
   "intro": {
     "serving": "Setting the table",
@@ -13,7 +13,7 @@
     "soundOff": "Turn sound off",
     "sound": "Sound",
     "language": "Language",
-    "tagline": "May we stay together for a long time, sharing countless delicious meals along the way."
+    "tagline": "May we stay together for a long, long time, sharing countless delicious meals and making beautiful memories along the way."
   },
   "nav": {
     "wheel": "Wheel",
