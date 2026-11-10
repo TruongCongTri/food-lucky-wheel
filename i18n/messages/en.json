@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "What to eat? — Vietnamese food wheel",
-    "description": "Spin the lucky wheel to pick a Vietnamese dish and find top-rated places to eat it near you."
+  "title": "What Would You Like to Eat, My Dear? – A Wheel of Your Favorite Foods",
+  "description": "Spin the wheel of fortune to discover what you're craving, then find highly rated restaurants nearby where we can enjoy a lovely meal together."
   },
   "intro": {
     "serving": "Setting the table",
@@ -13,7 +13,7 @@
     "soundOff": "Turn sound off",
     "sound": "Sound",
     "language": "Language",
-    "tagline": "Let's stay together for a long, long time and enjoy so many dishes together"
+    "tagline": "May we stay together for a long time, sharing countless delicious meals along the way."
   },
   "nav": {
     "wheel": "Wheel",

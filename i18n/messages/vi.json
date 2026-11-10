@@ -1,7 +1,7 @@
 {
   "meta": {
-    "title": "Ăn gì? — Vòng quay món Việt",
-    "description": "Quay vòng may mắn để chọn món Việt và tìm quán ngon, được đánh giá cao gần bạn."
+    "title": "Em thích ăn gì? - Vòng quay những món em thích",
+    "description": "Quay vòng may mắn để chọn món em thích và tìm quán ngon, được đánh giá cao gần nơi chúng ta đang đứng."
   },
   "intro": {
     "serving": "Đang dọn món",
@@ -11,9 +11,9 @@
     "brand": "Ăn gì?",
     "soundOn": "Bật âm thanh",
     "soundOff": "Tắt âm thanh",
-    "sound": "Âm",
+    "sound": "Âm thanh",
     "language": "Ngôn ngữ",
-    "tagline": "Đi với nhau thật lâu để cùng nhau thưởng thức thật nhiều món ăn nhé"
+    "tagline": "Đi với nhau thật lâu để cùng nhau thưởng thức thật nhiều món ăn ngon em nhé"
   },
   "nav": {
     "wheel": "Vòng quay",
