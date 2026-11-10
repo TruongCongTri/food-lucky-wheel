@@ -97,7 +97,7 @@ export default async function LocaleLayout({
         <AppProviders locale={locale} dict={dict}>
           <Header />
           {children}
-          <Dock />
+          {/* <Dock /> */}
           <ConsentBanner />
           <PageTransition />
         </AppProviders>
