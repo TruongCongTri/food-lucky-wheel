@@ -6,6 +6,7 @@ import type { Dictionary } from "@/i18n/dictionaries";
 import { expectGate, markHydrated, waitFor } from "@/lib/appReady";
 import { I18nProvider } from "./I18nProvider";
 import { SoundProvider } from "./SoundProvider";
+import { AudioProvider } from "./AudioProvider";
 import { SmoothScroll } from "./SmoothScroll";
 
 export function AppProviders({
@@ -33,7 +34,9 @@ export function AppProviders({
   return (
     <I18nProvider locale={locale} dict={dict}>
       <SoundProvider>
-        <SmoothScroll>{children}</SmoothScroll>
+        <AudioProvider>
+          <SmoothScroll>{children}</SmoothScroll>
+        </AudioProvider>
       </SoundProvider>
     </I18nProvider>
   );

@@ -86,6 +86,20 @@ After the preload screen, first-time visitors see a privacy panel (`components/C
 - **Security headers** (`next.config.ts`): HSTS, nosniff, `X-Frame-Options: DENY`, a strict Referrer-Policy, a Permissions-Policy that allows geolocation only for this site, and COOP. `X-Powered-By` is off. A nonce-based Content-Security-Policy is still to do.
 - **Cybersecurity law:** the Terms cite Law on Cybersecurity No. 116/2025/QH15, in force 1 July 2026, which replaces Law 24/2018/QH14.
 
+## Background music
+
+Albums stream from Cloudflare R2. Set `NEXT_PUBLIC_R2_PUBLIC_URL` in `.env.local` (files live under `/albums/<id>/`), then restart or rebuild, because `NEXT_PUBLIC_*` values are inlined at build time. The album list is in `lib/discography.ts`. Without the URL, the player is hidden.
+
+- **One persistent `<audio>` element** ([components/Providers/AudioProvider.tsx](components/Providers/AudioProvider.tsx)). It streams the files with range requests and never decodes them into memory. It plays every album in turn and loops back to the first, or repeats one album.
+- **No `crossOrigin`.** The bucket sends no CORS headers, and the app never reads the audio samples.
+- **Starting.** While the preload screen is up, only the file's metadata loads. A tap during that time unlocks audio silently, so the music fades in when the screen lifts. Otherwise the first tap afterwards starts it, and the player button pulses until then.
+- **Never auto-starts** when the header sound switch is off, Data Saver is on, or the person has pressed pause.
+- **Background tabs:** on desktop (mouse or trackpad as the main pointer), music keeps playing when you switch tabs or windows. On phones and tablets it pauses while the app is in the background and resumes on return.
+- **Preloading the next album** starts only 90 s before the current one ends.
+- **Lock-screen controls** use the Media Session API. On iOS, the audio session is set to `playback` while music plays, so it plays even with the silent switch on.
+- **Remembering the album** (`lw:music`) needs Preferences consent. Cloudflare is listed as a third party on the Privacy and Cookies pages.
+- **Player UI**: [components/MusicPlayer/](components/MusicPlayer/). Each album should be AAC `.m4a` at 128–160 kbps with the `moov` atom first (`ffmpeg -movflags +faststart`), so playback starts before the whole file downloads.
+
 ## Wheel rendering and performance
 
 The wheel is built as progressive enhancement, so it shows up fast and never stays blank on weak or old phones:

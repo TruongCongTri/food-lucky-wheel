@@ -15,7 +15,8 @@
  * Categories:
  *  - necessary   (always on): language cookie, this consent record, admin PIN
  *                 for the session, HTTP caching, security logs.
- *  - preferences (opt-in):    remember the sound on/off choice.
+ *  - preferences (opt-in):    remember the sound on/off choice and the
+ *                 background-music album / repeat mode.
  *  - location    (opt-in):    use precise location to find places (sensitive);
  *                 the browser still asks for permission separately.
  * Bump CONSENT_VERSION when the policy changes materially → everyone is asked again.
@@ -60,6 +61,7 @@ export function saveConsent(choices: ConsentChoices) {
   if (!choices.preferences) {
     try {
       localStorage.removeItem("lw:sound");
+      localStorage.removeItem("lw:music");
     } catch {
       /* ignore */
     }

@@ -9,6 +9,7 @@ import { Dock } from "@/components/Dock/Dock";
 import { Intro, INTRO_SCRIPT } from "@/components/Intro/Intro";
 import { PageTransition } from "@/components/PageTransition/PageTransition";
 import { ConsentBanner } from "@/components/ConsentBanner/ConsentBanner";
+import { MusicPlayer } from "@/components/MusicPlayer/MusicPlayer";
 import "../global.css";
 
 /**
@@ -98,6 +99,7 @@ export default async function LocaleLayout({
           <Header />
           {children}
           <Dock />
+          <MusicPlayer />
           <ConsentBanner />
           <PageTransition />
         </AppProviders>

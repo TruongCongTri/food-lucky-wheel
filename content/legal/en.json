@@ -97,7 +97,7 @@
         "list": [
           "Your device's precise location — only with your consent. This is sensitive personal data, so we only process it after you explicitly agree in the app and grant permission in your browser.",
           "Technical data: IP address, browser type and access time, recorded in our hosting provider's server logs to run and secure the service.",
-          "Data stored on your device: a language cookie (NEXT_LOCALE, 1 year); in browser storage: your cookie/privacy choices, your location-consent record, your sound preference (only if you turn on “Preferences”) and (for admins) the PIN for the session. See the Cookies & data page for each item.",
+          "Data stored on your device: a language cookie (NEXT_LOCALE, 1 year); in browser storage: your cookie/privacy choices, your location-consent record, your sound and background-music preferences (only if you turn on “Preferences”) and (for admins) the PIN for the session. See the Cookies & data page for each item.",
           "We require no account, collect no name or phone number, and use no advertising cookies or behavioural analytics."
         ]
       },
@@ -138,6 +138,7 @@
         "list": [
           "Google LLC (Google Maps Platform): receives coordinates and the search keyword to return places; receives your IP address when you open Google Maps.",
           "Wikimedia Foundation: dish photos are fetched and cached by our server and served to you via /api/img, so your browser never connects to Wikimedia. Only photos an admin enters from other sites load directly from those sites.",
+          "Cloudflare, Inc. (Cloudflare R2): stores and streams the background music and album covers; receives your IP address and browser details when those files load. We send Cloudflare nothing else.",
           "Our website hosting provider: processes technical logs."
         ],
         "paragraphs": [
@@ -319,6 +320,7 @@
           "lw:consent — strictly necessary — your privacy panel choices (version, time, each category) so we don't ask again — until you clear site data or the policy changes.",
           "lw:geo-consent — location — record that you consented to location use, and when — until you withdraw.",
           "lw:sound — preferences — sound on/off — stored only if “Preferences” is on; deleted when you turn it off.",
+          "lw:music — preferences — the background-music album you're listening to and the repeat mode — stored only if “Preferences” is on; deleted when you turn it off.",
           "lw:pin (sessionStorage) — strictly necessary, admins only — the menu-management PIN — cleared when the tab closes."
         ]
       },
@@ -345,6 +347,7 @@
         "list": [
           "Google Maps Platform: receives coordinates and the keyword for place searches (via our server); place photos load from Google's servers; when you open Google Maps, Google's own policies apply.",
           "Wikimedia Commons: no direct connection — photos go through our server.",
+          "Cloudflare, Inc. (Cloudflare R2): background music and album covers stream directly from Cloudflare's storage, so Cloudflare receives your IP address and browser details when the player is shown or music plays. Music only starts after you tap the page and can be stopped with the sound switch or the pause button.",
           "Fonts are hosted on this site itself (no calls to Google Fonts)."
         ]
       },

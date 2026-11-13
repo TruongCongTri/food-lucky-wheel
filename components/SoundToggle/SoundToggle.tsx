@@ -19,6 +19,7 @@ export function SoundToggle() {
       aria-label={label}
       title={label}
       data-on={enabled}
+      data-sound-toggle // its own tap never auto-starts the background music
     >
       <span className={styles.eq} aria-hidden>
         <i />

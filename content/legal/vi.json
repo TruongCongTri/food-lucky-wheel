@@ -97,7 +97,7 @@
         "list": [
           "Vị trí chính xác của thiết bị — chỉ khi bạn đồng ý. Đây là dữ liệu cá nhân nhạy cảm, nên chúng tôi chỉ xử lý sau khi bạn đồng ý rõ ràng trong ứng dụng và cấp quyền trên trình duyệt.",
           "Dữ liệu kỹ thuật: địa chỉ IP, loại trình duyệt và thời điểm truy cập, được ghi trong nhật ký máy chủ của nhà cung cấp dịch vụ lưu trữ để vận hành và bảo đảm an ninh.",
-          "Dữ liệu lưu trên thiết bị của bạn: cookie ngôn ngữ (NEXT_LOCALE, 1 năm); trong bộ nhớ trình duyệt: lựa chọn đồng ý cookie/quyền riêng tư, bản ghi sự đồng ý dùng vị trí, lựa chọn âm thanh (chỉ khi bạn bật “Ghi nhớ tuỳ chọn”) và (với quản trị viên) mã PIN trong phiên làm việc. Chi tiết từng mục xem trang Cookie & dữ liệu.",
+          "Dữ liệu lưu trên thiết bị của bạn: cookie ngôn ngữ (NEXT_LOCALE, 1 năm); trong bộ nhớ trình duyệt: lựa chọn đồng ý cookie/quyền riêng tư, bản ghi sự đồng ý dùng vị trí, lựa chọn âm thanh và nhạc nền (chỉ khi bạn bật “Ghi nhớ tuỳ chọn”) và (với quản trị viên) mã PIN trong phiên làm việc. Chi tiết từng mục xem trang Cookie & dữ liệu.",
           "Chúng tôi không yêu cầu tài khoản, không thu thập họ tên, số điện thoại, không dùng cookie quảng cáo hay công cụ phân tích hành vi."
         ]
       },
@@ -138,6 +138,7 @@
         "list": [
           "Google LLC (Google Maps Platform): nhận tọa độ và từ khóa tìm kiếm để trả danh sách quán; nhận địa chỉ IP khi bạn mở Google Maps.",
           "Wikimedia Foundation: ảnh món ăn được máy chủ của chúng tôi tải về và lưu đệm rồi trả cho bạn (qua /api/img), nên trình duyệt của bạn không kết nối trực tiếp tới Wikimedia. Chỉ ảnh do quản trị viên nhập từ trang khác mới tải trực tiếp từ trang đó.",
+          "Cloudflare, Inc. (Cloudflare R2): lưu trữ và phát trực tuyến nhạc nền cùng ảnh bìa album; nhận địa chỉ IP và thông tin trình duyệt của bạn khi tải các tệp này. Chúng tôi không gửi dữ liệu nào khác cho Cloudflare.",
           "Nhà cung cấp dịch vụ lưu trữ website: xử lý nhật ký kỹ thuật."
         ],
         "paragraphs": [
@@ -319,6 +320,7 @@
           "lw:consent — cần thiết — lưu lựa chọn trong bảng quyền riêng tư (phiên bản, thời điểm, từng mục) để không hỏi lại — đến khi bạn xoá dữ liệu trang hoặc chính sách đổi.",
           "lw:geo-consent — vị trí — bản ghi bạn đã đồng ý dùng vị trí và thời điểm — đến khi bạn rút lại.",
           "lw:sound — ghi nhớ tuỳ chọn — bật/tắt âm thanh — chỉ lưu khi bạn bật “Ghi nhớ tuỳ chọn”, bị xoá khi bạn tắt.",
+          "lw:music — ghi nhớ tuỳ chọn — album nhạc nền đang nghe và chế độ lặp lại — chỉ lưu khi bạn bật “Ghi nhớ tuỳ chọn”, bị xoá khi bạn tắt.",
           "lw:pin (sessionStorage) — cần thiết, chỉ quản trị viên — mã PIN quản lý thực đơn — tự xoá khi đóng tab."
         ]
       },
@@ -345,6 +347,7 @@
         "list": [
           "Google Maps Platform: nhận tọa độ và từ khoá khi tìm quán (qua máy chủ của chúng tôi); ảnh quán được tải từ máy chủ của Google; khi bạn mở Google Maps, Google áp dụng chính sách riêng của họ.",
           "Wikimedia Commons: không kết nối trực tiếp — ảnh đi qua máy chủ của chúng tôi.",
+          "Cloudflare, Inc. (Cloudflare R2): nhạc nền và ảnh bìa album được phát trực tiếp từ máy chủ lưu trữ của Cloudflare, nên Cloudflare nhận địa chỉ IP và thông tin trình duyệt của bạn khi trình phát được hiển thị hoặc khi nhạc phát. Nhạc chỉ bắt đầu sau khi bạn chạm vào trang và có thể tắt bằng nút âm thanh hoặc nút tạm dừng.",
           "Phông chữ được lưu trên chính trang này (không gọi Google Fonts)."
         ]
       },

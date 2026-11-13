@@ -154,11 +154,29 @@
     },
     "preferences": {
       "title": "Ghi nhớ tuỳ chọn",
-      "desc": "Lưu lựa chọn bật/tắt âm thanh trên thiết bị này."
+      "desc": "Lưu lựa chọn bật/tắt âm thanh và album nhạc nền đang nghe trên thiết bị này."
     },
     "location": {
       "title": "Vị trí",
       "desc": "Dùng vị trí hiện tại (một lần, không lưu) để tìm quán gần bạn. Trình duyệt vẫn sẽ hỏi quyền."
     }
+  },
+  "music": {
+    "title": "Nhạc nền",
+    "play": "Phát nhạc nền",
+    "pause": "Tạm dừng nhạc nền",
+    "next": "Bài tiếp theo",
+    "prev": "Bài trước",
+    "open": "Mở trình phát nhạc",
+    "close": "Đóng trình phát nhạc",
+    "albums": "Album",
+    "loopAll": "Phát lần lượt tất cả album",
+    "loopOne": "Lặp lại album này",
+    "seek": "Vị trí phát",
+    "tapToStart": "Chạm để bật nhạc",
+    "loading": "Đang tải…",
+    "error": "Không tải được nhạc — chạm để thử lại",
+    "playing": "Đang phát",
+    "paused": "Đã dừng"
   }
 }

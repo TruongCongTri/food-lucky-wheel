@@ -154,11 +154,29 @@
     },
     "preferences": {
       "title": "Preferences",
-      "desc": "Remember your sound on/off choice on this device."
+      "desc": "Remember your sound on/off choice and the background-music album on this device."
     },
     "location": {
       "title": "Location",
       "desc": "Use your current location (once, not stored) to find places near you. Your browser will still ask for permission."
     }
+  },
+  "music": {
+    "title": "Background music",
+    "play": "Play background music",
+    "pause": "Pause background music",
+    "next": "Next",
+    "prev": "Previous",
+    "open": "Open music player",
+    "close": "Close music player",
+    "albums": "Albums",
+    "loopAll": "Play all albums in turn",
+    "loopOne": "Repeat this album",
+    "seek": "Playback position",
+    "tapToStart": "Tap to start the music",
+    "loading": "Loading…",
+    "error": "Couldn't load the music — tap to retry",
+    "playing": "Playing",
+    "paused": "Paused"
   }
 }
