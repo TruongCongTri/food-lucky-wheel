@@ -49,3 +49,4 @@ export const NextIcon = filled("M5 6.2v11.6a.9.9 0 0 0 1.4.75L15 12.75a.9.9 0 0 
 export const PrevIcon = filled("M19 6.2v11.6a.9.9 0 0 1-1.4.75L9 12.75a.9.9 0 0 1 0-1.5l8.6-5.8A.9.9 0 0 1 19 6.2ZM5 5h2.4v14H5z");
 export const RepeatOneIcon = filled("M17 3l4 4-4 4V8H7a1 1 0 0 0-1 1v3H4V9a3 3 0 0 1 3-3h10V3Zm-10 18-4-4 4-4v3h10a1 1 0 0 0 1-1v-3h2v3a3 3 0 0 1-3 3H7v3Zm4.2-5.5V10.8l-1.3.5V10l2-.9h.9v6.4h-1.6Z");
 export const RepeatAllIcon = filled("M17 3l4 4-4 4V8H7a1 1 0 0 0-1 1v3H4V9a3 3 0 0 1 3-3h10V3ZM7 21l-4-4 4-4v3h10a1 1 0 0 0 1-1v-3h2v3a3 3 0 0 1-3 3H7v3Z");
+export const ListIcon = filled("M3 5.5h12v2.2H3zM3 10.9h12v2.2H3zM3 16.3h8v2.2H3zM16.5 13.2v5.6a2.2 2.2 0 1 1-1.6-2.1V9.5l5.1-1.4v2.2l-3.5 1Z");

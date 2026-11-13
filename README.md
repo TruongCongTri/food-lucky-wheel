@@ -98,7 +98,7 @@ Albums stream from Cloudflare R2. Set `NEXT_PUBLIC_R2_PUBLIC_URL` in `.env.local
 - **Preloading the next album** starts only 90 s before the current one ends.
 - **Lock-screen controls** use the Media Session API. On iOS, the audio session is set to `playback` while music plays, so it plays even with the silent switch on.
 - **Remembering the album** (`lw:music`) needs Preferences consent. Cloudflare is listed as a third party on the Privacy and Cookies pages.
-- **Player UI**: [components/MusicPlayer/](components/MusicPlayer/). Each album should be AAC `.m4a` at 128–160 kbps with the `moov` atom first (`ffmpeg -movflags +faststart`), so playback starts before the whole file downloads.
+- **Player UI**: [components/MusicPlayer/](components/MusicPlayer/). The list button, or the cover, opens a list of every song across all albums; tap one to play it. On desktop, hovering the player shows the list, and a click keeps it open. Each album should be AAC `.m4a` at 128–160 kbps with the `moov` atom first (`ffmpeg -movflags +faststart`), so playback starts before the whole file downloads.
 
 ## Wheel rendering and performance
 

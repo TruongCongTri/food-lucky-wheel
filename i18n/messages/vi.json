@@ -169,7 +169,6 @@
     "prev": "Bài trước",
     "open": "Mở trình phát nhạc",
     "close": "Đóng trình phát nhạc",
-    "albums": "Album",
     "loopAll": "Phát lần lượt tất cả album",
     "loopOne": "Lặp lại album này",
     "seek": "Vị trí phát",
@@ -177,7 +176,10 @@
     "loading": "Đang tải…",
     "error": "Không tải được nhạc — chạm để thử lại",
     "playing": "Đang phát",
-    "paused": "Đã dừng"
+    "paused": "Đã dừng",
+    "showList": "Xem danh sách bài hát",
+    "hideList": "Ẩn danh sách bài hát",
+    "allSongs": "Tất cả bài hát"
   },
   "cursor": {
     "drag": "Kéo",

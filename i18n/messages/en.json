@@ -169,7 +169,6 @@
     "prev": "Previous",
     "open": "Open music player",
     "close": "Close music player",
-    "albums": "Albums",
     "loopAll": "Play all albums in turn",
     "loopOne": "Repeat this album",
     "seek": "Playback position",
@@ -177,7 +176,10 @@
     "loading": "Loading…",
     "error": "Couldn't load the music — tap to retry",
     "playing": "Playing",
-    "paused": "Paused"
+    "paused": "Paused",
+    "showList": "Show all songs",
+    "hideList": "Hide song list",
+    "allSongs": "All songs"
   },
   "cursor": {
     "drag": "Drag",

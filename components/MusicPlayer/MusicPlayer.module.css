@@ -117,6 +117,10 @@
 
 .play,
 .next {
+  transition:
+    background 0.2s,
+    color 0.2s,
+    transform 0.2s var(--ease-out);
   display: grid;
   place-items: center;
   flex-shrink: 0;
@@ -124,7 +128,6 @@
   height: 46px;
   border-radius: 50%;
   font-size: 18px;
-  transition: transform 0.2s var(--ease-out);
 }
 
 .play {
@@ -159,12 +162,14 @@
 }
 
 /* --- Drawer ------------------------------------------------------------------ */
+/* The controls stay put at the top; only the song list scrolls. */
 .drawer {
+  display: flex;
+  flex-direction: column;
   width: min(330px, calc(100vw - 2 * var(--gutter)));
   max-height: min(70dvh, 560px);
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  padding: 14px 14px 10px;
+  overflow: hidden;
+  padding: 14px 14px 0;
   border-radius: var(--radius-lg);
   background: var(--card);
   color: var(--ink);
@@ -199,6 +204,9 @@
 }
 
 .x {
+  transition:
+    background 0.2s,
+    color 0.2s;
   display: grid;
   place-items: center;
   width: 34px;
@@ -303,6 +311,9 @@
 }
 
 .ctrl {
+  transition:
+    background 0.2s,
+    transform 0.2s var(--ease-out);
   display: grid;
   place-items: center;
   width: 42px;
@@ -318,6 +329,9 @@
 }
 
 .bigPlay {
+  transition:
+    background 0.2s,
+    transform 0.2s var(--ease-out);
   display: grid;
   place-items: center;
   width: 50px;
@@ -346,7 +360,8 @@
 }
 
 .listHead {
-  margin: 12px 0 4px;
+  margin: 12px 0 2px;
+  padding-bottom: 6px;
   padding-top: 10px;
   border-top: 1px solid var(--line);
   font-family: var(--font-code);
@@ -356,80 +371,244 @@
   color: var(--ink-3);
 }
 
-.list {
-  list-style: none;
-  padding: 0;
+.count {
+  margin-left: 4px;
+  padding: 1px 6px;
+  border-radius: var(--pill);
+  background: var(--paper-2);
+  color: var(--ink-2);
 }
 
-.albumBtn {
+.top {
+  flex-shrink: 0;
+}
+
+.list {
+  --edge: 18px;
+  position: relative; /* rows' offsetTop is measured from here */
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  list-style: none;
+  margin: 0 -10px 0 -6px; /* rows line up with the controls; scrollbar sits in the drawer's padding */
+  padding: 2px 4px 12px 0;
+  /* Soft fade where more songs are hidden (toggled from the scroll position). */
+  --mask: linear-gradient(
+    to bottom,
+    transparent 0,
+    #000 var(--fade-top, 0px),
+    #000 calc(100% - var(--fade-bottom, 0px)),
+    transparent 100%
+  );
+  -webkit-mask-image: var(--mask);
+  mask-image: var(--mask);
+}
+
+.list[data-more-above="true"] {
+  --fade-top: var(--edge);
+}
+
+.list[data-more-below="true"] {
+  --fade-bottom: var(--edge);
+}
+
+/* Custom scrollbar: thin chili thumb on a faint track. */
+.list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.list::-webkit-scrollbar-track {
+  margin: 6px 0 14px;
+  border-radius: 3px;
+  background: var(--line);
+}
+
+.list::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--chili);
+}
+
+.list::-webkit-scrollbar-thumb:hover {
+  background: var(--chili-deep);
+}
+
+/* Firefox (and browsers without ::-webkit-scrollbar). Chrome would let these
+   override the rules above, so they only apply where those aren't supported. */
+@supports not selector(::-webkit-scrollbar) {
+  .list {
+    scrollbar-width: thin;
+    scrollbar-color: var(--chili) var(--line);
+  }
+}
+
+/* One row per song (all albums, in play order) */
+.songBtn {
   display: flex;
   align-items: center;
   gap: 10px;
   width: 100%;
-  min-height: 48px;
+  min-height: 54px;
   padding: 6px;
   border-radius: var(--radius-sm);
   text-align: left;
   transition: background 0.2s;
 }
 
-.albumBtn img {
+.songN {
   flex-shrink: 0;
-  width: 36px;
-  height: 36px;
-  border-radius: 6px;
-  object-fit: cover;
+  width: 18px;
+  font-family: var(--font-code);
+  font-size: 10px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+}
+
+.thumb {
+  position: relative;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 7px;
+  overflow: hidden;
   background: var(--paper-2);
 }
 
-.albumBtn[data-active="true"] {
-  background: var(--paper);
+.thumb img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-.albumText {
+/* Play/pause glyph over the cover: on hover, and on the current song */
+.thumbIcon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: rgba(26, 20, 20, 0.55);
+  color: var(--paper);
+  font-size: 15px;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.songText {
   display: flex;
   flex: 1;
   flex-direction: column;
   min-width: 0;
+  gap: 1px;
 }
 
-.albumTitle {
+.songTitle {
+  display: -webkit-box;
   overflow: hidden;
   font-weight: 600;
   font-size: 14px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+  line-height: 1.25;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
-.albumBtn[data-active="true"] .albumTitle {
-  color: var(--chili-deep);
-}
-
-.albumYear {
+.songSub {
+  overflow: hidden;
   font-family: var(--font-code);
   font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  text-overflow: ellipsis;
   color: var(--ink-3);
 }
 
-.tracks {
-  list-style: none;
-  padding: 2px 0 4px 52px;
+.songBtn[data-active="true"] {
+  background: var(--paper);
 }
 
-.trackBtn {
-  width: 100%;
-  min-height: 36px;
-  text-align: left;
-  font-size: 13px;
-  color: var(--ink-2);
-}
-
-.trackBtn[data-active="true"] {
-  font-weight: 700;
+.songBtn[data-active="true"] .songTitle {
   color: var(--chili-deep);
 }
 
-/* Mini equalizer next to the playing album */
+.songBtn:active {
+  transform: scale(0.99);
+}
+
+/* List button on the pill */
+.listBtn {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 46px;
+  margin-right: 2px;
+  border-radius: var(--pill);
+  color: rgba(243, 237, 227, 0.75);
+  font-size: 18px;
+  transition:
+    color 0.2s,
+    background 0.2s,
+    transform 0.2s var(--ease-out);
+}
+
+.listBtn[data-on="true"] {
+  color: var(--chili);
+}
+
+.listBtn:active {
+  transform: scale(0.92);
+}
+
+/* --- Hover (mouse / trackpad only) ----------------------------------------------------- */
+@media (hover: hover) and (pointer: fine) {
+  .disc:hover img {
+    filter: brightness(1.12);
+  }
+
+  .play:hover {
+    background: var(--chili-deep);
+    transform: scale(1.06);
+  }
+
+  .next:hover,
+  .listBtn:hover {
+    color: var(--paper);
+    background: rgba(243, 237, 227, 0.1);
+  }
+
+  .x:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .ctrl:hover {
+    background: var(--paper-2);
+  }
+
+  .ctrl[aria-pressed="true"]:hover {
+    background: var(--ink-2);
+  }
+
+  .bigPlay:hover {
+    background: var(--chili-deep);
+    transform: scale(1.05);
+  }
+
+  .songBtn:hover {
+    background: var(--paper-2);
+  }
+
+  .songBtn:hover .thumbIcon {
+    opacity: 1;
+  }
+}
+
+.songBtn[data-active="true"] .thumbIcon {
+  opacity: 1;
+}
+
+/* Mini equalizer next to the playing song */
 .eq {
   display: inline-flex;
   align-items: flex-end;
