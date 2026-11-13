@@ -178,5 +178,9 @@
     "error": "Không tải được nhạc — chạm để thử lại",
     "playing": "Đang phát",
     "paused": "Đã dừng"
+  },
+  "cursor": {
+    "drag": "Kéo",
+    "release": "Thả"
   }
 }

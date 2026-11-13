@@ -178,5 +178,9 @@
     "error": "Couldn't load the music — tap to retry",
     "playing": "Playing",
     "paused": "Paused"
+  },
+  "cursor": {
+    "drag": "Drag",
+    "release": "Release"
   }
 }

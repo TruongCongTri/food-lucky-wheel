@@ -194,3 +194,14 @@ label,
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Custom cursor (components/Cursor) — mouse/trackpad only. The native cursor
+   is hidden everywhere except text fields, which keep their caret. */
+html[data-cursor="on"],
+html[data-cursor="on"] * {
+  cursor: none !important;
+}
+
+html[data-cursor="on"] :is(input:not([type="checkbox"], [type="range"], [type="radio"]), textarea, [contenteditable="true"]) {
+  cursor: text !important;
+}

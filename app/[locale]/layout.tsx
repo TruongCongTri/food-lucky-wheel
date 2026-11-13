@@ -10,6 +10,7 @@ import { Intro, INTRO_SCRIPT } from "@/components/Intro/Intro";
 import { PageTransition } from "@/components/PageTransition/PageTransition";
 import { ConsentBanner } from "@/components/ConsentBanner/ConsentBanner";
 import { MusicPlayer } from "@/components/MusicPlayer/MusicPlayer";
+import { Cursor } from "@/components/Cursor/Cursor";
 import "../global.css";
 
 /**
@@ -102,6 +103,7 @@ export default async function LocaleLayout({
           <MusicPlayer />
           <ConsentBanner />
           <PageTransition />
+          <Cursor />
         </AppProviders>
       </body>
     </html>
