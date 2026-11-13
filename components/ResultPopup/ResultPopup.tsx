@@ -28,14 +28,33 @@ export function ResultPopup({ readoutRef, dish, onClose, onFindPlaces, onSpinAga
   const rootRef = useRef<HTMLDivElement>(null);
   const closing = useRef(false);
 
+  // Entrance: one slide-up of the whole card plus a backdrop fade —
+  // transform/opacity only, no scale or overshoot, so it stays on the GPU
+  // compositor even on old phones. The timeline is built paused and started on
+  // the next frame: mounting the popup is the expensive frame, and starting the
+  // clock after it means the first visible frame is the start of the motion,
+  // not a jump into the middle of it.
   useGSAP(
     () => {
-      gsap.fromTo("[data-backdrop]", { opacity: 0 }, { opacity: 1, duration: 0.3 });
-      gsap.fromTo(
-        "[data-card]",
-        { y: 60, scale: 0.92, opacity: 0 },
-        { y: 0, scale: 1, opacity: 1, duration: 0.6, ease: "back.out(1.6)" },
-      );
+      const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const tl = gsap
+        .timeline({ paused: true })
+        .fromTo("[data-backdrop]", { opacity: 0 }, { opacity: 1, duration: reduced ? 0.15 : 0.32, ease: "none" }, 0)
+        .fromTo(
+          "[data-card]",
+          reduced ? { opacity: 0 } : { y: 90, opacity: 0 },
+          {
+            y: 0,
+            opacity: 1,
+            duration: reduced ? 0.15 : 0.46,
+            ease: "power3.out",
+            force3D: true,
+            clearProps: "transform", // crisp text once settled
+          },
+          0,
+        );
+      const raf = requestAnimationFrame(() => void tl.play());
+      return () => cancelAnimationFrame(raf);
     },
     { scope: rootRef },
   );
@@ -46,10 +65,10 @@ export function ResultPopup({ readoutRef, dish, onClose, onFindPlaces, onSpinAga
       closing.current = true;
       gsap.to(rootRef.current?.querySelector("[data-backdrop]") ?? [], { opacity: 0, duration: 0.25 });
       gsap.to(rootRef.current?.querySelector("[data-card]") ?? [], {
-        y: 40,
-        scale: 0.95,
+        y: 60,
         opacity: 0,
-        duration: 0.25,
+        duration: 0.22,
+        force3D: true,
         ease: "power2.in",
         onComplete: after,
       });
@@ -83,6 +102,7 @@ export function ResultPopup({ readoutRef, dish, onClose, onFindPlaces, onSpinAga
         </button>
         <Readout
           ref={readoutRef}
+          entrance="light"
           phase="result"
           dish={dish}
           canSpin

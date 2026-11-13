@@ -17,7 +17,8 @@
   },
   "nav": {
     "wheel": "Wheel",
-    "manage": "Menu"
+    "manage": "Menu",
+    "soon": "Under development"
   },
   "hero": {
     "index": "(01)",

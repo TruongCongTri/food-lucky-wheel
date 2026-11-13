@@ -13,6 +13,7 @@ import { ResultPhoto } from "@/components/ResultPhoto/ResultPhoto";
 import { useI18n } from "@/components/Providers/I18nProvider";
 import { introActive, onIntroExit } from "@/components/Intro/Intro";
 import styles from "./Readout.module.css";
+import { ArrowUpRight, SpinAgain } from "@/components/Icons/Icons";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -32,13 +33,28 @@ type Props = {
   canSpin: boolean;
   onFindPlaces: (origin: { x: number; y: number }) => void;
   onSpinAgain: () => void;
+  /**
+   * "light": inside the phone popup, which already slides in as a whole —
+   * only a short fade-up of the contents (none on low-end phones), instead of
+   * the full photo spin, so the card doesn't run nested animations.
+   */
+  entrance?: "full" | "light";
 };
 
 /**
  * The panel the pointer aims at (left of the wheel): headline when idle,
  * a live "slot" while spinning, and the picked dish when the wheel stops.
  */
-export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, onSpinAgain }: Props) {
+export function Readout({
+  ref,
+  className,
+  phase,
+  dish,
+  canSpin,
+  onFindPlaces,
+  onSpinAgain,
+  entrance = "full",
+}: Props) {
   const { locale, dict } = useI18n();
   const rootRef = useRef<HTMLDivElement>(null);
   const liveImg = useRef<HTMLImageElement>(null);
@@ -105,6 +121,19 @@ export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, on
         // forces a synchronous layout exactly at the result moment, which made
         // the reveal stutter on phones. Transforms + opacity only.
         const lowEnd = isLowEndDevice();
+        if (entrance === "light") {
+          if (!lowEnd) {
+            gsap.from("[data-photo], [data-split], [data-fade]", {
+              y: 12,
+              opacity: 0,
+              duration: 0.4,
+              stagger: 0.04,
+              delay: 0.14,
+              ease: "power2.out",
+            });
+          }
+          return;
+        }
         gsap
           .timeline()
           .from("[data-photo]", lowEnd
@@ -114,7 +143,7 @@ export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, on
           .from("[data-fade]", { y: 14, opacity: 0, duration: 0.5, stagger: 0.07, ease: "power3.out" }, 0.3);
       }
     },
-    { scope: rootRef, dependencies: [phase, dish?.id], revertOnUpdate: true },
+    { scope: rootRef, dependencies: [phase, dish?.id, entrance], revertOnUpdate: true },
   );
 
   const words = [
@@ -197,13 +226,15 @@ export function Readout({ ref, className, phase, dish, canSpin, onFindPlaces, on
               }}
             >
               <span className={styles.long}>{dict.result.findPlaces}</span>
-              <span className={styles.short}>{dict.result.findPlacesShort} ↗</span>
+              <span className={styles.short}>
+                {dict.result.findPlacesShort} <ArrowUpRight />
+              </span>
               <span className={styles.btnIcon} aria-hidden>
-                ↗
+                <ArrowUpRight />
               </span>
             </button>
             <button type="button" className={styles.secondary} onClick={onSpinAgain}>
-              ↻ {dict.result.spinAgain}
+              <SpinAgain /> {dict.result.spinAgain}
             </button>
           </div>
           {dish.image && dish.imagePage && (

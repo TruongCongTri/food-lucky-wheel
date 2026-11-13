@@ -17,7 +17,8 @@
   },
   "nav": {
     "wheel": "Vòng quay",
-    "manage": "Thực đơn"
+    "manage": "Thực đơn",
+    "soon": "Đang phát triển"
   },
   "hero": {
     "index": "(01)",

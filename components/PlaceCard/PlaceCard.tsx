@@ -6,6 +6,7 @@ import { directionsUrl, formatDistance, type LatLng } from "@/lib/geo";
 import { useI18n } from "@/components/Providers/I18nProvider";
 import { useSound } from "@/components/Providers/SoundProvider";
 import styles from "./PlaceCard.module.css";
+import { ArrowUpRight } from "@/components/Icons/Icons";
 
 type Props = { place: Place; rank: number; origin: LatLng | null; fallbackEmoji: string };
 
@@ -80,7 +81,7 @@ export function PlaceCard({ place, rank, origin, fallbackEmoji }: Props) {
         >
           {dict.result.directions}
           <span className={styles.arrow} aria-hidden>
-            ↗
+            <ArrowUpRight />
           </span>
         </a>
         <a

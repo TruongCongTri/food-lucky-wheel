@@ -105,19 +105,25 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
     if (!isDesktop) setPopup(Date.now());
     // Burst from where the result photo sits — computed from the viewport, not
     // measured: reading layout right after the result renders forced a costly
-    // synchronous layout at the worst moment. Slight delay so the popup/panel
-    // entrance gets its first frames first.
+    // synchronous layout at the worst moment. On phones it waits until the
+    // popup has slid in, so the two never compete for the same frames.
     window.setTimeout(() => {
       const w = window.innerWidth;
       const h = window.innerHeight;
       confettiRef.current?.burst(isDesktop ? { x: w * 0.2, y: h * 0.42 } : { x: w / 2, y: h * 0.45 });
-    }, isDesktop ? 120 : 360);
+    }, isDesktop ? 120 : 520);
   }, []);
 
   // The places list opens and closes behind the page-transition curtain,
   // so it feels like moving to (and back from) its own page.
   const openPlaces = () => withCurtain(() => setPlaces(Date.now()), dict.result.loading);
-  const closePlaces = () => withCurtain(() => setPlaces(null));
+  // Phones: closing the list also drops the result popup it was opened from
+  // (under the same curtain), so one tap gets back to the wheel.
+  const closePlaces = () =>
+    withCurtain(() => {
+      setPlaces(null);
+      setPopup(null);
+    });
   // "Spin again" from the list: also drop the old result popup (phones) under the curtain.
   const closePlacesAndSpin = () =>
     withCurtain(() => {
@@ -137,7 +143,9 @@ export function HomeExperience({ initialDishes }: { initialDishes: Dish[] }) {
         <Readout
           ref={readoutRef}
           className={styles.readout}
-          phase={phase}
+          // Hidden on phones (the popup shows the result): keep it idle there so
+          // it doesn't render and animate a second, invisible result.
+          phase={desktop ? phase : "idle"}
           dish={result}
           canSpin={dishes.length >= 2}
           onFindPlaces={openPlaces}

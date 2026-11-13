@@ -14,6 +14,7 @@ import { useI18n } from "@/components/Providers/I18nProvider";
 import { useSound } from "@/components/Providers/SoundProvider";
 import { PlaceCard } from "@/components/PlaceCard/PlaceCard";
 import styles from "./ResultSheet.module.css";
+import { ArrowUpRight } from "@/components/Icons/Icons";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -235,7 +236,7 @@ export function ResultSheet({ dish, getLocation, onClose, onSpinAgain }: Props) 
               </p>
               <p>{dict.result.consentBody}</p>
               <a className={styles.policyLink} href={`/${locale}/privacy`} target="_blank" rel="noopener">
-                {dict.result.consentPolicy} ↗
+                {dict.result.consentPolicy} <ArrowUpRight />
               </a>
               <div className={styles.noticeActions}>
                 <button type="button" className={styles.mapsBtn} onClick={agree}>
@@ -288,7 +289,7 @@ export function ResultSheet({ dish, getLocation, onClose, onSpinAgain }: Props) 
                   </button>
                 )}
                 <a className={styles.mapsBtn} href={searchUrl} target="_blank" rel="noopener noreferrer">
-                  {dict.result.searchOnMaps} ↗
+                  {dict.result.searchOnMaps} <ArrowUpRight />
                 </a>
               </div>
             </div>
@@ -296,7 +297,7 @@ export function ResultSheet({ dish, getLocation, onClose, onSpinAgain }: Props) 
 
           {phase === "done" && places.length > 0 && (
             <a className={styles.moreLink} href={searchUrl} target="_blank" rel="noopener noreferrer">
-              {dict.result.searchOnMaps} ↗
+              {dict.result.searchOnMaps} <ArrowUpRight />
             </a>
           )}
         </section>
