@@ -96,7 +96,9 @@ export function DishManager() {
           ? t.errorDuplicate
           : code === "unauthorized"
             ? t.pinWrong
-            : t.errorGeneric;
+            : code === "storage_readonly"
+              ? t.errorStorage
+              : t.errorGeneric;
     if (code === "unauthorized") {
       try {
         sessionStorage.removeItem(PIN_KEY);

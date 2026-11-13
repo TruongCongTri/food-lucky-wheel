@@ -133,7 +133,8 @@
     "added": "Added {name}",
     "loading": "Loading…",
     "imageUrl": "Photo URL (optional)",
-    "imageUrlPlaceholder": "Leave empty: auto-find on Wikipedia"
+    "imageUrlPlaceholder": "Leave empty: auto-find on Wikipedia",
+    "errorStorage": "The server has no storage configured, so changes can't be saved."
   },
   "consent": {
     "title": "Your privacy",

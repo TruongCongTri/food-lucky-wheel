@@ -151,7 +151,13 @@ Real photos come from Wikipedia / Wikimedia Commons, which is free and needs no 
 
 `/[locale]/manage`: add dishes (Vietnamese name, optional English name, icon) or switch them off. "Removing" a dish only sets `active: false`; turning it back on restores it.
 
-Dishes are stored in `data/dishes.json` through `lib/dishes/store.ts`. The file system is read-only on serverless hosts (Vercel etc.), so replace that module with a database or KV store before deploying there.
+Where the list is stored ([lib/dishes/storage.ts](lib/dishes/storage.ts)):
+
+- **Production (Vercel or any serverless host): Cloudflare R2.** These hosts have a read-only file system, so writing `data/dishes.json` there fails and nothing persists. Set `R2_ACCOUNT_ID`, `R2_ACCESS_KEY_ID`, `R2_SECRET_ACCESS_KEY` and `R2_BUCKET` in the Vercel project's environment variables (see `.env.example`), then redeploy. The list is kept as one object, `data/dishes.json` in the bucket by default (change it with `R2_DISHES_KEY`). On first use it's copied from the repo's `data/dishes.json`. After that, the bucket is the source of truth, and editing the repo file no longer changes production.
+- **Locally (R2 variables unset): `data/dishes.json`**, as before.
+- **Saving safely:** every save only goes through if the data hasn't changed since it was read. If two saves collide, the later one re-reads and retries, so simultaneous edits on different server instances aren't lost.
+- **Home page delay:** the home page caches the list for 5 s per server instance, so a change can take up to 5 s to appear there. The management page always reads fresh.
+- **No storage configured:** if the host can't save (read-only and no R2), the API answers `503 storage_readonly` and the management page says so, instead of failing silently.
 
 ## API
 

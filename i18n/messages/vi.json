@@ -133,7 +133,8 @@
     "added": "Đã thêm {name}",
     "loading": "Đang tải…",
     "imageUrl": "Ảnh (tuỳ chọn)",
-    "imageUrlPlaceholder": "Để trống: tự tìm ảnh trên Wikipedia"
+    "imageUrlPlaceholder": "Để trống: tự tìm ảnh trên Wikipedia",
+    "errorStorage": "Máy chủ chưa được cấu hình nơi lưu dữ liệu nên không lưu được thay đổi."
   },
   "consent": {
     "title": "Quyền riêng tư của bạn",

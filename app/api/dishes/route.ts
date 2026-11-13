@@ -1,5 +1,5 @@
 import { connection } from "next/server";
-import { createDish, DishError, listDishes } from "@/lib/dishes/store";
+import { createDish, DishError, listDishes, storageFailure } from "@/lib/dishes/store";
 import { isAuthorized } from "@/lib/admin";
 
 export async function GET(request: Request) {
@@ -37,6 +37,6 @@ export async function POST(request: Request) {
         { status: err.code === "duplicate" ? 409 : 400 },
       );
     }
-    throw err;
+    return storageFailure(err);
   }
 }

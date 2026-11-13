@@ -1,4 +1,4 @@
-import { DishError, setDishActive } from "@/lib/dishes/store";
+import { DishError, setDishActive, storageFailure } from "@/lib/dishes/store";
 import { isAuthorized } from "@/lib/admin";
 
 /** PATCH { active: boolean } — "removing" a dish only sets it inactive. */
@@ -23,6 +23,6 @@ export async function PATCH(
     if (err instanceof DishError) {
       return Response.json({ error: err.code }, { status: 404 });
     }
-    throw err;
+    return storageFailure(err);
   }
 }
