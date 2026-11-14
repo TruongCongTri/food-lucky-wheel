@@ -22,6 +22,20 @@ export const HAS_MUSIC = CDN_URL !== "";
 
 export const DISCOGRAPHY: Album[] = [
   {
+    id: "live-at-real-world-studios",
+    title: "Live At Real World Studios",
+    artist: "Alfa Mist",
+    year: 2026,
+    coverUrl: `${CDN_URL}/albums/live-at-real-world-studios/cover.webp`,
+    tracks: [
+      {
+        id: "alfa-mist-live-at-real-world-studios",
+        title: "Alfa Mist Live At Real World Studios",
+        url: `${CDN_URL}/albums/live-at-real-world-studios/alfa-mist-live-at-real-world-studios.m4a`,
+      },
+    ],
+  },
+  {
     id: "antiphon",
     title: "Antiphon",
     artist: "Alfa Mist",
