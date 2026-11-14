@@ -2,7 +2,7 @@ import "server-only";
 import { randomUUID } from "node:crypto";
 import type { Dish, NewDishInput } from "./types";
 import { findDishImage } from "./wikiImage.js";
-import { ConflictError, getStorage, ReadOnlyStorageError } from "./storage";
+import { ConflictError, getStorage, missingR2Vars, ReadOnlyStorageError } from "./storage";
 
 /**
  * Dish repository on top of lib/dishes/storage.ts (Cloudflare R2 in
@@ -54,6 +54,12 @@ async function mutate<T>(change: (dishes: Dish[]) => T): Promise<T> {
   });
 }
 
+/** "r2", or "file (missing: …)" — sent as a response header for diagnosis. */
+export function storageInfo(): string {
+  const kind = getStorage().kind;
+  return kind === "r2" ? "r2" : `file; missing=${missingR2Vars().join(",") || "none"}`;
+}
+
 export async function listDishes(): Promise<Dish[]> {
   return readAll(true);
 }
@@ -65,7 +71,8 @@ export async function listActiveDishes(): Promise<Dish[]> {
 /** API response for a failed save: a clear code instead of a bare 500. */
 export function storageFailure(err: unknown): Response {
   if (err instanceof ReadOnlyStorageError) {
-    return Response.json({ error: "storage_readonly" }, { status: 503 });
+    // Variable names only (never values), so the admin can see what to fix.
+    return Response.json({ error: "storage_readonly", missing: missingR2Vars() }, { status: 503 });
   }
   console.error("[dishes] save failed:", err);
   return Response.json({ error: "storage_error" }, { status: 500 });

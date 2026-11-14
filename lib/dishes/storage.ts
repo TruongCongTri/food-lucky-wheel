@@ -44,11 +44,21 @@ export class ReadOnlyStorageError extends Error {
 const json = (dishes: Dish[]) => JSON.stringify(dishes, null, 2) + "\n";
 
 // --- Cloudflare R2 ------------------------------------------------------------
+const R2_VARS = ["R2_ACCOUNT_ID", "R2_ACCESS_KEY_ID", "R2_SECRET_ACCESS_KEY", "R2_BUCKET"] as const;
+
+/** Trimmed: a value pasted with a stray space/newline would otherwise break signing. */
+const env = (name: string) => process.env[name]?.trim() || undefined;
+
+/** Names (never values) of the R2 variables this server instance can't see. */
+export function missingR2Vars(): string[] {
+  return R2_VARS.filter((n) => !env(n));
+}
+
 function r2Storage(): DishStorage | null {
-  const accountId = process.env.R2_ACCOUNT_ID;
-  const accessKeyId = process.env.R2_ACCESS_KEY_ID;
-  const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
-  const bucket = process.env.R2_BUCKET;
+  const accountId = env("R2_ACCOUNT_ID");
+  const accessKeyId = env("R2_ACCESS_KEY_ID");
+  const secretAccessKey = env("R2_SECRET_ACCESS_KEY");
+  const bucket = env("R2_BUCKET");
   if (!accountId || !accessKeyId || !secretAccessKey || !bucket) return null;
   // A common slip: pasting the S3 endpoint URL instead of the bucket's name.
   if (!/^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/.test(bucket)) {
@@ -57,8 +67,8 @@ function r2Storage(): DishStorage | null {
     );
   }
 
-  const endpoint = (process.env.R2_ENDPOINT || `https://${accountId}.r2.cloudflarestorage.com`).replace(/\/+$/, "");
-  const key = (process.env.R2_DISHES_KEY || "data/dishes.json").replace(/^\/+/, "");
+  const endpoint = (env("R2_ENDPOINT") || `https://${accountId}.r2.cloudflarestorage.com`).replace(/\/+$/, "");
+  const key = (env("R2_DISHES_KEY") || "data/dishes.json").replace(/^\/+/, "");
   const url = `${endpoint}/${bucket}/${key.split("/").map(encodeURIComponent).join("/")}`;
   const client = new AwsClient({ accessKeyId, secretAccessKey, service: "s3", region: "auto" });
 
@@ -135,7 +145,7 @@ export function getStorage(): DishStorage {
     storage = r2Storage() ?? fileStorage();
     if (storage.kind === "file" && process.env.VERCEL) {
       console.warn(
-        "[dishes] R2_* env vars are not set: on Vercel the dish list is read-only (changes can't be saved).",
+        `[dishes] Missing at runtime: ${missingR2Vars().join(", ")} — on Vercel the dish list is read-only.`,
       );
     }
   }

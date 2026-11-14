@@ -1,5 +1,5 @@
 import { connection } from "next/server";
-import { createDish, DishError, listDishes, storageFailure } from "@/lib/dishes/store";
+import { createDish, DishError, listDishes, storageFailure, storageInfo } from "@/lib/dishes/store";
 import { isAuthorized } from "@/lib/admin";
 
 export async function GET(request: Request) {
@@ -8,7 +8,9 @@ export async function GET(request: Request) {
   const dishes = await listDishes();
   return Response.json(
     { dishes: onlyActive ? dishes.filter((d) => d.active) : dishes },
-    { headers: { "Cache-Control": "no-store" } },
+    // X-Dish-Storage: where saves go ("r2"), or which R2 variable names this
+    // instance can't see — names only, never values.
+    { headers: { "Cache-Control": "no-store", "X-Dish-Storage": storageInfo() } },
   );
 }
 

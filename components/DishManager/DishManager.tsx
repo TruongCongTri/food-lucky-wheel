@@ -16,7 +16,12 @@ const PIN_KEY = "lw:pin";
 const EMOJIS = ["🍜", "🍲", "🥖", "🍚", "🥢", "🌶️", "🥬", "🦀", "🍤", "🐟", "🍗", "🥘", "🍢", "🥣", "🍙", "🫕"];
 
 class ApiError extends Error {
-  constructor(public code: string, public status: number) {
+  constructor(
+    public code: string,
+    public status: number,
+    /** storage_readonly: names of the R2 variables the server can't see. */
+    public missing?: string[],
+  ) {
     super(code);
   }
 }
@@ -81,7 +86,7 @@ export function DishManager() {
       return api<T>(url, init, true);
     }
     const data = await res.json().catch(() => ({}));
-    if (!res.ok) throw new ApiError(data.error ?? "error", res.status);
+    if (!res.ok) throw new ApiError(data.error ?? "error", res.status, data.missing);
     return data as T;
   }
 
@@ -97,7 +102,7 @@ export function DishManager() {
           : code === "unauthorized"
             ? t.pinWrong
             : code === "storage_readonly"
-              ? t.errorStorage
+              ? `${t.errorStorage}${err instanceof ApiError && err.missing?.length ? ` (${err.missing.join(", ")})` : ""}`
               : t.errorGeneric;
     if (code === "unauthorized") {
       try {
