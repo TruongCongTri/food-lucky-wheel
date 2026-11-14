@@ -97,6 +97,8 @@ Albums stream from Cloudflare R2. Set `NEXT_PUBLIC_R2_PUBLIC_URL` in `.env.local
 - **Background tabs:** on desktop (mouse or trackpad as the main pointer), music keeps playing when you switch tabs or windows. On phones and tablets it pauses while the app is in the background and resumes on return.
 - **Preloading the next album** starts only 90 s before the current one ends.
 - **Lock-screen controls** use the Media Session API. On iOS, the audio session is set to `playback` while music plays, so it plays even with the silent switch on.
+- **Order:** albums play and are listed by release year, oldest first, sorted in code, so new entries in `lib/discography.ts` can go in any order.
+- **Resume:** with Preferences consent, `lw:music` remembers the album, song and second reached. It saves every 5 s while playing, and on pause, seek, a hidden tab and page close. The next visit seeks back to that second, or starts from the top if it was within 10 s of the end. Without consent, every visit starts fresh.
 - **Remembering the album** (`lw:music`) needs Preferences consent. Cloudflare is listed as a third party on the Privacy and Cookies pages.
 - **Player UI**: [components/MusicPlayer/](components/MusicPlayer/). The list button, or the cover, opens a list of every song across all albums; tap one to play it. On desktop, hovering the player shows the list, and a click keeps it open. Each album should be AAC `.m4a` at 128–160 kbps with the `moov` atom first (`ffmpeg -movflags +faststart`), so playback starts before the whole file downloads.
 

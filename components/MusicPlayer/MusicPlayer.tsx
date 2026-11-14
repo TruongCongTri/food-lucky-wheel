@@ -49,6 +49,9 @@ function Player({ music }: { music: MusicValue }) {
   const [pinned, setPinned] = useState(false);
   const [hovering, setHovering] = useState(false);
   const open = pinned || hovering;
+  // Keep the list mounted after closing until its exit animation finishes.
+  const [rendered, setRendered] = useState(false);
+  if (open && !rendered) setRendered(true); // derived state: mount as soon as it opens
   const rootRef = useRef<HTMLDivElement>(null);
   const hoverTimer = useRef<number | undefined>(undefined);
 
@@ -102,7 +105,16 @@ function Player({ music }: { music: MusicValue }) {
       onPointerEnter={onEnter}
       onPointerLeave={onLeave}
     >
-      {open && <Drawer music={music} onClose={close} />}
+      {rendered && (
+        <Drawer
+          music={music}
+          onClose={close}
+          closing={!open}
+          onClosed={() => {
+            if (!open) setRendered(false);
+          }}
+        />
+      )}
 
       <div className={styles.pill} data-hint={!hasStarted && !hasError}>
         <button
@@ -160,7 +172,18 @@ function Player({ music }: { music: MusicValue }) {
   );
 }
 
-function Drawer({ music, onClose }: { music: MusicValue; onClose: () => void }) {
+function Drawer({
+  music,
+  onClose,
+  closing,
+  onClosed,
+}: {
+  music: MusicValue;
+  onClose: () => void;
+  /** Playing the exit animation; unmounted by the parent when it ends. */
+  closing: boolean;
+  onClosed: () => void;
+}) {
   const { dict } = useI18n();
   const t = dict.music;
   const { albums, album, albumIndex, trackIndex, isPlaying, loopAlbum, setLoopAlbum, togglePlay, next, prev, selectAlbum, getAudio } =
@@ -206,7 +229,18 @@ function Drawer({ music, onClose }: { music: MusicValue; onClose: () => void }) 
   }, [getAudio, albumIndex, trackIndex]);
 
   return (
-    <div id="music-drawer" className={styles.drawer} role="region" aria-label={t.title}>
+    <div
+      id="music-drawer"
+      className={styles.drawer}
+      role="region"
+      aria-label={t.title}
+      data-closing={closing}
+      aria-hidden={closing || undefined}
+      inert={closing || undefined}
+      onAnimationEnd={(e) => {
+        if (e.target === e.currentTarget && closing) onClosed();
+      }}
+    >
       {/* Fixed part: header, now playing, progress, controls */}
       <div className={styles.top}>
         <div className={styles.drawerHead}>

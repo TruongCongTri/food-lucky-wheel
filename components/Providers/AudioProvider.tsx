@@ -41,6 +41,18 @@ import { introActive, onIntroDone } from "@/components/Intro/Intro";
 import { useSound } from "./SoundProvider";
 
 const STORAGE_KEY = "lw:music";
+
+/**
+ * Albums in release order (oldest first): for the list and for next/previous.
+ * Sorted here so new albums can be added to lib/discography.ts in any order.
+ * Albums without a year go last; equal years keep their original order.
+ */
+const ALBUMS: Album[] = [...DISCOGRAPHY].sort((a, b) => (a.year ?? Infinity) - (b.year ?? Infinity));
+
+/** Save the position at most this often while playing (plus on pause / leaving). */
+const SAVE_EVERY_MS = 5000;
+/** A saved position this close to the end restarts the file instead. */
+const RESUME_END_MARGIN = 10;
 const TARGET_VOLUME = 0.6; // under the UI sound effects
 const FADE_IN_MS = 2000;
 const FADE_OUT_MS = 500;
@@ -79,7 +91,12 @@ export type MusicValue = {
 
 const MusicContext = createContext<MusicValue | null>(null);
 
-type Saved = { album?: string; loop?: boolean };
+/**
+ * Remembered between visits (only with "Preferences" consent):
+ * album + track ids (stable even if the list order changes), the second
+ * reached, repeat mode, and when it was saved.
+ */
+type Saved = { album?: string; track?: string; t?: number; loop?: boolean; at?: string };
 
 function readSaved(): Saved {
   if (!hasPreferenceConsent()) return {};
@@ -90,10 +107,18 @@ function readSaved(): Saved {
   }
 }
 
-function save(albumIdx: number, loop: boolean) {
+function save([albumIdx, trackIdx]: Pos, loop: boolean, seconds: number) {
   if (!hasPreferenceConsent()) return;
+  const album = ALBUMS[albumIdx];
+  const rec: Saved = {
+    album: album?.id,
+    track: album?.tracks[trackIdx]?.id,
+    t: Math.max(0, Math.floor(seconds)), // to the second
+    loop,
+    at: new Date().toISOString(),
+  };
   try {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ album: DISCOGRAPHY[albumIdx]?.id, loop }));
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(rec));
   } catch {
     /* storage unavailable */
   }
@@ -112,19 +137,19 @@ const saveData = () =>
   Boolean((navigator as Navigator & { connection?: { saveData?: boolean } }).connection?.saveData);
 
 function nextPos([a, t]: Pos, loopAlbum: boolean): Pos {
-  if (t + 1 < DISCOGRAPHY[a].tracks.length) return [a, t + 1];
+  if (t + 1 < ALBUMS[a].tracks.length) return [a, t + 1];
   if (loopAlbum) return [a, 0];
-  return [(a + 1) % DISCOGRAPHY.length, 0];
+  return [(a + 1) % ALBUMS.length, 0];
 }
 
 function prevPos([a, t]: Pos, loopAlbum: boolean): Pos {
   if (t > 0) return [a, t - 1];
-  const pa = loopAlbum ? a : (a - 1 + DISCOGRAPHY.length) % DISCOGRAPHY.length;
-  return [pa, DISCOGRAPHY[pa].tracks.length - 1];
+  const pa = loopAlbum ? a : (a - 1 + ALBUMS.length) % ALBUMS.length;
+  return [pa, ALBUMS[pa].tracks.length - 1];
 }
 
 export function AudioProvider({ children }: { children: ReactNode }) {
-  if (!HAS_MUSIC || DISCOGRAPHY.length === 0) return children;
+  if (!HAS_MUSIC || ALBUMS.length === 0) return children;
   return <MusicEngine>{children}</MusicEngine>;
 }
 
@@ -151,6 +176,16 @@ function MusicEngine({ children }: { children: ReactNode }) {
   const soundOnRef = useRef(soundOn);
   const failures = useRef(0);
   const preloadedFor = useRef<string | null>(null);
+  /** Second to seek to once the restored file's metadata is in (null = none pending). */
+  const resumeAt = useRef<number | null>(null);
+  const lastSave = useRef(0);
+
+  /** Remember album, track and the current second (no-op without consent). */
+  const persist = useCallback(() => {
+    if (resumeAt.current !== null) return; // restored position not applied yet: keep it
+    lastSave.current = Date.now();
+    save(posRef.current, loopRef.current, audioRef.current?.currentTime ?? 0);
+  }, []);
 
   // --- Volume fades -----------------------------------------------------------
   const fadeTo = useCallback((to: number, ms: number, done?: () => void) => {
@@ -223,15 +258,17 @@ function MusicEngine({ children }: { children: ReactNode }) {
   const load = useCallback(
     (p: Pos, autoplay: boolean) => {
       const audio = audioRef.current;
-      const track = DISCOGRAPHY[p[0]]?.tracks[p[1]];
+      const track = ALBUMS[p[0]]?.tracks[p[1]];
       if (!audio || !track) return;
       posRef.current = p;
       setPos(p);
-      save(p[0], loopRef.current);
+      resumeAt.current = null;
+      save(p, loopRef.current, 0); // a new file starts from the top
+      lastSave.current = Date.now();
       preloadedFor.current = null;
       audio.src = track.url;
       audio.load();
-      updateMediaSession(DISCOGRAPHY[p[0]], track);
+      updateMediaSession(ALBUMS[p[0]], track);
       if (autoplay) void play(600);
     },
     [play],
@@ -240,20 +277,36 @@ function MusicEngine({ children }: { children: ReactNode }) {
   // --- Create the element once ------------------------------------------------
   useEffect(() => {
     const saved = readSaved();
-    let a = DISCOGRAPHY.findIndex((al) => al.id === saved.album);
+    let a = ALBUMS.findIndex((al) => al.id === saved.album);
+    let tr = a < 0 ? -1 : ALBUMS[a].tracks.findIndex((x) => x.id === saved.track);
+    if (a >= 0 && tr >= 0 && saved.t && saved.t > 0) resumeAt.current = saved.t; // pick up where they stopped
+    if (tr < 0) tr = 0;
     // No remembered album: start somewhere different each visit.
-    if (a < 0) a = Math.floor(Math.random() * DISCOGRAPHY.length);
+    if (a < 0) a = Math.floor(Math.random() * ALBUMS.length);
     loopRef.current = Boolean(saved.loop);
-    posRef.current = [a, 0];
+    posRef.current = [a, tr];
     // eslint-disable-next-line react-hooks/set-state-in-effect -- restore from storage / random pick
-    setPos([a, 0]);
+    setPos([a, tr]);
     setLoopAlbumState(loopRef.current);
 
     const audio = new Audio();
     audio.preload = introActive() ? "metadata" : "auto"; // don't compete with the preload screen
-    audio.src = DISCOGRAPHY[a].tracks[0].url;
+    audio.src = ALBUMS[a].tracks[tr].url;
     audioRef.current = audio;
-    updateMediaSession(DISCOGRAPHY[a], DISCOGRAPHY[a].tracks[0]);
+    updateMediaSession(ALBUMS[a], ALBUMS[a].tracks[tr]);
+
+    // Seek to the remembered second as soon as the file's length is known
+    // (only the header is fetched for that; playback then streams from there).
+    const onMeta = () => {
+      const at = resumeAt.current;
+      if (at === null) return;
+      resumeAt.current = null;
+      if (Number.isFinite(audio.duration) && at < audio.duration - RESUME_END_MARGIN) audio.currentTime = at;
+    };
+    audio.addEventListener("loadedmetadata", onMeta);
+    // A jump with the seek bar is saved right away, not at the next 5 s tick.
+    const onSeeked = () => persist();
+    audio.addEventListener("seeked", onSeeked);
 
     const onPlaying = () => {
       failures.current = 0;
@@ -264,6 +317,7 @@ function MusicEngine({ children }: { children: ReactNode }) {
     const onPause = () => {
       setIsPlaying(false);
       setIsLoading(false);
+      persist();
     };
     const onWaiting = () => setIsLoading(true);
     const onEnded = () => load(nextPos(posRef.current, loopRef.current), true);
@@ -272,7 +326,7 @@ function MusicEngine({ children }: { children: ReactNode }) {
       setIsPlaying(false);
       failures.current++;
       // Skip a broken file, but stop once every file has failed (offline).
-      if (failures.current >= DISCOGRAPHY.reduce((n, al) => n + al.tracks.length, 0)) {
+      if (failures.current >= ALBUMS.reduce((n, al) => n + al.tracks.length, 0)) {
         setHasError(true);
         setAudioSession("auto");
         return;
@@ -284,9 +338,10 @@ function MusicEngine({ children }: { children: ReactNode }) {
     // Fetch the next file's header shortly before this one ends (not the whole
     // file: albums are ~60 MB each).
     const onTime = () => {
+      if (!audio.paused && Date.now() - lastSave.current > SAVE_EVERY_MS) persist();
       if (!audio.duration || audio.duration - audio.currentTime > PRELOAD_BEFORE_END) return;
       const [na, nt] = nextPos(posRef.current, loopRef.current);
-      const url = DISCOGRAPHY[na].tracks[nt].url;
+      const url = ALBUMS[na].tracks[nt].url;
       if (preloadedFor.current === url || url === audio.currentSrc) return;
       preloadedFor.current = url;
       const pre = (preloadRef.current ??= new Audio());
@@ -311,13 +366,15 @@ function MusicEngine({ children }: { children: ReactNode }) {
       // Still on the preload screen: silent unlock, so music can start the
       // moment it lifts (muted, not volume 0 — iOS ignores volume).
       audio.muted = true;
+      const startedAt = audio.currentTime;
       audio
         .play()
         .then(() => {
           // Paused before the curtain lifted → hold until it does.
           if (!introDone.current) {
             audio.pause();
-            audio.currentTime = 0;
+            // Back to where it was (the restored second, if one is still pending).
+            audio.currentTime = resumeAt.current ?? startedAt;
           }
           unlocked.current = true;
           audio.muted = false;
@@ -346,16 +403,20 @@ function MusicEngine({ children }: { children: ReactNode }) {
     // behind other windows, like a music player.
     const onVisibility = () => {
       if (document.hidden) {
+        persist(); // phones may discard a background tab without another event
         if (!window.matchMedia(DESKTOP_POINTER).matches) pause("hidden", 0);
       } else if (pausedBy.current === "hidden" && soundOnRef.current) {
         void play(800);
       }
     };
     document.addEventListener("visibilitychange", onVisibility);
+    // Closing / reloading / navigating away: save the exact second.
+    const onLeave = () => persist();
+    window.addEventListener("pagehide", onLeave);
 
     // Consent withdrawn → forget; given → remember the current choice.
     const offConsent = onConsentChange((rec) => {
-      if (rec.preferences) save(posRef.current[0], loopRef.current);
+      if (rec.preferences) persist();
     });
 
     return () => {
@@ -364,6 +425,9 @@ function MusicEngine({ children }: { children: ReactNode }) {
       offConsent();
       window.removeEventListener("pointerdown", onGesture, { capture: true });
       document.removeEventListener("visibilitychange", onVisibility);
+      window.removeEventListener("pagehide", onLeave);
+      audio.removeEventListener("loadedmetadata", onMeta);
+      audio.removeEventListener("seeked", onSeeked);
       audio.removeEventListener("playing", onPlaying);
       audio.removeEventListener("pause", onPause);
       audio.removeEventListener("waiting", onWaiting);
@@ -436,7 +500,7 @@ function MusicEngine({ children }: { children: ReactNode }) {
     loopRef.current = loop;
     setLoopAlbumState(loop);
     preloadedFor.current = null;
-    save(posRef.current[0], loop);
+    save(posRef.current, loop, audioRef.current?.currentTime ?? 0);
   }, []);
 
   // Lock screen / notification controls.
@@ -463,13 +527,13 @@ function MusicEngine({ children }: { children: ReactNode }) {
   }, [next, prev, pause, play]);
 
   const [albumIndex, trackIndex] = pos;
-  const album = DISCOGRAPHY[albumIndex] ?? DISCOGRAPHY[0];
+  const album = ALBUMS[albumIndex] ?? ALBUMS[0];
   const track = album.tracks[trackIndex] ?? album.tracks[0];
   const getAudio = useCallback(() => audioRef.current, []);
 
   const value = useMemo<MusicValue>(
     () => ({
-      albums: DISCOGRAPHY,
+      albums: ALBUMS,
       album,
       track,
       albumIndex,

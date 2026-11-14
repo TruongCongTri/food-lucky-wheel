@@ -320,7 +320,7 @@
           "lw:consent — cần thiết — lưu lựa chọn trong bảng quyền riêng tư (phiên bản, thời điểm, từng mục) để không hỏi lại — đến khi bạn xoá dữ liệu trang hoặc chính sách đổi.",
           "lw:geo-consent — vị trí — bản ghi bạn đã đồng ý dùng vị trí và thời điểm — đến khi bạn rút lại.",
           "lw:sound — ghi nhớ tuỳ chọn — bật/tắt âm thanh — chỉ lưu khi bạn bật “Ghi nhớ tuỳ chọn”, bị xoá khi bạn tắt.",
-          "lw:music — ghi nhớ tuỳ chọn — album nhạc nền đang nghe và chế độ lặp lại — chỉ lưu khi bạn bật “Ghi nhớ tuỳ chọn”, bị xoá khi bạn tắt.",
+          "lw:music — ghi nhớ tuỳ chọn — album nhạc nền đang nghe, vị trí đang phát (đến từng giây, để lần sau phát tiếp) và chế độ lặp lại — chỉ lưu khi bạn bật “Ghi nhớ tuỳ chọn”, bị xoá khi bạn tắt.",
           "lw:pin (sessionStorage) — cần thiết, chỉ quản trị viên — mã PIN quản lý thực đơn — tự xoá khi đóng tab."
         ]
       },

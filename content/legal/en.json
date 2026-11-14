@@ -320,7 +320,7 @@
           "lw:consent — strictly necessary — your privacy panel choices (version, time, each category) so we don't ask again — until you clear site data or the policy changes.",
           "lw:geo-consent — location — record that you consented to location use, and when — until you withdraw.",
           "lw:sound — preferences — sound on/off — stored only if “Preferences” is on; deleted when you turn it off.",
-          "lw:music — preferences — the background-music album you're listening to and the repeat mode — stored only if “Preferences” is on; deleted when you turn it off.",
+          "lw:music — preferences — the background-music album you're listening to, where you stopped (to the second, so it can carry on next visit) and the repeat mode — stored only if “Preferences” is on; deleted when you turn it off.",
           "lw:pin (sessionStorage) — strictly necessary, admins only — the menu-management PIN — cleared when the tab closes."
         ]
       },

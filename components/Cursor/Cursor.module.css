@@ -21,6 +21,8 @@
   height: 6px;
   border-radius: 50%;
   background: var(--ink);
+  /* Cream halo: keeps the dot visible on red and dark buttons too. */
+  box-shadow: 0 0 0 1.5px rgba(243, 237, 227, 0.9);
   will-change: transform;
   transition:
     opacity 0.2s,
@@ -50,6 +52,8 @@
   border-radius: 50%;
   border: 1.5px solid var(--ink);
   background: transparent;
+  /* Faint cream outline so the ring still reads over dark surfaces. */
+  box-shadow: 0 0 0 1px rgba(243, 237, 227, 0.55);
   color: var(--paper);
   /* Size (not scale) changes, so the labels stay sharp; the ring is a tiny
      fixed box, so the layout this costs is negligible. */
@@ -101,14 +105,25 @@
 }
 
 /* --- hover: buttons / links ---------------------------------------------------- */
+/* Dark ring + dark dot with cream outlines: readable over cream text buttons,
+   the red play button and the dark music pill alike (a red ring vanished on
+   the red play button and over the sound switch's red bars). */
 .root[data-state="hover"] .ring {
   --s: 54px;
-  background: rgba(228, 65, 31, 0.14);
-  border-color: var(--chili);
+  background: rgba(26, 20, 20, 0.08);
+  border-color: var(--ink);
+  border-width: 2px;
+  box-shadow:
+    0 0 0 1.5px rgba(243, 237, 227, 0.9),
+    inset 0 0 0 1.5px rgba(243, 237, 227, 0.9);
 }
 
 .root[data-state="hover"] .dot {
-  background: var(--chili);
+  width: 8px;
+  height: 8px;
+  top: -4px;
+  left: -4px;
+  box-shadow: 0 0 0 2px var(--paper);
 }
 
 /* --- link: external — "pointing" out of the site ---------------------------------- */

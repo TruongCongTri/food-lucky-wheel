@@ -205,3 +205,38 @@ html[data-cursor="on"] * {
 html[data-cursor="on"] :is(input:not([type="checkbox"], [type="range"], [type="radio"]), textarea, [contenteditable="true"]) {
   cursor: text !important;
 }
+
+/* Scrollbars, site-wide (page + every scroll area): a thin chili thumb on a
+   faint track, the music playlist's style. Areas that hide their scrollbar
+   (e.g. the emoji row) keep doing so — their own rules are more specific. */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 3px;
+  background: var(--line);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 3px;
+  background: var(--chili);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--chili-deep);
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+/* Firefox (and browsers without ::-webkit-scrollbar). Chrome would let these
+   override the rules above, so they only apply where those aren't supported. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--chili) var(--line);
+  }
+}

@@ -179,6 +179,12 @@
   animation: drawer 0.35s var(--ease-out) both;
 }
 
+/* Exit: the reverse of the entrance, a little quicker. */
+.drawer[data-closing="true"] {
+  animation: drawerOut 0.22s cubic-bezier(0.55, 0, 0.75, 0.2) both;
+  pointer-events: none;
+}
+
 .drawerHead {
   display: flex;
   align-items: center;
@@ -413,33 +419,10 @@
   --fade-bottom: var(--edge);
 }
 
-/* Custom scrollbar: thin chili thumb on a faint track. */
-.list::-webkit-scrollbar {
-  width: 6px;
-}
-
+/* The scrollbar itself is the global style (app/global.css); here it only
+   keeps clear of the rounded corners at the list's ends. */
 .list::-webkit-scrollbar-track {
   margin: 6px 0 14px;
-  border-radius: 3px;
-  background: var(--line);
-}
-
-.list::-webkit-scrollbar-thumb {
-  border-radius: 3px;
-  background: var(--chili);
-}
-
-.list::-webkit-scrollbar-thumb:hover {
-  background: var(--chili-deep);
-}
-
-/* Firefox (and browsers without ::-webkit-scrollbar). Chrome would let these
-   override the rules above, so they only apply where those aren't supported. */
-@supports not selector(::-webkit-scrollbar) {
-  .list {
-    scrollbar-width: thin;
-    scrollbar-color: var(--chili) var(--line);
-  }
 }
 
 /* One row per song (all albums, in play order) */
@@ -653,6 +636,13 @@
   }
 }
 
+@keyframes drawerOut {
+  to {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -682,9 +672,14 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .root,
-  .drawer {
+  .root {
     animation: none;
+  }
+
+  /* Near-instant rather than none: the exit's animationend unmounts the list. */
+  .drawer,
+  .drawer[data-closing="true"] {
+    animation-duration: 1ms;
   }
 
   .disc img,
