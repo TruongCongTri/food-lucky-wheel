@@ -50,6 +50,12 @@ function r2Storage(): DishStorage | null {
   const secretAccessKey = process.env.R2_SECRET_ACCESS_KEY;
   const bucket = process.env.R2_BUCKET;
   if (!accountId || !accessKeyId || !secretAccessKey || !bucket) return null;
+  // A common slip: pasting the S3 endpoint URL instead of the bucket's name.
+  if (!/^[a-z0-9][a-z0-9-]{1,61}[a-z0-9]$/.test(bucket)) {
+    throw new Error(
+      `R2_BUCKET must be the bucket's name (e.g. "my-bucket"), not a URL — got "${bucket.slice(0, 60)}".`,
+    );
+  }
 
   const endpoint = (process.env.R2_ENDPOINT || `https://${accountId}.r2.cloudflarestorage.com`).replace(/\/+$/, "");
   const key = (process.env.R2_DISHES_KEY || "data/dishes.json").replace(/^\/+/, "");
@@ -59,10 +65,18 @@ function r2Storage(): DishStorage | null {
   return {
     kind: "r2",
     async read() {
-      const res = await client.fetch(url, { method: "GET", cache: "no-store" });
+      // Uncompressed on purpose: R2 gzips JSON for clients that accept it and
+      // then returns a weak ETag (W/"…"), which never matches the If-Match on
+      // the next write — every save after the first would look like a conflict.
+      const res = await client.fetch(url, {
+        method: "GET",
+        cache: "no-store",
+        headers: { "accept-encoding": "identity" },
+      });
       if (res.status === 404) return { dishes: structuredClone(seed) as Dish[], version: null }; // not seeded yet
       if (!res.ok) throw new Error(`R2 read failed: ${res.status} ${await res.text().catch(() => "")}`);
-      return { dishes: (await res.json()) as Dish[], version: res.headers.get("etag") };
+      const etag = res.headers.get("etag")?.replace(/^W\//, "") ?? null; // belt and braces
+      return { dishes: (await res.json()) as Dish[], version: etag };
     },
     async write(dishes, version) {
       const put = (conditional: boolean) =>
